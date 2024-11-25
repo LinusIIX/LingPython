@@ -30,6 +30,13 @@ message = input("Enter a message: ")
 new_message = ""
 VOICED_CONSONANTS = "bdgjlmnrvwyz"
 
+message = message.replace("th", "")
+message = message.replace("sz", "")
+message = message.replace("Th", "")
+message = message.replace("Sz", "")
+message = message.replace("TH", "")
+message = message.replace("SZ", "")
+
 # Check each letter if it is a voiced consonant, otherwise add it to the new message
 for letter in message:
     if letter.lower() not in VOICED_CONSONANTS:
