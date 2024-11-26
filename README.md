@@ -1,4 +1,4 @@
-#Ling Python 
+# Ling Python 
 Hier sind die supi dupi Aufgaben zum Linguisten Kurs zu finden
 
          _nnnn_                      
