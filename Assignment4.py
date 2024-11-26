@@ -1,5 +1,5 @@
 # Python Lesson 4
-# Luca Pomm, Nils Schiele, Linus Prange
+# Luca Pomm, Nils Schiele, Linus Prange, Daniel Shaw
 
 
 #------------------------------------------------------------
@@ -30,6 +30,8 @@ message = input("Enter a message: ")
 new_message = ""
 VOICED_CONSONANTS = "bdgjlmnrvwyz"
 
+message = message.replace("tH", "")
+message = message.replace("sZ", "")
 message = message.replace("th", "")
 message = message.replace("sz", "")
 message = message.replace("Th", "")
@@ -92,5 +94,6 @@ for letter in word:
     # If the letter is a consonant, add the letter followed by "o" and the letter again
     else:
         new_word += letter + "o" + letter
+
 print("The word in robbers language is:", new_word)
 #------------------------------------------------------------
