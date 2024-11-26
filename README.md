@@ -9,11 +9,3 @@ Hier sind die supi dupi Aufgaben zum Linguisten Kurs zu finden
       JS^\__/  qKL
      dZP        qKRb
     dZP          qKKb
-   fZP            SMMb
-   HZM            MMMM
-   FqM            MMMM
- __| ".        |\dS"qML
- |    `.       | `' \Zq
-_)      \.___.,|     .'
-\____   )MMMMMM|   .'
-     `-'       `--' hjm
