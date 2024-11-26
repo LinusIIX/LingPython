@@ -1,5 +1,5 @@
 # Ling Python 
-Hier sind die supi dupi Aufgaben zum Linguisten Kurs zu finden
+Hier sind die supi dupi Aufgaben zum Linguisten Pyhon Kurs zu finden
 
          _nnnn_                      
         dGGGGMMb     ,"""""""""""""""""".
