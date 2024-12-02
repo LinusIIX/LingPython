@@ -1,4 +1,4 @@
-# Assignment 5: Battle of the 5 "or less" armies
+# Assignment 5: The last stand
 
 #TODO Kommentare übersetzen...DAS IST ALLES NOCH TEMPORÄR ALSO NICHT RUMMAULEN DANIEL ^^
 
@@ -30,13 +30,14 @@ weappons = (Glamdring, Orcrist, Sting, Anduril, Narsil)
 
 # Monster
 UrukHai = ("Uruk-Hai", "Beschreibung", "health", "strength", "special")
+Orc = ("Orc", "Beschreibung", "health", "strength", "special")
 Nazgul = ("Nazgul", "Beschreibung", "health", "strength", "special")
 Troll = ("Troll", "Beschreibung", "health", "strength", "special")
 Warg = ("Warg", "Beschreibung", "health", "strength", "special")
 DerBiBaBuzemann = ("Der BiBaBuzemann", "Beschreibung", "health", "strength", "special")
 JoeMama = ("Joe Mama", "Beschreibung", "health", "strength", "special")
 # Tuple mit Monstern
-monster = (UrukHai, Nazgul, Troll, Warg, DerBiBaBuzemann, JoeMama)
+monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
 
 #---------------------------------------------
 # Generate random amount of monsters
@@ -54,14 +55,18 @@ while monsterCount > 0:
 #---------------------------------------------
 # Game 
 # Explanation of the game:
+
 # TODO: Erklärung des Spiels einfügen
 
 #---------------------------------------------
 # Lore/Story
-# TODO: Lore/Story einfügen
 
-print("Welcome to the Battle of the 5 (or less) Armies!")
-print("You can choose between the following heroes:")
+print("This is an alternative timeline of The Lord of the Rings.")
+print("Boromir survived, and the Fellowship never split up. Saruman sent out a massive army to wipe out the Rohirrim.")
+print("Using dark witchcraft, Saruman destroyed the walls of Helm's Deep, forcing the Fellowship to defend the fortress.")
+print("The battle was brutal, and the Fellowship could not hold the fortress. The women and children fled through the mountain path, while the Fellowship stayed behind to cover their escape.")
+print("Saruman's massive army flooded the fortress, and the Fellowship was separated. Now, they must fight their way through the fortress to reunite and escape.")
+print("Choose your hero and fight your way through the fortress to reunite with the Fellowship and escape.")
 
 
 #---------------------------------------------
@@ -79,8 +84,8 @@ while chosenHero == None:
         i+=1
         print(hero[0]+ " (" + str(i) + ")")
 
-    print("To choose a hero type the name of the hero")
-    x = input("See more information of a hero type the corresponding number (1-5) or exit with (x): ")
+    print("Choose your hero by typing the name")
+    x = input("To see more information of a hero type the corresponding number (1-5) or exit with (x): ")
 
     match x:
         case "1":
