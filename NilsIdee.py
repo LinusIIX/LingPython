@@ -61,12 +61,21 @@ while monsterCount > 0:
 #---------------------------------------------
 # Lore/Story
 
-print("This is an alternative timeline of The Lord of the Rings.")
-print("Boromir survived, and the Fellowship never split up. Saruman sent out a massive army to wipe out the Rohirrim.")
-print("Using dark witchcraft, Saruman destroyed the walls of Helm's Deep, forcing the Fellowship to defend the fortress.")
-print("The battle was brutal, and the Fellowship could not hold the fortress. The women and children fled through the mountain path, while the Fellowship stayed behind to cover their escape.")
-print("Saruman's massive army flooded the fortress, and the Fellowship was separated. Now, they must fight their way through the fortress to reunite and escape.")
-print("Choose your hero and fight your way through the fortress to reunite with the Fellowship and escape.")
+print("+" + "-" * 73 + "+")
+print("| This is an alternative timeline of The Lord of the Rings.               |")
+print("| Boromir survived, and the Fellowship never split up. Saruman            |")
+print("| sent out a massive army to wipe out the Rohirrim.                       |")
+print("| Using dark witchcraft, Saruman destroyed the walls of Helm's            |")
+print("| Deep, forcing the Fellowship to defend the fortress.                    |")
+print("| The battle was brutal, and the Fellowship could not hold the            |")
+print("| fortress. The women and children fled through the mountain path,        |")
+print("| while the Fellowship stayed behind to cover their escape.               |")
+print("| Saruman's massive army flooded the fortress, and the Fellowship         |")
+print("| was separated. Now, they must fight their way through the               |")
+print("| fortress to reunite and escape.                                         |")
+print("| Choose your hero and fight your way through the fortress to             |")
+print("| reunite with the Fellowship and escape.                                 |")
+print("+" + "-" * 73 + "+")
 
 
 #---------------------------------------------
@@ -83,7 +92,7 @@ while chosenHero == None:
     for hero in heroes:
         i+=1
         print(hero[0]+ " (" + str(i) + ")")
-
+    print("")
     print("Choose your hero by typing the name")
     x = input("To see more information of a hero type the corresponding number (1-5) or exit with (x): ")
 
