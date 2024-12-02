@@ -8,27 +8,29 @@ import random
 # "Game assets" -> Heroes, Weapons, Monsters
 
 #TODO Beschreibungen und Werte anpassen
-# Helden
-# health, strength, luck durch Werte austauschen
-Aragorn = ("Aragorn", "Beschreibung", "health", "strength", 3) 
-Gimli = ("Gimli", "Beschreibung", "health", "strength", 3)
-Legolas = ("Legolas", "Beschreibung", "health", "strength", 4)
-Frodo = ("Frodo", "Beschreibung", "health", "strength", 5)
-Boromir = ("Boromir", "Beschreibung", "health", "strength", 0)
-# tuple mit Helden
+
+# heroes
+# name = (name, description, health, strength, luck)
+Aragorn = ("Aragorn", "Beschreibung", 10, 1.0, 3) 
+Gimli = ("Gimli", "Beschreibung", 10, 1.0 , 3)
+Legolas = ("Legolas", "Beschreibung", 10, 1.0 , 4)
+Frodo = ("Frodo", "Beschreibung", 10, 1.0 , 5)
+Boromir = ("Boromir", "Beschreibung", 10, 1.0, 0)
+
+# tuple with heroes
 heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)  
 
-# Waffen
-# damage, special durch Werte austauschen
-Glamdring = ("Glamdring", "Beschreibung", "damage", "special")
-Orcrist = ("Orcrist", "Beschreibung", "damage", "special")
-Sting = ("Sting", "Beschreibung", "damage", "special")
-Anduril = ("Anduril", "Beschreibung", "damage", "special")
-Narsil = ("Narsil", "Beschreibung", "damage", "special")
-# tuple mit Waffen
+# weapons
+# name = (name, description, damage, special)
+Glamdring = ("Glamdring", "Beschreibung", 3, "special")
+Orcrist = ("Orcrist", "Beschreibung", 3, "special")
+Sting = ("Sting", "Beschreibung", 3, "special")
+Anduril = ("Anduril", "Beschreibung", 3, "special")
+Narsil = ("Narsil", "Beschreibung", 3, "special")
+# tuple with weapons
 weappons = (Glamdring, Orcrist, Sting, Anduril, Narsil)
 
-# Monster
+# enemies
 UrukHai = ("Uruk-Hai", "Beschreibung", "health", "strength", "special")
 Orc = ("Orc", "Beschreibung", "health", "strength", "special")
 Nazgul = ("Nazgul", "Beschreibung", "health", "strength", "special")
@@ -36,7 +38,7 @@ Troll = ("Troll", "Beschreibung", "health", "strength", "special")
 Warg = ("Warg", "Beschreibung", "health", "strength", "special")
 DerBiBaBuzemann = ("Der BiBaBuzemann", "Beschreibung", "health", "strength", "special")
 JoeMama = ("Joe Mama", "Beschreibung", "health", "strength", "special")
-# Tuple mit Monstern
+# tuple with enemies
 monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
 
 #---------------------------------------------
