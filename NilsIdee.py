@@ -80,6 +80,19 @@ seeYouSoonAscii = """
                                               `--`                                                                                                                    
 """
 
+linuxLogoAscii = '''
+     _nnnn_                      
+    dGGGGMMb     ,"""""""""""""""""""""""""""""""""""".
+   @p~qp~~qMb    | See you soon ^^ (Linux auf die 1!) |
+   M|@||@) M|   _;....................................'
+   @,----.JM| -'
+  JS^\__/  qKL
+ dZP        qKRb
+dZP          qKKb
+fZP            SMMb
+'''
+
+
 # Ascii Art for heroes
 aragornNameAscii = """
 +-------------------------------------------------------------------------+
@@ -306,7 +319,7 @@ while chosenHero == None:
             print(boromirDescriptionAscii)
         case "x":
             clear()
-            print(seeYouSoonAscii)
+            print(linuxLogoAscii)
             exit()
 
         case "Aragorn":
@@ -398,7 +411,7 @@ while chosenWeapon == None:
         
         case "x":
             clear()
-            print(seeYouSoonAscii)
+            print(linuxLogoAscii)
             exit()
 
         case "Glamdring":
