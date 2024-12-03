@@ -6,6 +6,7 @@
 # import necessary modules
 import os
 import random
+import sys
 
 #---------------------------------------------
 
@@ -18,7 +19,7 @@ def clear():
         os.system("clear")
     else:
         print("OS not supported")
-        exit()
+        sys.exit()
 
 #---------------------------------------------
 # "Game assets" -> Heroes, Weapons, Monsters
@@ -39,7 +40,7 @@ heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)
 # weapons
 # name = (name, damage, special)
 Glamdring =        ("Glamdring" , 3, "special")
-Orcrist =          ("Orcrist"   , 3, "Orc")
+Orcrist =          ("Orcrist"   , 3, "Orc"    )
 Sting =            ("Sting"     , 3, "special")
 Anduril =          ("Anduril"   , 3, "special")
 Narsil =           ("Narsil"    , 3, "special")
@@ -62,7 +63,6 @@ monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
 # Ascii Art
 
 box_width = 73
-
 linuxLogoAscii = '''
        _nnnn_                      
       dGGGGMMb     ,"""""""""""""""""""""""""""""""""""".
@@ -247,7 +247,7 @@ while chosenHero == None:
         case "x":
             clear()
             print(linuxLogoAscii)
-            exit()
+            sys.exit()
 
         case "Aragorn":
             chosenHero = Aragorn
@@ -327,7 +327,7 @@ while chosenWeapon == None:
         case "x":
             clear()
             print(linuxLogoAscii)
-            exit()
+            sys.exit()
         case "Glamdring":
             chosenweapon = Glamdring
             break
@@ -365,16 +365,20 @@ print("")
 print("+" + "-" * box_width + "+")
 print("|" + " ".center(box_width) + "|")
 print("|" + f"You chose {chosenHero[0]} with {chosenweapon[0]}!".center(box_width) + "|")
-print("|" + f"You are facing {len(monsterList)} monsters!".center(box_width) + "|")
+print("|" + f"You are facing {len(monsterList)} monster(s)!".center(box_width) + "|")
 print("|" + " ".center(box_width) + "|")
 print("+" + "-" * box_width + "+")
 
 
-
-# TODO Battle Schleife solange noch Monster in der Liste wähle erstes und simuliere Kampf -> wenn Monster tot entferne es aus Liste, sonst losingscreen
 while len(monsterList) > 0: 
     monster = monsterList[0]
-    # Kampf simulieren
-    # Wenn Monster tot -> entferne aus Liste
-    # Wenn Monster nicht tot -> losingscreen
+    print("+" + "-" * box_width + "+")
+    print("|" + " ".center(box_width) + "|")
+    print("|" + f"You are facing {monster[0]}!".center(box_width) + "|")
+    print("|" + " ".center(box_width) + "|")
+    print("+" + "-" * box_width + "+")
+    print("|" +"Attack (1) | Try to Heal (2)".center(box_width) + "|")
+    print("+" + "-" * box_width + "+")
+    x = input("")
+    
     monsterList.pop(0)
