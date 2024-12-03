@@ -27,33 +27,34 @@ def clear():
 
 # heroes
 # name = (name, health, strength, luck)
-Aragorn = ("Aragorn", 10, 1.0, 3) 
-Gimli = ("Gimli", 10, 1.0 , 3)
-Legolas = ("Legolas", 10, 1.0 , 4)
-Frodo = ("Frodo" , 10, 1.0 , 5)
-Boromir = ("Boromir" , 10, 1.0, 0.1)
+Aragorn =           ("Aragorn"  , 10, 1.0, 3) 
+Gimli =             ("Gimli"    , 10, 1.0 , 3)
+Legolas =           ("Legolas"  , 10, 1.0 , 4)
+Frodo =             ("Frodo"    , 10, 1.0 , 5)
+Boromir =           ("Boromir"  , 10, 1.0, 0.1)
 
 # tuple with heroes
 heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)  
 
 # weapons
-# name = (name, description, damage, special)
-Glamdring = ("Glamdring", 3, "special")
-Orcrist = ("Orcrist", 3, "Orc")
-Sting = ("Sting" , 3, "special")
-Anduril = ("Anduril" , 3, "special")
-Narsil = ("Narsil" , 3, "special")
+# name = (name, damage, special)
+Glamdring =        ("Glamdring" , 3, "special")
+Orcrist =          ("Orcrist"   , 3, "Orc")
+Sting =            ("Sting"     , 3, "special")
+Anduril =          ("Anduril"   , 3, "special")
+Narsil =           ("Narsil"    , 3, "special")
 # tuple with weapons
 weapons = (Glamdring, Orcrist, Sting, Anduril, Narsil)
 
 # enemies
-UrukHai = ("Uruk-Hai" , "health", "strength", "special")
-Orc = ("Orc" , "health", "strength", "special")
-Nazgul = ("Nazgul" , "health", "strength", "special")
-Troll = ("Troll" , "health", "strength", "special")
-Warg = ("Warg" , "health", "strength", "special")
-DerBiBaBuzemann = ("Der BiBaBuzemann" , "health", "strength", "special")
-JoeMama = ("Joe Mama" , "health", "strength", "special")
+# name = (name, health, strength, special)
+UrukHai =          ("Uruk-Hai"          , 3, 3 , "special")
+Orc =              ("Orc"               , 3, 3 , "special")
+Nazgul =           ("Nazgul"            , 3, 3 , "special")
+Troll =            ("Troll"             , 3, 3 , "special")
+Warg =             ("Warg"              , 3, 3 , "special")
+DerBiBaBuzemann =  ("Der BiBaBuzemann"  , 10, 5, "special")
+JoeMama =          ("Joe Mama"          , 10, 5, "special")
 # tuple with enemies
 monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
 
@@ -61,24 +62,6 @@ monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
 # Ascii Art
 
 box_width = 73
-seeYouSoonAscii = """
-                                                                                                                                           .--,            .--,       
-                                                                                                                                          :   /\          :   /\      
-  .--.--.                                                                                                                                /   ,  \        /   ,  \     
- /  /    '.                                                                                                                             /   /    \      /   /    \    
-|  :  /`. /                                          ,---.           ,--,                       ,---.     ,---.        ,---,           ;   /  ,   \    ;   /  ,   \   
-;  |  |--`                                          '   ,'\        ,'_ /|           .--.--.    '   ,'\   '   ,'\   ,-+-. /  |         /   /  / \   \  /   /  / \   \  
-|  :  ;_       ,---.     ,---.                .--, /   /   |  .--. |  | :          /  /    '  /   /   | /   /   | ,--.'|'   |        /   ;  /\  \   \/   ;  /\  \   \ 
- \  \    `.   /     \   /     \             /_ ./|.   ; ,. :,'_ /| :  . |         |  :  /`./ .   ; ,. :.   ; ,. :|   |  ,"' |        \"""\ /  \  \ ; \"""\ /  \  \ ;  
-  `----.   \ /    /  | /    /  |         , ' , ' :'   | |: :|  ' | |  . .         |  :  ;_   '   | |: :'   | |: :|   | /  | |         `---`    `--`   `---`    `--`   
-  __ \  \  |.    ' / |.    ' / |        /___/ \: |'   | .; :|  | ' |  | |          \  \    `.'   | .; :'   | .; :|   | |  | |                                         
- /  /`--'  /'   ;   /|'   ;   /|         .  \  ' ||   :    |:  | : ;  ; |           `----.   \   :    ||   :    ||   | |  |/                                          
-'--'.     / '   |  / |'   |  / |          \  ;   : \   \  / '  :  `--'   \         /  /`--'  /\   \  /  \   \  / |   | |--'                                           
-  `--'---'  |   :    ||   :    |           \  \  ;  `----'  :  ,      .-./        '--'.     /  `----'    `----'  |   |/                                               
-             \   \  /  \   \  /             :  \  \          `--`----'              `--'---'                     '---'                                                
-              `----'    `----'               \  ' ;                                                                                                                   
-                                              `--`                                                                                                                    
-"""
 
 linuxLogoAscii = '''
        _nnnn_                      
@@ -94,58 +77,22 @@ linuxLogoAscii = '''
 
 
 # Ascii Art for heroes
-aragornNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                               Aragorn                                   |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+aragornNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+aragornDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn is the rightful heir to the throne of Gondor.".center(box_width) + "|\n" + "|" + "He is a skilled swordsman and a great leader.".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-aragornDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn is the rightful heir to the throne of Gondor.".center(box_width) + "|\n" + "|" + "He is a skilled swordsman and a great leader.".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+gimliNameAscii =            f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Gimli".center(box_width) + "|\n" + "|" + f"Health: {Gimli[1]} Strength: {Gimli[2]} Luck: {Gimli[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+gimliDescriptionAscii =     f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Gimli is a dwarf warrior, son of Glóin.".center(box_width) + "|\n" + "|" + "He is known for his loyalty and bravery.".center(box_width) + "|\n" + "|" + f"Health: {Gimli[1]} Strength: {Gimli[2]} Luck: {Gimli[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-gimliNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                               Gimli                                     |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+legolasNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Legolas".center(box_width) + "|\n" + "|" + f"Health: {Legolas[1]} Strength: {Legolas[2]} Luck: {Legolas[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+legolasDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Legolas is an elven prince and skilled archer.".center(box_width) + "|\n" + "|" + "He has keen senses and unmatched agility.".center(box_width) + "|\n" + "|" + f"Health: {Legolas[1]} Strength: {Legolas[2]} Luck: {Legolas[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-gimliDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Gimli is a dwarf warrior, son of Glóin.".center(box_width) + "|\n" + "|" + "He is known for his loyalty and bravery.".center(box_width) + "|\n" + "|" + f"Health: {Gimli[1]} Strength: {Gimli[2]} Luck: {Gimli[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+frodoNameAscii =            f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Frodo".center(box_width) + "|\n" + "|" + f"Health: {Frodo[1]} Strength: {Frodo[2]} Luck: {Frodo[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+frodoDescriptionAscii =     f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Frodo is a hobbit of the Shire.".center(box_width) + "|\n" + "|" + "He is the bearer of the One Ring.".center(box_width) + "|\n" + "|" + f"Health: {Frodo[1]} Strength: {Frodo[2]} Luck: {Frodo[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-legolasNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                               Legolas                                   |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
-
-legolasDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Legolas is an elven prince and skilled archer.".center(box_width) + "|\n" + "|" + "He has keen senses and unmatched agility.".center(box_width) + "|\n" + "|" + f"Health: {Legolas[1]} Strength: {Legolas[2]} Luck: {Legolas[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
-
-frodoNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                               Frodo                                     |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
-
-frodoDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Frodo is a hobbit of the Shire.".center(box_width) + "|\n" + "|" + "He is the bearer of the One Ring.".center(box_width) + "|\n" + "|" + f"Health: {Frodo[1]} Strength: {Frodo[2]} Luck: {Frodo[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
-
-boromirNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                               Boromir                                   |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
-
-boromirDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir is a valiant warrior of Gondor.".center(box_width) + "|\n" + "|" + "He is known for his strength and courage.".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+boromirNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+boromirDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir is a valiant warrior of Gondor.".center(box_width) + "|\n" + "|" + "He is known for his strength and courage.".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
 # Ascii Art for weapons
-
 glamdringNameAscii = """
 +-------------------------------------------------------------------------+
 |                                                                         |
@@ -347,32 +294,21 @@ while chosenWeapon == None:
             print(boromirNameAscii)
     
     match x:
-
         case "0":
             print("+" + "-" * box_width + "+")
             print("|" + " "* box_width + "|")
             print("|" + "Choose your weapon!".center(box_width) + "|")
             print("|" + " "* box_width + "|")
             print("+" + "-" * box_width + "+")
-
         case "1":
-            
             print(glamdringDescriptionAscii)
-            
         case "2":
-            
             print(orcistDescriptionAscii)
-            
         case "3":
-            
             print(stingDescriptionAscii)
-            
         case "4":
-            
             print(andurilDescriptionAscii)
-            
         case "5":
-            
             print(narsilDescriptionAscii)
 
     print("")
@@ -388,12 +324,10 @@ while chosenWeapon == None:
     y = input("")
 
     match y:
-        
         case "x":
             clear()
             print(linuxLogoAscii)
             exit()
-
         case "Glamdring":
             chosenweapon = Glamdring
             break
@@ -410,14 +344,11 @@ while chosenWeapon == None:
             chosenweapon = Narsil
             break
         case _:
-            
-            print("+" + "-" * box_width + "+")
-            print("|" + " "* box_width + "|")
-            print("|" + "Wrong Input!".center(box_width) + "|")
-            print("|" + " "* box_width + "|")
-            print("+" + "-" * box_width + "+")
-    
-    
+            print("+" + "-" * box_width +                   "+")
+            print("|" + " "* box_width +                    "|")
+            print("|" + "Wrong Input!".center(box_width) +  "|")
+            print("|" + " "* box_width +                    "|")
+            print("+" + "-" * box_width +                   "+")
 
 #---------------------------------------------
 # Battle Loop
@@ -437,7 +368,6 @@ print("|" + f"You chose {chosenHero[0]} with {chosenweapon[0]}!".center(box_widt
 print("|" + f"You are facing {len(monsterList)} monsters!".center(box_width) + "|")
 print("|" + " ".center(box_width) + "|")
 print("+" + "-" * box_width + "+")
-
 
 
 
