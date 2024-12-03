@@ -2,7 +2,22 @@
 
 #TODO Kommentare übersetzen...DAS IST ALLES NOCH TEMPORÄR ALSO NICHT RUMMAULEN DANIEL ^^
 
+#---------------------------------------------
+# import necessary modules
+import os
 import random
+import sys
+#---------------------------------------------
+
+# Function to clear the console
+def clear():
+
+    if os.name == "nt":
+        os.system("cls")
+    elif os.name == "posix":
+        os.system("clear")
+    else:
+        print("OS not supported")
 
 #---------------------------------------------
 # "Game assets" -> Heroes, Weapons, Monsters
@@ -15,7 +30,7 @@ Aragorn = ("Aragorn", "Beschreibung", 10, 1.0, 3)
 Gimli = ("Gimli", "Beschreibung", 10, 1.0 , 3)
 Legolas = ("Legolas", "Beschreibung", 10, 1.0 , 4)
 Frodo = ("Frodo", "Beschreibung", 10, 1.0 , 5)
-Boromir = ("Boromir", "Beschreibung", 10, 1.0, 0)
+Boromir = ("Boromir", "Beschreibung", 10, 1.0, 0.1)
 
 # tuple with heroes
 heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)  
@@ -23,7 +38,7 @@ heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)
 # weapons
 # name = (name, description, damage, special)
 Glamdring = ("Glamdring", "Beschreibung", 3, "special")
-Orcrist = ("Orcrist", "Beschreibung", 3, "special")
+Orcrist = ("Orcrist", "Beschreibung", 3, "Orc")
 Sting = ("Sting", "Beschreibung", 3, "special")
 Anduril = ("Anduril", "Beschreibung", 3, "special")
 Narsil = ("Narsil", "Beschreibung", 3, "special")
@@ -40,6 +55,171 @@ DerBiBaBuzemann = ("Der BiBaBuzemann", "Beschreibung", "health", "strength", "sp
 JoeMama = ("Joe Mama", "Beschreibung", "health", "strength", "special")
 # tuple with enemies
 monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
+
+#---------------------------------------------
+# Ascii Art
+
+seeYouSoonAscii = """
+                                                                                                                                           .--,            .--,       
+                                                                                                                                          :   /\          :   /\      
+  .--.--.                                                                                                                                /   ,  \        /   ,  \     
+ /  /    '.                                                                                                                             /   /    \      /   /    \    
+|  :  /`. /                                          ,---.           ,--,                       ,---.     ,---.        ,---,           ;   /  ,   \    ;   /  ,   \   
+;  |  |--`                                          '   ,'\        ,'_ /|           .--.--.    '   ,'\   '   ,'\   ,-+-. /  |         /   /  / \   \  /   /  / \   \  
+|  :  ;_       ,---.     ,---.                .--, /   /   |  .--. |  | :          /  /    '  /   /   | /   /   | ,--.'|'   |        /   ;  /\  \   \/   ;  /\  \   \ 
+ \  \    `.   /     \   /     \             /_ ./|.   ; ,. :,'_ /| :  . |         |  :  /`./ .   ; ,. :.   ; ,. :|   |  ,"' |        \"""\ /  \  \ ; \"""\ /  \  \ ;  
+  `----.   \ /    /  | /    /  |         , ' , ' :'   | |: :|  ' | |  . .         |  :  ;_   '   | |: :'   | |: :|   | /  | |         `---`    `--`   `---`    `--`   
+  __ \  \  |.    ' / |.    ' / |        /___/ \: |'   | .; :|  | ' |  | |          \  \    `.'   | .; :'   | .; :|   | |  | |                                         
+ /  /`--'  /'   ;   /|'   ;   /|         .  \  ' ||   :    |:  | : ;  ; |           `----.   \   :    ||   :    ||   | |  |/                                          
+'--'.     / '   |  / |'   |  / |          \  ;   : \   \  / '  :  `--'   \         /  /`--'  /\   \  /  \   \  / |   | |--'                                           
+  `--'---'  |   :    ||   :    |           \  \  ;  `----'  :  ,      .-./        '--'.     /  `----'    `----'  |   |/                                               
+             \   \  /  \   \  /             :  \  \          `--`----'              `--'---'                     '---'                                                
+              `----'    `----'               \  ' ;                                                                                                                   
+                                              `--`                                                                                                                    
+"""
+
+# Ascii Art for heroes
+aragornNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                               Aragorn                                   |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+aragornDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+gimliNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                               Gimli                                     |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+gimliDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+legolasNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                               Legolas                                   |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+legolasDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+frodoNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                               Frodo                                     |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+frodoDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+boromirNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                               Boromir                                   |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+boromirDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+# Ascii Art for weapons
+
+glamdringNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                               Glamdring                                 |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+glamdringDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+narsilNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                                Narsil                                   |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+narsilDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+stingNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                                 Sting                                   |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+stingDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+andurilNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                                Anduril                                  |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+andurilDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+orcistNameAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
+|                                Orcrist                                  |
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
+
+orcistDescriptionAscii = """
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+"""
 
 #---------------------------------------------
 # Generate random amount of monsters
@@ -63,6 +243,7 @@ while monsterCount > 0:
 #---------------------------------------------
 # Lore/Story
 
+clear()
 print("+" + "-" * 73 + "+")
 print("| This is an alternative timeline of The Lord of the Rings.               |")
 print("| Boromir survived, and the Fellowship never split up. Saruman            |")
@@ -89,29 +270,42 @@ print("+" + "-" * 73 + "+")
 
 chosenHero = None
 while chosenHero == None:
-        
-    i=0
-    for hero in heroes:
-        i+=1
-        print(hero[0]+ " (" + str(i) + ")")
     print("")
-    print("Choose your hero by typing the name")
-    x = input("To see more information of a hero type the corresponding number (1-5) or exit with (x): ")
+    print("+" + "-" * 73 + "+")
+    print("| Choose your hero by typing the name.                                    |")
+    print("| If you want to see more information about a hero,                       |")
+    print("| type the corresponding number.                                          |")
+    print("+" + "-" * 73 + "+")
+    print("| Aragorn (1) | Gimli (2) | Legolas (3) | Frodo (4) | Boromir (5)         |")
+    print("+" + "-" * 73 + "+")
+    print("| To exit the game, type 'x'                                              |")
+    print("+" + "-" * 73 + "+")      
+    x = input("")
 
     match x:
         case "1":
-            print("\nText Aragorn\n")
+            clear()
+            print(aragornDescriptionAscii)
+            
         case "2":
-            print("\nText Gimli\n")
+            clear()
+            print(gimliDescriptionAscii)
+
         case "3":
-            print("\nText Legolas\n")
+            clear()
+            print(legolasDescriptionAscii)
+            
         case "4":
-            print("\nText Frodo\n")
+            clear()
+            print(frodoDescriptionAscii)
+            
         case "5":
-            print("\nText Boromir\n")
+            clear()
+            print(boromirDescriptionAscii)
         case "x":
-            print("See you soon ^^ ")
-            break
+            clear()
+            print(seeYouSoonAscii)
+            sys.exit()
 
         case "Aragorn":
             chosenHero = Aragorn
@@ -130,11 +324,106 @@ while chosenHero == None:
             break  
 
         case _:
-            print("wrong input")
+            clear()
+            print("+" + "-" * 73 + "+")
+            print("|                                                                         |")
+            print("|                                Wrong Input                              |")
+            print("|                                                                         |")
+            print("+" + "-" * 73 + "+")
 
 #---------------------------------------------    
+# Loop to choose a weapon
+y = "0"
+chosenWeappon = None
+while chosenWeappon == None: 
+    
+    clear()
+    x = y
+    match chosenHero[0]:
+        case "Aragorn":
+            print(aragornNameAscii)
+        case "Gimli":
+            print(gimliNameAscii)
+        case "Legolas":
+            print(legolasNameAscii)
+        case "Frodo":
+            print(frodoNameAscii)
+        case "Boromir":
+            print(boromirNameAscii)
+    
+    match x:
 
-              
+        case "0":
+            print("+" + "-" * 73 + "+")
+            print("|                                                                         |")
+            print("|                            Choose your weapon                           |")
+            print("|                                                                         |")
+            print("+" + "-" * 73 + "+")
+
+        case "1":
+            
+            print(glamdringDescriptionAscii)
+            
+        case "2":
+            
+            print(orcistDescriptionAscii)
+            
+        case "3":
+            
+            print(stingDescriptionAscii)
+            
+        case "4":
+            
+            print(andurilDescriptionAscii)
+            
+        case "5":
+            
+            print(narsilDescriptionAscii)
+
+    print("")
+    print("+" + "-" * 73 + "+")
+    print("| Choose your weapon by typing the name.                                  |")
+    print("| If you want to see more information about a weapon,                     |")
+    print("| type the corresponding number.                                          |")
+    print("+" + "-" * 73 + "+")
+    print("| Glamdring (1) | Orcrist (2) | Sting (3) | Anduril (4) | Narsil (5)      |")
+    print("+" + "-" * 73 + "+")
+    print("| To exit the game, type 'x'                                              |")
+    print("+" + "-" * 73 + "+")
+    y = input("")
+
+    match y:
+        
+        case "x":
+            clear()
+            print(seeYouSoonAscii)
+            sys.exit()
+
+        case "Glamdring":
+            chosenWeappon = Glamdring
+            break
+        case "Orcrist":
+            chosenWeappon = Orcrist
+            break
+        case "Sting":
+            chosenWeappon = Sting
+            break
+        case "Anduril":
+            chosenWeappon = Anduril
+            break
+        case "Narsil":
+            chosenWeappon = Narsil
+            break
+        case _:
+            
+            print("+" + "-" * 73 + "+")
+            print("|                                                                         |")
+            print("|                                Wrong Input                              |")
+            print("|                                                                         |")
+            print("+" + "-" * 73 + "+")
+    
+    
+
 
 
 
