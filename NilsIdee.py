@@ -6,7 +6,7 @@
 # import necessary modules
 import os
 import random
-import sys
+
 #---------------------------------------------
 
 # Function to clear the console
@@ -18,6 +18,7 @@ def clear():
         os.system("clear")
     else:
         print("OS not supported")
+        exit()
 
 #---------------------------------------------
 # "Game assets" -> Heroes, Weapons, Monsters
@@ -26,39 +27,40 @@ def clear():
 
 # heroes
 # name = (name, description, health, strength, luck)
-Aragorn = ("Aragorn", "Beschreibung", 10, 1.0, 3) 
-Gimli = ("Gimli", "Beschreibung", 10, 1.0 , 3)
-Legolas = ("Legolas", "Beschreibung", 10, 1.0 , 4)
-Frodo = ("Frodo", "Beschreibung", 10, 1.0 , 5)
-Boromir = ("Boromir", "Beschreibung", 10, 1.0, 0.1)
+Aragorn = ("Aragorn", "description", 10, 1.0, 3) 
+Gimli = ("Gimli", "description", 10, 1.0 , 3)
+Legolas = ("Legolas", "description", 10, 1.0 , 4)
+Frodo = ("Frodo", "description", 10, 1.0 , 5)
+Boromir = ("Boromir", "description", 10, 1.0, 0.1)
 
 # tuple with heroes
 heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)  
 
 # weapons
 # name = (name, description, damage, special)
-Glamdring = ("Glamdring", "Beschreibung", 3, "special")
-Orcrist = ("Orcrist", "Beschreibung", 3, "Orc")
-Sting = ("Sting", "Beschreibung", 3, "special")
-Anduril = ("Anduril", "Beschreibung", 3, "special")
-Narsil = ("Narsil", "Beschreibung", 3, "special")
+Glamdring = ("Glamdring", "description", 3, "special")
+Orcrist = ("Orcrist", "description", 3, "Orc")
+Sting = ("Sting", "description", 3, "special")
+Anduril = ("Anduril", "description", 3, "special")
+Narsil = ("Narsil", "description", 3, "special")
 # tuple with weapons
-weappons = (Glamdring, Orcrist, Sting, Anduril, Narsil)
+weapons = (Glamdring, Orcrist, Sting, Anduril, Narsil)
 
 # enemies
-UrukHai = ("Uruk-Hai", "Beschreibung", "health", "strength", "special")
-Orc = ("Orc", "Beschreibung", "health", "strength", "special")
-Nazgul = ("Nazgul", "Beschreibung", "health", "strength", "special")
-Troll = ("Troll", "Beschreibung", "health", "strength", "special")
-Warg = ("Warg", "Beschreibung", "health", "strength", "special")
-DerBiBaBuzemann = ("Der BiBaBuzemann", "Beschreibung", "health", "strength", "special")
-JoeMama = ("Joe Mama", "Beschreibung", "health", "strength", "special")
+UrukHai = ("Uruk-Hai", "description", "health", "strength", "special")
+Orc = ("Orc", "description", "health", "strength", "special")
+Nazgul = ("Nazgul", "description", "health", "strength", "special")
+Troll = ("Troll", "description", "health", "strength", "special")
+Warg = ("Warg", "description", "health", "strength", "special")
+DerBiBaBuzemann = ("Der BiBaBuzemann", "description", "health", "strength", "special")
+JoeMama = ("Joe Mama", "description", "health", "strength", "special")
 # tuple with enemies
 monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
 
 #---------------------------------------------
 # Ascii Art
 
+box_width = 73
 seeYouSoonAscii = """
                                                                                                                                            .--,            .--,       
                                                                                                                                           :   /\          :   /\      
@@ -244,7 +246,7 @@ while monsterCount > 0:
 # Lore/Story
 
 clear()
-print("+" + "-" * 73 + "+")
+print("+" + "-" * box_width + "+")
 print("| This is an alternative timeline of The Lord of the Rings.               |")
 print("| Boromir survived, and the Fellowship never split up. Saruman            |")
 print("| sent out a massive army to wipe out the Rohirrim.                       |")
@@ -258,7 +260,7 @@ print("| was separated. Now, they must fight their way through the              
 print("| fortress to reunite and escape.                                         |")
 print("| Choose your hero and fight your way through the fortress to             |")
 print("| reunite with the Fellowship and escape.                                 |")
-print("+" + "-" * 73 + "+")
+print("+" + "-" * box_width + "+")
 
 
 #---------------------------------------------
@@ -271,15 +273,15 @@ print("+" + "-" * 73 + "+")
 chosenHero = None
 while chosenHero == None:
     print("")
-    print("+" + "-" * 73 + "+")
+    print("+" + "-" * box_width + "+")
     print("| Choose your hero by typing the name.                                    |")
     print("| If you want to see more information about a hero,                       |")
     print("| type the corresponding number.                                          |")
-    print("+" + "-" * 73 + "+")
+    print("+" + "-" * box_width + "+")
     print("| Aragorn (1) | Gimli (2) | Legolas (3) | Frodo (4) | Boromir (5)         |")
-    print("+" + "-" * 73 + "+")
+    print("+" + "-" * box_width + "+")
     print("| To exit the game, type 'x'                                              |")
-    print("+" + "-" * 73 + "+")      
+    print("+" + "-" * box_width + "+")      
     x = input("")
 
     match x:
@@ -305,7 +307,7 @@ while chosenHero == None:
         case "x":
             clear()
             print(seeYouSoonAscii)
-            sys.exit()
+            exit()
 
         case "Aragorn":
             chosenHero = Aragorn
@@ -325,17 +327,17 @@ while chosenHero == None:
 
         case _:
             clear()
-            print("+" + "-" * 73 + "+")
-            print("|                                                                         |")
-            print("|                                Wrong Input                              |")
-            print("|                                                                         |")
-            print("+" + "-" * 73 + "+")
+            print("+" + "-" * box_width + "+")
+            print("|" + " "* box_width + "|")
+            print("|" + "Wrong Input!".center(box_width) + "|")
+            print("|" + " "* box_width + "|")
+            print("+" + "-" * box_width + "+")
 
 #---------------------------------------------    
 # Loop to choose a weapon
 y = "0"
-chosenWeappon = None
-while chosenWeappon == None: 
+chosenWeapon = None
+while chosenWeapon == None: 
     
     clear()
     x = y
@@ -354,11 +356,11 @@ while chosenWeappon == None:
     match x:
 
         case "0":
-            print("+" + "-" * 73 + "+")
-            print("|                                                                         |")
-            print("|                            Choose your weapon                           |")
-            print("|                                                                         |")
-            print("+" + "-" * 73 + "+")
+            print("+" + "-" * box_width + "+")
+            print("|" + " "* box_width + "|")
+            print("|" + "Choose your weapon!".center(box_width) + "|")
+            print("|" + " "* box_width + "|")
+            print("+" + "-" * box_width + "+")
 
         case "1":
             
@@ -381,15 +383,15 @@ while chosenWeappon == None:
             print(narsilDescriptionAscii)
 
     print("")
-    print("+" + "-" * 73 + "+")
+    print("+" + "-" * box_width + "+")
     print("| Choose your weapon by typing the name.                                  |")
     print("| If you want to see more information about a weapon,                     |")
     print("| type the corresponding number.                                          |")
-    print("+" + "-" * 73 + "+")
+    print("+" + "-" * box_width + "+")
     print("| Glamdring (1) | Orcrist (2) | Sting (3) | Anduril (4) | Narsil (5)      |")
-    print("+" + "-" * 73 + "+")
+    print("+" + "-" * box_width + "+")
     print("| To exit the game, type 'x'                                              |")
-    print("+" + "-" * 73 + "+")
+    print("+" + "-" * box_width + "+")
     y = input("")
 
     match y:
@@ -397,38 +399,54 @@ while chosenWeappon == None:
         case "x":
             clear()
             print(seeYouSoonAscii)
-            sys.exit()
+            exit()
 
         case "Glamdring":
-            chosenWeappon = Glamdring
+            chosenweapon = Glamdring
             break
         case "Orcrist":
-            chosenWeappon = Orcrist
+            chosenweapon = Orcrist
             break
         case "Sting":
-            chosenWeappon = Sting
+            chosenweapon = Sting
             break
         case "Anduril":
-            chosenWeappon = Anduril
+            chosenweapon = Anduril
             break
         case "Narsil":
-            chosenWeappon = Narsil
+            chosenweapon = Narsil
             break
         case _:
             
-            print("+" + "-" * 73 + "+")
-            print("|                                                                         |")
-            print("|                                Wrong Input                              |")
-            print("|                                                                         |")
-            print("+" + "-" * 73 + "+")
+            print("+" + "-" * box_width + "+")
+            print("|" + " "* box_width + "|")
+            print("|" + "Wrong Input!".center(box_width) + "|")
+            print("|" + " "* box_width + "|")
+            print("+" + "-" * box_width + "+")
     
     
-
-
-
 
 #---------------------------------------------
 # Battle Loop
+
+clear()
+print("+" + "-" * box_width + "+")
+print("|                                                                         |")
+print(f"|" + "The battle begins!".center(box_width) + "|")
+print("|                                                                         |")
+print("+" + "-" * box_width + "+")
+print("")
+
+
+print("+" + "-" * box_width + "+")
+print("|" + " ".center(box_width) + "|")
+print("|" + f"You chose {chosenHero[0]} with {chosenweapon[0]}!".center(box_width) + "|")
+print("|" + f"You are facing {len(monsterList)} monsters!".center(box_width) + "|")
+print("|" + " ".center(box_width) + "|")
+print("+" + "-" * box_width + "+")
+
+
+
 
 # TODO Battle Schleife solange noch Monster in der Liste wähle erstes und simuliere Kampf -> wenn Monster tot entferne es aus Liste, sonst losingscreen
 while len(monsterList) > 0: 
