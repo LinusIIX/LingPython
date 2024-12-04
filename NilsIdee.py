@@ -353,24 +353,34 @@ while chosenWeapon == None:
 #---------------------------------------------
 # Battle Loop
 
-clear()
-print("+" + "-" * box_width + "+")
-print("|                                                                         |")
-print(f"|" + "The battle begins!".center(box_width) + "|")
-print("|                                                                         |")
-print("+" + "-" * box_width + "+")
-print("")
+# Editable stats of the hero
+heroStats = []
+# [health, damage, luck]
+heroStats.append(chosenHero[1]).append(chosenHero[2]).append(chosenHero[3])
+heroStats[2] = heroStats[2] * chosenWeapon[1]
 
-
-print("+" + "-" * box_width + "+")
-print("|" + " ".center(box_width) + "|")
-print("|" + f"You chose {chosenHero[0]} with {chosenweapon[0]}!".center(box_width) + "|")
-print("|" + f"You are facing {len(monsterList)} monster(s)!".center(box_width) + "|")
-print("|" + " ".center(box_width) + "|")
-print("+" + "-" * box_width + "+")
-
+# Editable stats of the monster
+monsterHealth = []
+for monster in monsterList:
+    monsterHealth.append(monster[1])
 
 while len(monsterList) > 0: 
+
+    clear()
+    print("+" + "-" * box_width + "+")
+    print("|                                                                         |")
+    print(f"|" + "The battle begins!".center(box_width) + "|")
+    print("|                                                                         |")
+    print("+" + "-" * box_width + "+")
+    print("")
+
+    print("+" + "-" * box_width + "+")
+    print("|" + " ".center(box_width) + "|")
+    print("|" + f"You chose {chosenHero[0]} with {chosenweapon[0]}!".center(box_width) + "|")
+    print("|" + f"You are facing {len(monsterList)} monster(s)!".center(box_width) + "|")
+    print("|" + " ".center(box_width) + "|")
+    print("+" + "-" * box_width + "+")
+
     monster = monsterList[0]
     print("+" + "-" * box_width + "+")
     print("|" + " ".center(box_width) + "|")
@@ -379,6 +389,13 @@ while len(monsterList) > 0:
     print("+" + "-" * box_width + "+")
     print("|" +"Attack (1) | Try to Heal (2)".center(box_width) + "|")
     print("+" + "-" * box_width + "+")
-    x = input("")
     
+    x = input("")
+
+    if x == "1":
+        print("+" + "-" * box_width + "+")
+        print("|" + "You choose to attack!".center(box_width) + "|")
+        print("|" + ("You hit the monster and dealt " + str(heroStats[2]) + " damage").center(box_width) + "|")
+        print("+" + "-" * box_width + "+")
+
     monsterList.pop(0)
