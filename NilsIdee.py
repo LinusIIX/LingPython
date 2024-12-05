@@ -28,11 +28,11 @@ def clear():
 
 # heroes
 # name = (name, health, strength, luck)
-Aragorn =           ("Aragorn"  , 10, 1.0, 3) 
-Gimli =             ("Gimli"    , 10, 1.0 , 3)
-Legolas =           ("Legolas"  , 10, 1.0 , 4)
+Aragorn =           ("Aragorn"  , 10, 1.0, 5) 
+Gimli =             ("Gimli"    , 10, 1.0 , 5)
+Legolas =           ("Legolas"  , 10, 1.0 , 5)
 Frodo =             ("Frodo"    , 10, 1.0 , 5)
-Boromir =           ("Boromir"  , 10, 1.0, 0.1)
+Boromir =           ("Boromir"  , 10, 1.0, 2)
 
 # tuple with heroes
 heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)  
@@ -49,12 +49,12 @@ weapons = (Glamdring, Orcrist, Sting, Anduril, Narsil)
 
 # enemies
 # name = (name, health, strength, special)
-UrukHai =          ("Uruk-Hai"          , 3, 3 , "special")
+UrukHai =          ("Uruk-Hai"          , 2, 3 , "special")
 Orc =              ("Orc"               , 3, 3 , "special")
-Nazgul =           ("Nazgul"            , 3, 3 , "special")
-Troll =            ("Troll"             , 3, 3 , "special")
-Warg =             ("Warg"              , 3, 3 , "special")
-DerBiBaBuzemann =  ("Der BiBaBuzemann"  , 10, 5, "special")
+Nazgul =           ("Nazgul"            , 4, 3 , "special")
+Troll =            ("Troll"             , 5, 3 , "special")
+Warg =             ("Warg"              , 6, 3 , "special")
+DerBiBaBuzemann =  ("Der BiBaBuzemann"  , 7, 5, "special")
 JoeMama =          ("Joe Mama"          , 10, 5, "special")
 # tuple with enemies
 monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
@@ -81,16 +81,16 @@ aragornNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width
 aragornDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn is the rightful heir to the throne of Gondor.".center(box_width) + "|\n" + "|" + "He is a skilled swordsman and a great leader.".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
 gimliNameAscii =            f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Gimli".center(box_width) + "|\n" + "|" + f"Health: {Gimli[1]} Strength: {Gimli[2]} Luck: {Gimli[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
-gimliDescriptionAscii =     f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Gimli is a dwarf warrior, son of Glóin.".center(box_width) + "|\n" + "|" + "He is known for his loyalty and bravery.".center(box_width) + "|\n" + "|" + f"Health: {Gimli[1]} Strength: {Gimli[2]} Luck: {Gimli[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+gimliDescriptionAscii =     f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Gimli is a dwarf warrior, son of Glóin.".center(box_width) + "|\n" + "|" + "He is known for his loyalty and bravery.".center(box_width) + "|\n" + "|" + f"Health: {Gimli[1]} Strength: {Gimli[2]} Luck: {Gimli[3]}".center(box_width)                         + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
 legolasNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Legolas".center(box_width) + "|\n" + "|" + f"Health: {Legolas[1]} Strength: {Legolas[2]} Luck: {Legolas[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
-legolasDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Legolas is an elven prince and skilled archer.".center(box_width) + "|\n" + "|" + "He has keen senses and unmatched agility.".center(box_width) + "|\n" + "|" + f"Health: {Legolas[1]} Strength: {Legolas[2]} Luck: {Legolas[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+legolasDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Legolas is an elven prince and skilled archer.".center(box_width) + "|\n" + "|" + "He has keen senses and unmatched agility.".center(box_width) + "|\n" + "|" + f"Health: {Legolas[1]} Strength: {Legolas[2]} Luck: {Legolas[3]}".center(box_width)           + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
 frodoNameAscii =            f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Frodo".center(box_width) + "|\n" + "|" + f"Health: {Frodo[1]} Strength: {Frodo[2]} Luck: {Frodo[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
-frodoDescriptionAscii =     f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Frodo is a hobbit of the Shire.".center(box_width) + "|\n" + "|" + "He is the bearer of the One Ring.".center(box_width) + "|\n" + "|" + f"Health: {Frodo[1]} Strength: {Frodo[2]} Luck: {Frodo[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+frodoDescriptionAscii =     f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Frodo is a hobbit of the Shire.".center(box_width) + "|\n" + "|" + "He is the bearer of the One Ring.".center(box_width) + "|\n" + "|" + f"Health: {Frodo[1]} Strength: {Frodo[2]} Luck: {Frodo[3]}".center(box_width)                                        + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
 boromirNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
-boromirDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir is a valiant warrior of Gondor.".center(box_width) + "|\n" + "|" + "He is known for his strength and courage.".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+boromirDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir is a valiant warrior of Gondor.".center(box_width) + "|\n" + "|" + "He is known for his strength and courage.".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width)                  + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
 # Ascii Art for weapons
 glamdringNameAscii = """
@@ -329,19 +329,19 @@ while chosenWeapon == None:
             print(linuxLogoAscii)
             sys.exit()
         case "Glamdring":
-            chosenweapon = Glamdring
+            chosenWeapon = Glamdring
             break
         case "Orcrist":
-            chosenweapon = Orcrist
+            chosenWeapon = Orcrist
             break
         case "Sting":
-            chosenweapon = Sting
+            chosenWeapon = Sting
             break
         case "Anduril":
-            chosenweapon = Anduril
+            chosenWeapon = Anduril
             break
         case "Narsil":
-            chosenweapon = Narsil
+            chosenWeapon = Narsil
             break
         case _:
             print("+" + "-" * box_width +                   "+")
@@ -355,18 +355,23 @@ while chosenWeapon == None:
 
 # Editable stats of the hero
 heroStats = []
-# [health, damage, luck]
-heroStats.append(chosenHero[1]).append(chosenHero[2]).append(chosenHero[3])
-heroStats[2] = heroStats[2] * chosenWeapon[1]
+# [health, strength, luck]
+heroStats.append(chosenHero[1])
+heroStats.append(chosenHero[2])
+heroStats.append(chosenHero[3])
+heroStats[1] = heroStats[1] * int(chosenWeapon[1])
 
 # Editable stats of the monster
 monsterHealth = []
 for monster in monsterList:
-    monsterHealth.append(monster[1])
+    monsterHealth.insert(0, monster[1])
+    
 
-while len(monsterList) > 0: 
+while len(monsterList) > 0 and heroStats[0] > 0: 
 
     clear()
+    print(monsterList)
+    print(monsterHealth)
     print("+" + "-" * box_width + "+")
     print("|                                                                         |")
     print(f"|" + "The battle begins!".center(box_width) + "|")
@@ -376,15 +381,17 @@ while len(monsterList) > 0:
 
     print("+" + "-" * box_width + "+")
     print("|" + " ".center(box_width) + "|")
-    print("|" + f"You chose {chosenHero[0]} with {chosenweapon[0]}!".center(box_width) + "|")
-    print("|" + f"You are facing {len(monsterList)} monster(s)!".center(box_width) + "|")
+    print("|" + f"You chose {chosenHero[0]} with {chosenWeapon[0]}!".center(box_width) + "|")
+    print("|" + f"Hero Health: {heroStats[0]} Damage: {heroStats[1]}".center(box_width) + "|")
+    print("|" + f"{len(monsterList)} monster(s) left!".center(box_width) + "|")
     print("|" + " ".center(box_width) + "|")
     print("+" + "-" * box_width + "+")
 
-    monster = monsterList[0]
+    monster = monsterList[-1]
     print("+" + "-" * box_width + "+")
     print("|" + " ".center(box_width) + "|")
     print("|" + f"You are facing {monster[0]}!".center(box_width) + "|")
+    print("|" + f"Remaining health: {monsterHealth[0]}".center(box_width) + "|")
     print("|" + " ".center(box_width) + "|")
     print("+" + "-" * box_width + "+")
     print("|" +"Attack (1) | Try to Heal (2)".center(box_width) + "|")
@@ -395,7 +402,60 @@ while len(monsterList) > 0:
     if x == "1":
         print("+" + "-" * box_width + "+")
         print("|" + "You choose to attack!".center(box_width) + "|")
-        print("|" + ("You hit the monster and dealt " + str(heroStats[2]) + " damage").center(box_width) + "|")
+        print("|" + ("You hit the monster and dealt " + str(heroStats[1]) + " damage").center(box_width) + "|")
         print("+" + "-" * box_width + "+")
+        
+        monsterHealth[0] -= heroStats[1]
+        if monsterHealth[0] <= 0:
+            print("+" + "-" * box_width + "+")
+            print("|" + "The monster is defeated!".center(box_width) + "|")
+            print("|" + " ".center(box_width) + "|")
+            print("+" + "-" * box_width + "+")
+            monsterHealth.pop(0)
+            monsterList.pop(0)
 
-    monsterList.pop(0)
+    elif x == "2":
+        print("+" + "-" * box_width + "+")
+        print("|" + "You choose to try to heal!".center(box_width) + "|")
+        randomHeal = random.randint(1, 10)
+        if randomHeal <= chosenHero[3]:
+            print("|" + "You healed yourself for 3 health!".center(box_width) + "|")
+            print("|" + "The monster failed to hit you".center(box_width) + "|")
+            print("+" + "-" * box_width + "+")
+            heroStats[0] += 3
+        else:
+            print("|" + "You tried to heal yourself but failed!".center(box_width) + "|")
+            print("|" + f"The monster hit you for {monster[2]} damage".center(box_width) + "|")
+            print("+" + "-" * box_width + "+")
+            heroStats[0] -= monster[2]
+    else:
+        print("+" + "-" * box_width + "+")
+        print("|" + "Wrong Input!".center(box_width) + "|")
+        print("+" + "-" * box_width + "+")
+        continue
+    temp = input("Press Enter to continue...")
+
+#---------------------------------------------
+# End of the game
+
+if heroStats[0] <= 0:
+   clear()
+   print("+" + "-" * box_width + "+")
+   print("|" + " ".center(box_width) + "|")
+   print("|" + "You died!".center(box_width) + "|")
+   print("|" + "The fellowship was able to escape, but you were left behind.".center(box_width) + "|")
+   print("|" + " ".center(box_width) + "|")
+   print("+" + "-" * box_width + "+")
+else:
+    clear()
+    print("+" + "-" * box_width + "+")
+    print("|" + " ".center(box_width) + "|")
+    print("|" + "Congratulations!".center(box_width) + "|")
+    print("|" + "You defeated all the monsters and reunited with the fellowship.".center(box_width) + "|")
+    print("|" + "The women and children were able to escape through the mountain path.".center(box_width) + "|")
+    print("|" + "The fortress was lost, but the war is not over.".center(box_width) + "|")
+    print("|" + "As long as there is hope, there is a chance for victory.".center(box_width) + "|")
+    print("|" + " ".center(box_width) + "|")
+    print("+" + "-" * box_width + "+")
+    temp = input("Press Enter to continue...")
+    sys.exit()
