@@ -1,7 +1,11 @@
-# Assignment 5: The last stand
+# Assignment 5
 
-#TODO Kommentare übersetzen...DAS IST ALLES NOCH TEMPORÄR ALSO NICHT RUMMAULEN DANIEL ^^
+# Luca Pomm, Linus Prange, Daniel Shaw, Nils Schiele
 
+#TODO: Zeilenangaben ergänzen
+#---------------------------------------------
+# Exercise 5.1 - Line:
+# Exercise 5.2 - Line:
 #---------------------------------------------
 # import necessary modules
 
@@ -27,11 +31,10 @@ def clear():
         print("OS not supported")
         sys.exit()
 
-
 #---------------------------------------------
-#Game Assets and Ascii Art
+#Game "Assets" and Ascii Art
 
-# Constants
+# Constants:
 
 # Width of the boxes for the heroes, weapons and enemies
 box_width = 73
@@ -41,37 +44,39 @@ box_width = 73
 # Weapons: Line 
 # Enemies: Line 
 
-# heroes
+# Heroes:
 # name = (name, health, strength, luck)
-Aragorn =           ("Aragorn"  , 10, 1.0, 5) 
-Gimli =             ("Gimli"    , 10, 1.0 , 5)
-Legolas =           ("Legolas"  , 10, 1.0 , 5)
-Frodo =             ("Frodo"    , 10, 1.0 , 5)
-Boromir =           ("Boromir"  , 10, 1.0, 2)
+Aragorn =           ("Aragorn"  , 9, 1.2, 6) 
+Gimli =             ("Gimli"    , 15, 0.9 , 4)
+Legolas =           ("Legolas"  , 8, 1.5 , 5)
+Frodo =             ("Frodo"    , 11, 0.5 , 8)
+Boromir =           ("Boromir"  , 20, 1.6, 2)
 # tuple containing heroes
 heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)  
 
-# weapons
+# Weapons:
 # name = (name, damage, parry strength, special)
-Belthronding =     ("Belthronding"  , 3, 5, "special")
-Orcrist =          ("Orcrist"       , 3, 5, "Orc"    )
-Sting =            ("Sting"         , 3, 5, "special")
-Aeglos =           ("Aeglos"        , 3, 5, "special")
-Narsil =           ("Narsil"        , 3, 5, "special")
+# "special" could be a future feature
+Belthronding =     ("Belthronding"  , 5, 2, "special")
+Orcrist =          ("Orcrist"       , 4, 3, "special")
+Sting =            ("Sting"         , 2, 6, "special")
+Aeglos =           ("Aeglos"        , 8, 2, "special")
+Narsil =           ("Narsil"        , 3, 4, "special")
 # tuple containing weapons
 weapons = (Belthronding, Orcrist, Sting, Aeglos, Narsil)
 
-# enemies
+# Enemies:
 # name = (name, health, strength, special)
-UrukHai =          ("Uruk-Hai"          , 2, 3 , "special")
-Orc =              ("Orc"               , 3, 3 , "special")
-Nazgul =           ("Nazgul"            , 4, 3 , "special")
-Troll =            ("Troll"             , 5, 3 , "special")
-Warg =             ("Warg"              , 6, 3 , "special")
-DerBiBaBuzemann =  ("Der BiBaBuzemann"  , 7, 5, "special")
-JoeMama =          ("Joe Mama"          , 10, 5, "special")
+# "special" could be a future feature
+UrukHai =          ("Uruk-Hai"          , 7, 3 , "special")
+Orc =              ("Orc"               , 6, 3 , "special")
+Nazgul =           ("Nazgul"            , 12, 6 , "special")
+Troll =            ("Troll"             , 7, 2 , "special")
+Warg =             ("Warg"              , 8, 4 , "special")
+DerBiBaBuzemann =  ("der BiBaBuzemann"  , 20, 5, "special")
+
 # tuple containing enemies
-monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
+monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann)
 
 #---------------------------------------------
 
@@ -89,7 +94,7 @@ linuxLogoAscii = '''
  fZP            SMMb
 '''
 
-
+#---------------------------------------------
 # Ascii Art for heroes
 # "name"NameAscii contains a box with the name of the hero, as well as the health, strength and luck
 # "name"DescriptionAscii contains a box with a brief description of the hero
@@ -133,6 +138,8 @@ narsilDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + 
 
 #---------------------------------------------
 
+# Main Menu
+# The user can choose between two subexercises or exit the program
 
 print("+" + "-" * 73 + "+")
 print("|" + "Exercise 5".center(box_width) + "|")
@@ -145,28 +152,32 @@ print("+" + "-" * 73 + "+")
 x = input("")
 if x == "1":
 
+    # Exercise 5.1
+
     #---------------------------------------------
     # Generate random amount of monsters
 
+    monsterPool = [UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann]
     # random zwischen 1 und 5 -> Anzahl Monster
     monsterCount = random.randint(1, 5)
+    # list to store the monsters the user has to fight against
     monsterList = []
-
-    # Schleife while Anzahl Monster > 0  wähle zufälliges Monster und füge es zu Liste hinzu
-    while monsterCount > 0:
-        monster = random.choice((UrukHai, Nazgul, Troll, Warg, DerBiBaBuzemann, JoeMama)) #evtl. Wahrscheinlichkeit anpassen JoeMama/BiBaBuzemann 1-5% chance oder so 
-        monsterList.append(monster)
-        monsterCount -= 1
+    
+    # use random.choices to choose the monsters the user has to fight against
+    monsterList = random.choices(monsterPool, weights = [0.2,0.04,0.2,0.2,0.35,0.01], k=monsterCount)
 
     #---------------------------------------------
     # Game 
     # Explanation of the game:
 
-    # TODO: Erklärung des Spiels einfügen
-
+    # 1. The user gets a brief explanation of the lore of the game
+    # 2. The user chooses a hero from the list of heroes
+    # 3. The user chooses a weapon from the list of weapons
+    # 4. The user fights against the monsters until all monsters are defeated or the hero dies
+    
     #---------------------------------------------
-    # Lore/Story
-
+    
+    # The user is greeted with a box containing the story of the game
     clear()
     print("+" + "-" * box_width + "+")
     print("| This is an alternative timeline of The Lord of the Rings.               |")
@@ -349,12 +360,17 @@ if x == "1":
     # Battle Loop
     # The battle loop is used to simulate the battle between the hero and the monsters
     # The hero has to fight against the monsters until all monsters are defeated or the hero dies
-    # The user can choose between attacking the monster or trying to heal himself
+    # The user can choose between attacking the monster or trying to heal himself (if the user types x, the game is quit)
 
-    #TODO Beschreibung weiter ausführen
+    # If the user chooses to attack the monster, the hero has a chance to hit the monster, if the random number is smaller or equal to the luck of the hero
+    # the hero hits the monster and deals damage to the monster. The hero also has a chance to get hit by the monster, if the random number is smaller or equal to the parry strength of the weapon, the monster fails to hit the hero
+
+    # If the user chooses to try to heal himself, the hero has a chance to heal himself, if the random number is smaller or equal to the luck of the hero, the hero heals himself by 3 health
+
+    # The game ends if the health of the hero is smaller or equal to 0 or if all monsters are defeated
 
     #---------------------------------------------
-    # Create editable stats of the hero
+    # Create editable stats of the hero from the tuple chosenHero
     # [health, strength, luck]
     myHeroStats = []
     myHeroStats.append(chosenHero[1])
@@ -362,7 +378,7 @@ if x == "1":
     myHeroStats.append(chosenHero[3])
     myHeroStats[1] = myHeroStats[1] * int(chosenWeapon[1])
 
-    # Create editable health stats of the monsters
+    # Create editable health stats of the monsters from the tuple monsterList
     monsterHealth = []
     for monster in monsterList:
         monsterHealth.append(monster[1])
@@ -370,15 +386,17 @@ if x == "1":
 
     while len(monsterList) > 0 and myHeroStats[0] > 0: 
 
+        # Clear the console
         clear()
-        print(monsterList)
-        print(monsterHealth)
+
+        # Display a box with the text "The battle begins!" 
         print( "+" + "-" * box_width + "+")
         print( "|"+ " "* box_width + "|")
         print(f"|" + "The battle begins!".center(box_width) + "|")
         print( "|"+ " "* box_width + "|")
         print( "+" + "-" * box_width + "+")
 
+        # Display a box with the stats of the hero and the chosen weapon
         print("+" +  "-" * box_width + "+")
         print("|" +  " ".center(box_width) + "|")
         print("|" + f"You chose {chosenHero[0]} with {chosenWeapon[0]}!".center(box_width) + "|")
@@ -387,6 +405,7 @@ if x == "1":
         print("|" +  " ".center(box_width) + "|")
         print("+" +  "-" * box_width + "+")
 
+        # Display a box with the stats of the current monster as well as the amount of monsters left and the options available to the user
         currentMonster = monsterList[-1]
         print("+" +  "-" * box_width + "+")
         print("|" +  " ".center(box_width) + "|")
@@ -398,10 +417,14 @@ if x == "1":
         print("+" +  "-" * box_width + "+")
         print("|" +  "Attack (1) | Try to Heal (2) | Exit (x)".center(box_width) + "|")
         print("+" +  "-" * box_width + "+")
+        
+        # Wait for the user to input a command
         x = input("")
 
+        # Check the input of the user
         match x:
 
+            # if the user chooses to exit the game
             case "x":
 
                 clear()
@@ -436,6 +459,7 @@ if x == "1":
                 # if the random number is smaller or equal to the parry strength of the weapon, the monster fails to hit the hero
                 if randomMonsterHit <= chosenWeapon[2]:
                     print("|" + "The monster failed to hit you".center(box_width) + "|")
+                # if the random number is greater than the parry strength of the weapon, the monster hits the hero
                 else:        
                     print("|" + f"The monster hit you for 2 damage".center(box_width) + "|")
                     myHeroStats[0] -= 2
@@ -460,19 +484,20 @@ if x == "1":
                 # Calculate the chance to heal the hero
                 randomCheckHeal = random.randint(1, 10)
 
-                # if the random number is smaller or equal to the luck of the hero, the hero heals himself by 3 health
+                # if the random number is smaller or equal to the luck of the hero, the hero heals himself by 3 health and the monster fails to hit the hero
                 if randomCheckHeal <= chosenHero[3]:
                     print("|" + "You healed yourself for 3 health!".center(box_width) + "|")
                     print("|" + "The monster failed to hit you".center(box_width) + "|")
                     print("+" + "-" * box_width + "+")
                     myHeroStats[0] += 3
+                # if the random number is greater than the luck of the hero, the hero fails to heal himself and the monster hits the hero
                 else:
                     print("|" + "You tried to heal yourself but failed!".center(box_width) + "|")
                     print("|" + f"The monster hit you for {currentMonster[2]} damage".center(box_width) + "|")
                     print("+" + "-" * box_width + "+")
                     myHeroStats[0] -= currentMonster[2]
 
-            # if the user types something else
+            # if the user types something else display "Wrong Input!"
             case _:
                 print("+" + "-" * box_width + "+")
                 print("|" + "Wrong Input!".center(box_width) + "|")
@@ -484,6 +509,7 @@ if x == "1":
     #---------------------------------------------
     # End of the game
 
+    # If the health of the hero is smaller or equal to 0, the hero dies and the corresponding message is displayed
     if myHeroStats[0] <= 0:
         clear()
         print("+" + "-" * box_width + "+")
@@ -492,7 +518,11 @@ if x == "1":
         print("|" + "The fellowship was able to escape, but you were left behind.".center(box_width) + "|")
         print("|" + " ".center(box_width) + "|")
         print("+" + "-" * box_width + "+")
+        # wait for the user to press any key to exit the program
+        waitForExit = input("Press any key to exit...")
+        sys.exit()
     else:
+        # If the health of the hero is greater than 0, the hero wins the game and the corresponding message is displayed
         clear()
         print("+" + "-" * box_width + "+")
         print("|" + " ".center(box_width) + "|")
@@ -503,42 +533,52 @@ if x == "1":
         print("|" + "As long as there is hope, there is a chance for victory.".center(box_width) + "|")
         print("|" + " ".center(box_width) + "|")
         print("+" + "-" * box_width + "+")
-        waitForExit = input("Press Enter to continue...")
+        # wait for the user to press any key to exit the program
+        waitForExit = input("Press any key to exit...")
         sys.exit()
 
 elif x == "2":
     
-    #TODO Kommentare ergänzen
+    # Exercise 5.2
 
-    nouns = ("Kopf", "Baum", "Pflanze", "Katze", "Hund", "Fortnite", "Sonne", "Tonne", "Berg", "Topf", "Wasser", "Hahn", "Huhn", "Kraut", "Schlauch")
-    adjective = ("rot", "blau", "feucht", "hell", "hart", "leicht", "voll", "hoch", "interaktiv")
+    # Random Nouns and Adjectives
+    nouns = ("Kopf", "Baum", "Pflanze", "Katze", "Hund", "Sonne", "Tonne", "Berg", "Topf", "Wasser", "Hahn", "Huhn", "Kraut", "Schlauch", "Schuh", "Kuh", "Maus", "Haus", "Maus", "Strauch", "Kraut")
+    adjective = ("rot", "blau", "feucht", "hell", "hart", "leicht", "voll", "hoch", "interaktiv, " "schnell", "langsam", "warm", "kalt", "scharf", "weich")
 
-    inStr = ""
-    clear()
-    print("to quit the program type quit")
-    while inStr != "quit":
-        clear()
+
+    print("To quit the program type 'quit'")
+    while True:
+
+        inStr = input("Type a noun or an adjective (nouns are starting with a capital letter):")
+        # Check if the user wants to quit the program
+        if inStr == "quit":
+            break
+        
         if inStr != "":
             additionalWord = ""
+            # Check if the input is a noun or an adjective
             if inStr[0].isupper():
+                # if the input is an adjective choose a random noun from the list
                 idx = random.randint(0, len(adjective)-1)
                 additionalWord = adjective[idx]
                 print(additionalWord + inStr.lower())
-        else:
-            idx = random.randint(0, len(nouns)-1)
-            additionalWord = nouns[idx]
-            print(inStr + additionalWord.lower())
-        inStr = input("type a noun or an adjective (nouns are starting with a capital letter):")
+            else:
+                # if the input is a noun choose a random adjective from the list
+                idx = random.randint(0, len(nouns)-1)
+                additionalWord = nouns[idx]
+                print(inStr + additionalWord.lower())
 
 elif x == "x":
     clear()
     print(linuxLogoAscii)
-    waitForExit = input("Press Enter to continue...")
+    # wait for the user to press any key to exit the program
+    waitForExit = input("Press any key to exit...")
     sys.exit()
 else:
     clear()
     print("+" + "-" * box_width + "+")
     print("|" + "Wrong Input!".center(box_width) + "|")
     print("+" + "-" * box_width + "+")
-    waitForExit = input("Press Enter to continue...")
+    # wait for the user to press any key to exit the program
+    waitForExit = input("Press any key to exit...")
     sys.exit()
