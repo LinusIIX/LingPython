@@ -4,13 +4,19 @@
 
 #---------------------------------------------
 # import necessary modules
-import os
+
+# os is mainly used to clear the console
+import os 
+# random is used to generate random numbers
 import random
+# sys is used to exit the game properly
 import sys
 
 #---------------------------------------------
 
 # Function to clear the console
+# os.name is used to determine the operating system
+# "nt" is used for Windows and posix is used for Unix/Linux
 def clear():
 
     if os.name == "nt":
@@ -22,9 +28,17 @@ def clear():
         sys.exit()
 
 #---------------------------------------------
-# "Game assets" -> Heroes, Weapons, Monsters
+#Game Assets and Ascii Art
 
-#TODO Beschreibungen und Werte anpassen
+# Constants
+
+# Width of the boxes for the heroes, weapons and enemies
+box_width = 73
+
+# TODO Zeilenangaben ergänzen
+# Heroes: Line 
+# Weapons: Line 
+# Enemies: Line 
 
 # heroes
 # name = (name, health, strength, luck)
@@ -33,19 +47,18 @@ Gimli =             ("Gimli"    , 10, 1.0 , 5)
 Legolas =           ("Legolas"  , 10, 1.0 , 5)
 Frodo =             ("Frodo"    , 10, 1.0 , 5)
 Boromir =           ("Boromir"  , 10, 1.0, 2)
-
-# tuple with heroes
+# tuple containing heroes
 heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)  
 
 # weapons
-# name = (name, damage, special)
-Glamdring =        ("Glamdring" , 3, "special")
-Orcrist =          ("Orcrist"   , 3, "Orc"    )
-Sting =            ("Sting"     , 3, "special")
-Anduril =          ("Anduril"   , 3, "special")
-Narsil =           ("Narsil"    , 3, "special")
-# tuple with weapons
-weapons = (Glamdring, Orcrist, Sting, Anduril, Narsil)
+# name = (name, damage, parry strength, special)
+Belthronding =     ("Belthronding"  , 3, 5, "special")
+Orcrist =          ("Orcrist"       , 3, 5, "Orc"    )
+Sting =            ("Sting"         , 3, 5, "special")
+Aeglos =           ("Aeglos"        , 3, 5, "special")
+Narsil =           ("Narsil"        , 3, 5, "special")
+# tuple containing weapons
+weapons = (Belthronding, Orcrist, Sting, Aeglos, Narsil)
 
 # enemies
 # name = (name, health, strength, special)
@@ -56,13 +69,13 @@ Troll =            ("Troll"             , 5, 3 , "special")
 Warg =             ("Warg"              , 6, 3 , "special")
 DerBiBaBuzemann =  ("Der BiBaBuzemann"  , 7, 5, "special")
 JoeMama =          ("Joe Mama"          , 10, 5, "special")
-# tuple with enemies
+# tuple containing enemies
 monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann, JoeMama)
 
 #---------------------------------------------
-# Ascii Art
 
-box_width = 73
+# Fun little ascii art for the Linux Logo
+
 linuxLogoAscii = '''
        _nnnn_                      
       dGGGGMMb     ,"""""""""""""""""""""""""""""""""""".
@@ -77,6 +90,9 @@ linuxLogoAscii = '''
 
 
 # Ascii Art for heroes
+# "name"NameAscii contains a box with the name of the hero, as well as the health, strength and luck
+# "name"DescriptionAscii contains a box with a brief description of the hero
+
 aragornNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 aragornDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn is the rightful heir to the throne of Gondor.".center(box_width) + "|\n" + "|" + "He is a skilled swordsman and a great leader.".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
@@ -92,76 +108,25 @@ frodoDescriptionAscii =     f"+" + "-" * box_width + "+\n" + "|" + " "*box_width
 boromirNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 boromirDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Boromir is a valiant warrior of Gondor.".center(box_width) + "|\n" + "|" + "He is known for his strength and courage.".center(box_width) + "|\n" + "|" + f"Health: {Boromir[1]} Strength: {Boromir[2]} Luck: {Boromir[3]}".center(box_width)                  + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-# Ascii Art for weapons
-glamdringNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                               Glamdring                                 |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
 
-glamdringDescriptionAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+# Ascii Art for weaponName and weaponDescription
+# "name"NameAscii contains a box with the name of the weapon, as well as the damage
+# "name"DescriptionAscii contains a box with a brief description of the weapon
 
-narsilNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                                Narsil                                   |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+belthrondingNameAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Belthronding".center(box_width) + "|\n" + "|" + f"Damage: {Belthronding[1]} Parry Strength: {Belthronding[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+belthrondingDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Belthronding is a powerful bow made of black Elven wood.".center(box_width) + "|\n" + "|" + "It was wielded by Beleg Cúthalion, the great archer.".center(box_width) + "|\n" + "|" + f"Damage: {Belthronding[1]} Parry Strength: {Belthronding[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-narsilDescriptionAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+orcistNameAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Orcrist".center(box_width) + "|\n" + "|" + f"Damage: {Orcrist[1]} Parry Strength: {Orcrist[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+orcistDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Orcrist is a sword found by Thorin Oakenshield in the trolls' cave.".center(box_width) + "|\n" + "|" + "It is an Elven blade known as the \"Biter\" by the Orcs.".center(box_width) + "|\n" + "|" + f"Damage: {Orcrist[1]} Parry Strength: {Orcrist[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-stingNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                                 Sting                                   |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+stingNameAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Sting".center(box_width) + "|\n" + "|" + f"Damage: {Sting[1]} Parry Strength: {Sting[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+stingDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Sting is a dagger found by Bilbo Baggins".center(box_width) + "|\n" + "|" + "in the cave of the spiders of Rhûn.".center(box_width) + "|\n" + "|" + "It was wielded by Frodo Baggins in the".center(box_width) + "|\n" + "|" + "battles against the Orcs and the Nazgûl.".center(box_width) + "|\n" + "|" + f"Damage: {Sting[1]} Parry Strength: {Sting[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-stingDescriptionAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+aeglosNameAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aeglos".center(box_width) + "|\n" + "|" + f"Damage: {Aeglos[1]} Parry Strength: {Aeglos[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+aeglosDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aeglos is a spear wielded by Gil-galad,".center(box_width) + "|\n" + "|" + "the last High King of the Noldor.".center(box_width) + "|\n" + "|" + "The spear was used by Gil-galad in the".center(box_width) + "|\n" + "|" + "Battle of the Last Alliance against Sauron.".center(box_width) + "|\n" + "|" + f"Damage: {Aeglos[1]} Parry Strength: {Aeglos[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
-andurilNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                                Anduril                                  |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
-
-andurilDescriptionAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
-
-orcistNameAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-|                                Orcrist                                  |
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
-
-orcistDescriptionAscii = """
-+-------------------------------------------------------------------------+
-|                                                                         |
-+-------------------------------------------------------------------------+
-"""
+narsilNameAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Narsil".center(box_width) + "|\n" + "|" + f"Damage: {Narsil[1]} Parry Strength: {Narsil[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
+narsilDescriptionAscii = f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Narsil is a sword wielded by Elendil,".center(box_width) + "|\n" + "|" + "the High King of Arnor and Gondor.".center(box_width) + "|\n" + "|" + "The sword was used by Elendil in the".center(box_width) + "|\n" + "|" + "Battle of the Last Alliance against Sauron.".center(box_width) + "|\n" + "|" + f"Damage: {Narsil[1]} Parry Strength: {Narsil[2]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 
 #---------------------------------------------
 # Generate random amount of monsters
@@ -245,8 +210,10 @@ while chosenHero == None:
             clear()
             print(boromirDescriptionAscii)
         case "x":
+
             clear()
             print(linuxLogoAscii)
+            waitForExit = input("Press Enter to continue...")
             sys.exit()
 
         case "Aragorn":
@@ -275,6 +242,11 @@ while chosenHero == None:
 
 #---------------------------------------------    
 # Loop to choose a weapon
+# Choosable weapons are "Belthronding", "Orcrist", "Sting", "Aeglos" and "Narsil"
+# If the user types the name of the weapon, the weapon is chosen
+# If the user types the number of the weapon, the user gets more information about the weapon
+# If the user types "x" the game is exited
+
 y = "0"
 chosenWeapon = None
 while chosenWeapon == None: 
@@ -301,15 +273,21 @@ while chosenWeapon == None:
             print("|" + " "* box_width + "|")
             print("+" + "-" * box_width + "+")
         case "1":
-            print(glamdringDescriptionAscii)
+            print(belthrondingDescriptionAscii)
         case "2":
             print(orcistDescriptionAscii)
         case "3":
             print(stingDescriptionAscii)
         case "4":
-            print(andurilDescriptionAscii)
+            print(aeglosDescriptionAscii)
         case "5":
             print(narsilDescriptionAscii)
+        case _:
+            print("+" + "-" * box_width +                   "+")
+            print("|" + " "* box_width +                    "|")
+            print("|" + "Wrong Input!".center(box_width) +  "|")
+            print("|" + " "* box_width +                    "|")
+            print("+" + "-" * box_width +                   "+")
 
     print("")
     print("+" + "-" * box_width + "+")
@@ -317,7 +295,7 @@ while chosenWeapon == None:
     print("| If you want to see more information about a weapon,                     |")
     print("| type the corresponding number.                                          |")
     print("+" + "-" * box_width + "+")
-    print("| Glamdring (1) | Orcrist (2) | Sting (3) | Anduril (4) | Narsil (5)      |")
+    print("| Belthronding (1) | Orcrist (2) | Sting (3) | Aeglos (4) | Narsil (5)    |")
     print("+" + "-" * box_width + "+")
     print("| To exit the game, type 'x'                                              |")
     print("+" + "-" * box_width + "+")
@@ -327,9 +305,10 @@ while chosenWeapon == None:
         case "x":
             clear()
             print(linuxLogoAscii)
+            waitForExit = input("Press Enter to continue...")
             sys.exit()
-        case "Glamdring":
-            chosenWeapon = Glamdring
+        case "Belthronding":
+            chosenWeapon = Belthronding 
             break
         case "Orcrist":
             chosenWeapon = Orcrist
@@ -337,8 +316,8 @@ while chosenWeapon == None:
         case "Sting":
             chosenWeapon = Sting
             break
-        case "Anduril":
-            chosenWeapon = Anduril
+        case "Aeglos":
+            chosenWeapon = Aeglos
             break
         case "Narsil":
             chosenWeapon = Narsil
@@ -352,8 +331,14 @@ while chosenWeapon == None:
 
 #---------------------------------------------
 # Battle Loop
+# The battle loop is used to simulate the battle between the hero and the monsters
+# The hero has to fight against the monsters until all monsters are defeated or the hero dies
+# The user can choose between attacking the monster or trying to heal himself
 
-# Editable stats of the hero
+#TODO Beschreibung weiter ausführen
+
+#---------------------------------------------
+# Create editable stats of the hero
 # [health, strength, luck]
 myHeroStats = []
 myHeroStats.append(chosenHero[1])
@@ -361,7 +346,7 @@ myHeroStats.append(chosenHero[2])
 myHeroStats.append(chosenHero[3])
 myHeroStats[1] = myHeroStats[1] * int(chosenWeapon[1])
 
-# Editable stats of the monster
+# Create editable health stats of the monsters
 monsterHealth = []
 for monster in monsterList:
     monsterHealth.append(monster[1])
@@ -370,90 +355,114 @@ for monster in monsterList:
 while len(monsterList) > 0 and myHeroStats[0] > 0: 
 
     clear()
-    print(monsterList)
-    print(monsterHealth)
-    print("+" + "-" * box_width + "+")
-    print("|"+ " "* box_width + "|")
+    # print(monsterList)
+    # print(monsterHealth)
+    print( "+" + "-" * box_width + "+")
+    print( "|"+ " "* box_width + "|")
     print(f"|" + "The battle begins!".center(box_width) + "|")
-    print("|"+ " "* box_width + "|")
-    print("+" + "-" * box_width + "+")
-    print("")
+    print( "|"+ " "* box_width + "|")
+    print( "+" + "-" * box_width + "+")
 
-    print("+" + "-" * box_width + "+")
-    print("|" + " ".center(box_width) + "|")
+    print("+" +  "-" * box_width + "+")
+    print("|" +  " ".center(box_width) + "|")
     print("|" + f"You chose {chosenHero[0]} with {chosenWeapon[0]}!".center(box_width) + "|")
-    print("|" + f"Hero Health: {myHeroStats[0]} Damage: {myHeroStats[1]}".center(box_width) + "|")
+    print("|" + f"Hero Health: {myHeroStats[0]} Damage: {myHeroStats[1]} Luck: {myHeroStats[2]}".center(box_width) + "|")
+    print("|" + f"Weapon: {chosenWeapon[0]} Damage: {chosenWeapon[1]} Parry Strength: {chosenWeapon[2]}".center(box_width) + "|")
     print("|" + f"{len(monsterList)} monster(s) left!".center(box_width) + "|")
-    print("|" + " ".center(box_width) + "|")
-    print("+" + "-" * box_width + "+")
+    print("|" +  " ".center(box_width) + "|")
+    print("+" +  "-" * box_width + "+")
 
     currentMonster = monsterList[-1]
-    print("+" + "-" * box_width + "+")
-    print("|" + " ".center(box_width) + "|")
+    print("+" +  "-" * box_width + "+")
+    print("|" +  " ".center(box_width) + "|")
     print("|" + f"You are facing {currentMonster[0]}!".center(box_width) + "|")
     print("|" + f"Remaining health: {monsterHealth[-1]}".center(box_width) + "|")
-    print("|" + " ".center(box_width) + "|")
-    print("+" + "-" * box_width + "+")
-    print("|" + "Attack (1) | Try to Heal (2)".center(box_width) + "|")
-    print("+" + "-" * box_width + "+")
-    
+    print("|" +  " ".center(box_width) + "|")
+    print("+" +  "-" * box_width + "+")
+    print("|" +  "Attack (1) | Try to Heal (2) | Exit (x)".center(box_width) + "|")
+    print("+" +  "-" * box_width + "+")
     x = input("")
 
-    if x == "1":
-        print("+" + "-" * box_width + "+")
-        print("|" + "You choose to attack!".center(box_width) + "|")
-        
-        tempRandom = random.randint(1, 10)
-        tempRandom2 = random.randint(1, 10)
+    match x:
 
-        if tempRandom2 <= chosenHero[3]:
+        case "x":
 
-            monsterHealth[-1] -= myHeroStats[1]
-            print("|" + ("You hit the monster and dealt " + str(myHeroStats[1]) + " damage").center(box_width) + "|")
+            clear()
+            print(linuxLogoAscii)
+            waitForExit = input("Press Enter to continue...")
+            sys.exit()
 
-        else:
+        # if the user chooses to attack the monster
+        case "1":
 
-            print("|" + "You missed the monster".center(box_width) + "|")
-                    
-        
-        if tempRandom >= 5:
-            print("|" + "The monster failed to hit you".center(box_width) + "|")
-        else:        
-            print("|" + f"The monster hit you for 2 damage".center(box_width) + "|")
-            myHeroStats[0] -= 2
-        print("+" + "-" * box_width + "+")
-        
-
-
-        
-        if monsterHealth[0] <= 0:
             print("+" + "-" * box_width + "+")
-            print("|" + "The monster is defeated!".center(box_width) + "|")
-            print("|" + " ".center(box_width) + "|")
-            print("+" + "-" * box_width + "+")
-            monsterHealth.pop(0)
-            monsterList.pop(0)
+            print("|" + "You choose to attack!".center(box_width) + "|")
+            
+            # Calculate the chance to hit the monster
+            randomCheckHit = random.randint(1, 10)
 
-    elif x == "2":
-        print("+" + "-" * box_width + "+")
-        print("|" + "You choose to try to heal!".center(box_width) + "|")
-        randomHeal = random.randint(1, 10)
-        if randomHeal <= chosenHero[3]:
-            print("|" + "You healed yourself for 3 health!".center(box_width) + "|")
-            print("|" + "The monster failed to hit you".center(box_width) + "|")
+            # Calculate the chance to get hit by the monster
+            randomMonsterHit = random.randint(1, 10)
+
+            # if the random number is smaller or equal to the luck of the hero, the hero hits the monster
+            if randomCheckHit <= chosenHero[3]:
+
+                print("|" + ("You hit the monster and dealt " + str(myHeroStats[1]) + " damage").center(box_width) + "|")
+                # subtract the damage of the hero from the health of the current monster
+                monsterHealth[-1] -= myHeroStats[1]
+
+            else:
+
+                # if the random number is greater than the luck of the hero, the hero misses the monster 
+                print("|" + "You missed the monster".center(box_width) + "|")
+                        
+            # if the random number is smaller or equal to the parry strength of the weapon, the monster fails to hit the hero
+            if randomMonsterHit <= chosenWeapon[2]:
+                print("|" + "The monster failed to hit you".center(box_width) + "|")
+            else:        
+                print("|" + f"The monster hit you for 2 damage".center(box_width) + "|")
+                myHeroStats[0] -= 2
+
             print("+" + "-" * box_width + "+")
-            myHeroStats[0] += 3
-        else:
-            print("|" + "You tried to heal yourself but failed!".center(box_width) + "|")
-            print("|" + f"The monster hit you for {currentMonster[2]} damage".center(box_width) + "|")
+            
+            # if the health of the current monster is smaller or equal to 0, the monster is defeated
+            if monsterHealth[0] <= 0:
+                print("+" + "-" * box_width + "+")
+                print("|" + "The monster is defeated!".center(box_width) + "|")
+                print("|" + " ".center(box_width) + "|")
+                print("+" + "-" * box_width + "+")
+                monsterHealth.pop()
+                monsterList.pop()   
+
+        # if the user chooses to try to heal himself
+        case "2":
+                
             print("+" + "-" * box_width + "+")
-            myHeroStats[0] -= currentMonster[2]
-    else:
-        print("+" + "-" * box_width + "+")
-        print("|" + "Wrong Input!".center(box_width) + "|")
-        print("+" + "-" * box_width + "+")
-        continue
-    temp = input("Press Enter to continue...")
+            print("|" + "You choose to try to heal!".center(box_width) + "|")
+
+            # Calculate the chance to heal the hero
+            randomCheckHeal = random.randint(1, 10)
+
+            # if the random number is smaller or equal to the luck of the hero, the hero heals himself by 3 health
+            if randomCheckHeal <= chosenHero[3]:
+                print("|" + "You healed yourself for 3 health!".center(box_width) + "|")
+                print("|" + "The monster failed to hit you".center(box_width) + "|")
+                print("+" + "-" * box_width + "+")
+                myHeroStats[0] += 3
+            else:
+                print("|" + "You tried to heal yourself but failed!".center(box_width) + "|")
+                print("|" + f"The monster hit you for {currentMonster[2]} damage".center(box_width) + "|")
+                print("+" + "-" * box_width + "+")
+                myHeroStats[0] -= currentMonster[2]
+
+        # if the user types something else
+        case _:
+            print("+" + "-" * box_width + "+")
+            print("|" + "Wrong Input!".center(box_width) + "|")
+            print("+" + "-" * box_width + "+")
+            continue
+
+    waitForExit = input("Press Enter to continue...")
 
 #---------------------------------------------
 # End of the game
@@ -477,5 +486,5 @@ else:
     print("|" + "As long as there is hope, there is a chance for victory.".center(box_width) + "|")
     print("|" + " ".center(box_width) + "|")
     print("+" + "-" * box_width + "+")
-    temp = input("Press Enter to continue...")
+    waitForExit = input("Press Enter to continue...")
     sys.exit()
