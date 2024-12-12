@@ -2,10 +2,9 @@
 
 # Luca Pomm, Linus Prange, Daniel Shaw, Nils Schiele
 
-#TODO: Zeilenangaben ergänzen
 #---------------------------------------------
-# Exercise 5.1 - Line:
-# Exercise 5.2 - Line:
+# Exercise 5.1 - Line: 151
+# Exercise 5.2 - Line: 539
 #---------------------------------------------
 # import necessary modules
 
@@ -39,10 +38,9 @@ def clear():
 # Width of the boxes for the heroes, weapons and enemies
 box_width = 73
 
-# TODO Zeilenangaben ergänzen
-# Heroes: Line 
-# Weapons: Line 
-# Enemies: Line 
+# Heroes: Line 47
+# Weapons: Line 57
+# Enemies: Line 68
 
 # Heroes:
 # name = (name, health, strength, luck)
@@ -56,7 +54,7 @@ heroes = (Aragorn, Gimli, Legolas, Frodo, Boromir)
 
 # Weapons:
 # name = (name, damage, parry strength, special)
-# "special" could be a future feature
+# "special" could be a future feature(probably not)
 Belthronding =     ("Belthronding"  , 5, 2, "special")
 Orcrist =          ("Orcrist"       , 4, 3, "special")
 Sting =            ("Sting"         , 2, 6, "special")
@@ -80,7 +78,7 @@ monster = (UrukHai, Nazgul, Troll, Warg, Orc, DerBiBaBuzemann)
 
 #---------------------------------------------
 
-# Fun little ascii art for the Linux Logo
+# Fun little ascii art for the Linux Logo (very important)
 
 linuxLogoAscii = '''
        _nnnn_                      
@@ -98,8 +96,6 @@ linuxLogoAscii = '''
 # Ascii Art for heroes
 # "name"NameAscii contains a box with the name of the hero, as well as the health, strength and luck
 # "name"DescriptionAscii contains a box with a brief description of the hero
-
-# TODO Trennstriche zwischen Helden und Waffen Werten
 
 aragornNameAscii =          f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
 aragornDescriptionAscii =   f"+" + "-" * box_width + "+\n" + "|" + " "*box_width + "|\n" + "|" + "Aragorn is the rightful heir to the throne of Gondor.".center(box_width) + "|\n" + "|" + "He is a skilled swordsman and a great leader.".center(box_width) + "|\n" + "|" + f"Health: {Aragorn[1]} Strength: {Aragorn[2]} Luck: {Aragorn[3]}".center(box_width) + "|\n" + "|" + " "*box_width + "|\n" + "+" + "-" * box_width + "+\n"
@@ -376,7 +372,8 @@ if x == "1":
     myHeroStats.append(chosenHero[1])
     myHeroStats.append(chosenHero[2])
     myHeroStats.append(chosenHero[3])
-    myHeroStats[1] = myHeroStats[1] * int(chosenWeapon[1])
+    #round so that there arent weird decimals
+    myHeroStats[1] = round(myHeroStats[1] * int(chosenWeapon[1]))
 
     # Create editable health stats of the monsters from the tuple monsterList
     monsterHealth = []
