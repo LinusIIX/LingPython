@@ -7,11 +7,9 @@ Dictionary = {
     "Substantive": "A substantive is a broad classification of words that includes nouns and nominals."
 }
 
-
 def print_dictionary():
     for key in Dictionary:
         print(key)
-
 
 def look_up(word):
     if word in Dictionary:
@@ -19,13 +17,12 @@ def look_up(word):
     else:
         print("The word is not in the dictionary.")
 
-
 def add_word(word, definition):
     Dictionary[word] = definition
     print("The word has been added to the dictionary.")
 
-
 def main():
+
     print("Welcome to the dictionary.")
     print("The words in the dictionary are: ")
     print_dictionary()
