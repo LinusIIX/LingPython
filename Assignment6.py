@@ -4,7 +4,7 @@
 def inputQuittable(displayStr="", endStr="x", menuStr="r"):
   str = input(displayStr)
   if str == endStr:
-    print("Goodbye see u sone")
+    print("Goodbye see u soon")
     exit()
   if str == menuStr:
     sel()
@@ -140,6 +140,7 @@ def sel():
       case "3": ex3()
       case "4": ex4()
       case "5": ex5()
+
 #main        
 if __name__ == "__main__":
   sel()
