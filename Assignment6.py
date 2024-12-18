@@ -1,6 +1,6 @@
 ## Helper functions
 
-# wrapps input so x can always quit the program
+# wrapps input so x can always quit the program, r can always return to the selection menu, and the input is returned
 def inputQuittable(displayStr="", endStr="x", menuStr="r"):
   str = input(displayStr)
   if str == endStr:
@@ -12,13 +12,16 @@ def inputQuittable(displayStr="", endStr="x", menuStr="r"):
 
 
 # Ex.1)
-# Handles different cases of searching or adding terms and first looks if the term is in lingTerms as other wise an access error can happe.
+# Handles different cases of searching or adding terms and first looks if the term is in lingTerms as other wise an access error can happen.
 # Same for adding here only new terms can be added so the cant be in lingTerms. (inputQuittable is used in all exercises to make all input quittable and allow to end with x at all points)
-#TODO add 6 terms
-lingTerms = {
-  "term" : "definition"
+lingTerms = {  
+    "Allegory": "An allegory is an extended metaphor, especially a story in which fictional characters and actions are used to understand and express aspects of concepts relating to human existence.",
+    "Adjective": "An adjective is a word that belongs to a class whose members modify nouns. An adjective specifies the properties or attributes of a noun referent.",
+    "Anthimeria": "Anthimeria is the use of a member of one word class as if it were a member of another, thus altering its meaning.",
+    "Valency": "Valency refers to the capacity of a verb to take a specific number and type of arguments (noun phrase positions).",
+    "Syllable": "A syllable is a unit of sound composed of a central peak of sonority (usually a vowel), and the consonants that cluster around this central peak.",
+    "Substantive": "A substantive is a broad classification of words that includes nouns and nominals."
 }
-
 def ex1():
   while True:
     inStr = inputQuittable("type 1 to look up a term and 2 to add another term\n")
@@ -36,7 +39,7 @@ def ex1():
     lingTerms[inStr] = inputQuittable("add a description to you term:\n")
 
 #Ex.2)
-# We get the keys of the first dict and then itterat over them so we can access each key on both dicts easy.
+# We get the keys of the first dict and then iterate over them so we can access each key on both dicts easy.
 # Then we add them into dict1 and print (this can be done with n dicts easily)
 def ex2():
   dict1 = {"Harry": 3, "the": 8, "laugh": 3}
@@ -129,7 +132,7 @@ def ex5():
   file.write(outText)
   file.close()
 
-##Setup for easy task selection
+#Setup for easy task selection
 def sel():
   while True:
     #This function calling structure with Quittable can lead to a stack overflow but this is not that important here
@@ -141,6 +144,6 @@ def sel():
       case "4": ex4()
       case "5": ex5()
 
-#main        
+# main, entry point of the program        
 if __name__ == "__main__":
   sel()
