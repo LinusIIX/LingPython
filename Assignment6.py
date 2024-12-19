@@ -25,14 +25,17 @@ lingTerms = {
 def ex1():
   while True:
     inStr = inputQuittable("type 1 to look up a term and 2 to add another term\n")
+    #inStr == "3" is not necessary as the inputQuittable function takes care of this
     if inStr == "1":
       inStr = inputQuittable("search term:\n")
       description = "term does not exist"
+      #only if the term exists get the description if not the "term does not exist" string says and gets printed
       if inStr in lingTerms:
         description = lingTerms[inStr]
       print(inStr, " : ", description)
     if inStr == "2":
       inStr = inputQuittable("add a new term:\n")
+    #if already defined retry
     if inStr in lingTerms:
       print("term is already defined")
       continue
@@ -88,17 +91,15 @@ def ex3():
       print("Options:")
       print("1. Look up a word")
       print("2. Find out how many words have a certain number of syllables")
-      print("3. Exit")
-      choice = input("Enter your choice: ")
-
+      print("x Exit")
+      choice = inputQuittable("Enter your choice: ")
+      #when the input is "1" or "2" print and call the function for this option, x leads through inputQuittable to exit
       if choice == "1":
-          word = input("Enter a word: ")
+          word = inputQuittable("Enter a word: ")
           print(f"The word '{word}' has {lookup_word(word)} syllables.")
       elif choice == "2":
-          syllable_count = int(input("Enter a number of syllables: "))
+          syllable_count = int(inputQuittable("Enter a number of syllables: "))
           print(f"There are {words_with_syllables(syllable_count)} words which consist of {syllable_count} syllables in our dictionary.")
-      elif choice == "3":
-          break
       else:
           print("Invalid choice. Please try again.")
 
@@ -110,6 +111,7 @@ def celsius_to_fahrenheit(celsius):
 def ex4():
   while True:
     str = inputQuittable("Get Fahrenheit from a number in celsius:\n")
+    #Calling c_to_f with string as number converted through int()
     print(int(str), "celsius is", celsius_to_fahrenheit(int(str)), "in fahrenheit")
 
 #Ex.5)
@@ -119,11 +121,11 @@ def ex5():
   file = open(str, "r")
   text = file.read()
   file.close()
-  #Remove duplicates TODO ist das nötig?
-  words = list(set(text.split(" ")))
+  words = text.split(" ")
   words.sort()
   print(words)
-
+  
+  #accumulate all words in a string and write it to a new file
   outText = ""
   for word in words:
     if word == word.lower():
