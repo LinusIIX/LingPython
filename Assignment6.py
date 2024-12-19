@@ -1,5 +1,9 @@
-## Helper functions
+# Assignment 6
 
+# Luca Pomm, Linus Prange, Daniel Shaw, Nils Schiele
+
+
+## Helper functions
 # wrapps input so x can always quit the program, r can always return to the selection menu, and the input is returned
 def inputQuittable(displayStr="", endStr="x", menuStr="r"):
   str = input(displayStr)
