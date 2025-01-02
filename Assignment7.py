@@ -117,23 +117,30 @@ def ex3():
 
 def make_word_count_dict(fileName):
   dict = {}
+  # open the file into text as string and remove all new lines charachters
   file = open(fileName, "r")
   text = file.read()
+  file.close()
   text = text.replace("\n", "")
+  # split the text based on white space and go through all words add if it does not exist and count up when already there
   words = text.split(" ")
   for word in words:
     if word in dict:
       dict[word] += 1
     else:
       dict[word] = 1
-  print(dict)
+  # open file to write the results change also fileName for easy handling
+  fileName = fileName.replace(".", "_word_count.")
+  file = open(fileName, "w")
+  file.write(str(dict))
+  file.close()
 
 
-#Setup for easy task selection
+# setup for easy task selection
 def sel():
   while True:
-    #This function calling structure with Quittable can lead to a stack overflow but this is not that important here
-     str = inputQuittable("Type 1-5 to view exercises\nType x in at any point to quit and r to return to exercise select\n")
+    # this function calling structure with Quittable can lead to a stack overflow but this is not that important here
+     str = inputQuittable("Type 1-3 to view exercises\nType x in at any point to quit and r to return to exercise select\n")
      if str == "1": ex1()
      if str == "2": ex2()
      if str == "3": ex3()
