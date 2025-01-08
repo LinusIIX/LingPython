@@ -3,6 +3,7 @@
 # Luca Pomm, Linus Prange, Daniel Shaw, Nils Schiele
 
 import random
+import sys
 
 ## Helper functions
 # wrapps input so x can always quit the program, r can always return to the selection menu, >
@@ -107,8 +108,36 @@ def s():
     return np().capitalize() + ' ' + vp() + '.'
 
 # Ex.2)
+# Open the file containing Chapter 3 of Peter Pan
 def ex2():
-  print("TODO")
+  with open('Petar_Pan_chapter3.txt', 'r') as infile:
+      lines = infile.readlines()  # Read all lines from the file into a list
+
+  # Replace the word 'pirates' with 'fairies' in each line
+  modified_lines = [line.replace('pirates', 'fairies') for line in lines]
+
+  # Write the modified lines to a new file
+  with open(r'fairy.txt', 'w') as outfile:
+      outfile.writelines(modified_lines)
+
+  # Filter lines that contain the word 'fairies'
+  fairylines = [line for line in modified_lines if 'fairies' in line]
+
+  # Write the filtered lines to another new file
+  with open(r'fairy-lines.txt', 'w') as outfile:
+      outfile.writelines(fairylines)
+
+  # Split the filtered lines into words and collect them in a list
+  words = []
+  for line in fairylines:
+      words.extend(line.split())
+
+  # Sort the collected words alphabetically
+  sorted_words = sorted(words)
+
+  # Write the sorted words to a new file, one word per line
+  with open(r'fairy-sorted.txt', 'w', encoding='utf-8') as outfile:
+      outfile.write('\n'.join(sorted_words))
 
 # Ex.3)
 def ex3():
