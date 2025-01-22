@@ -20,8 +20,16 @@ POINT_SPEED = 2.5                   # Speed of the point movement per frame
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-RED = (255, 0, 0)
+RED = (125,0,0)
 GREEN = (0, 255, 0)
+BLUE = (107, 204, 255)
+BROWN = (125,80,30)
+GREY = (75,75,75)
+
+COLOR_ANGEL = BROWN
+COLOR_FISH = RED
+COLOR_WATER = BLUE
+COLOR_BACK = WHITE
 
 # Initialize screen
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -45,7 +53,7 @@ score = 0
 # Game loop
 running = True
 while running:
-    screen.fill(WHITE)
+    screen.fill(COLOR_BACK)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -60,18 +68,18 @@ while running:
 
     # Draw big bar
     big_bar_x = (WINDOW_WIDTH - BIG_BAR_WIDTH) // 2
-    pygame.draw.rect(screen, BLACK, (big_bar_x, 0, BIG_BAR_WIDTH, BIG_BAR_HEIGHT))
+    pygame.draw.rect(screen, COLOR_WATER, (big_bar_x, 0, BIG_BAR_WIDTH, BIG_BAR_HEIGHT))
 
     # Draw player bar
-    pygame.draw.rect(screen, GREEN, (player_x, player_y, PLAYER_BAR_WIDTH, PLAYER_BAR_HEIGHT))
+    pygame.draw.rect(screen, COLOR_ANGEL, (player_x, player_y, PLAYER_BAR_WIDTH, PLAYER_BAR_HEIGHT))
 
     # Draw point
     point_x = big_bar_x + BIG_BAR_WIDTH // 2
-    pygame.draw.circle(screen, RED, (point_x, point_y), POINT_RADIUS)
+    pygame.draw.circle(screen, COLOR_FISH, (point_x, point_y), POINT_RADIUS)
 
     # Move the point 
     point_y += POINT_SPEED * point_direction
-    if point_y <= POINT_RADIUS or point_y >= WINDOW_HEIGHT - POINT_RADIUS:
+    if point_y <= POINT_RADIUS +5 or point_y >= WINDOW_HEIGHT - POINT_RADIUS-5:
         # Reverse direction when hitting edges
         point_direction *= -1  
 
