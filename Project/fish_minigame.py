@@ -84,7 +84,7 @@ while running:
         point_direction *= -1  
 
     # Randomly change direction with x% probability
-    if random.random() < 0.03:
+    if random.random() < 0.02:
         point_direction *= -1
 
     # Check if player bar is on the point
