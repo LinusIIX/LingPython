@@ -31,6 +31,9 @@ timer_start_ticks = pygame.time.get_ticks()
 
 frosch_position = random.randint(1, 5)
 
+frosch_health = 5
+max_health = 5
+RED = (255, 0, 0)
 
 font = pygame.font.SysFont(None, 36)
 WHITE = (255, 255, 255)
@@ -47,6 +50,7 @@ while running:
                     if i + 1 == frosch_position:
                         print("Richtig!")
                         Punkte += 1
+                        frosch_health = frosch_health - 1
                         timer_duration = time_giver
                         random_number = random.randint(1, 5)
                         while random_number == frosch_position:
@@ -76,6 +80,17 @@ while running:
 
     points_text = font.render(f"Punkte: {Punkte}", True, WHITE)
     screen.blit(points_text, (WINDOW_WIDTH - points_text.get_width() - 10, 10))
+
+    # Draw the health bar
+    health_bar_width = 200
+    health_bar_height = 20
+    health_ratio = frosch_health / max_health
+    pygame.draw.rect(screen, RED, (10, 10, health_bar_width, health_bar_height))
+    pygame.draw.rect(screen, GREEN, (10, 10, health_bar_width * health_ratio, health_bar_height))
+
+    if frosch_health <= 0:
+        print("Frosch gefangen!")
+        running = False
 
     pygame.display.update()
     clock.tick(FPS)
