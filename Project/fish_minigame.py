@@ -7,8 +7,8 @@ pygame.init()
 font = pygame.font.SysFont(None, 24)
 
 # Constants
-WINDOW_WIDTH = 200
-WINDOW_HEIGHT = 600
+WINDOW_WIDTH = 400
+WINDOW_HEIGHT = 400
 FPS = 60
 BIG_BAR_WIDTH = 20
 BIG_BAR_HEIGHT = WINDOW_HEIGHT-21
@@ -16,9 +16,9 @@ PLAYER_BAR_WIDTH = 20
 PLAYER_BAR_HEIGHT = 80
 POINT_RADIUS = 10
 
-PLAYER_SPEED = 3.5                  # Speed of the player bar movement per frame
-POINT_TIME = 2.5                      # Seconds needed to score a point
-POINT_SPEED = 2                   # Speed of the point movement per frame
+PLAYER_SPEED = 4                    # Speed of the player bar movement per frame
+POINT_TIME = 2.5                    # Seconds needed to score a point
+POINT_SPEED = 3.5                   # Speed of the point movement per frame
 
 # Colors
 WHITE = (255, 255, 255)
@@ -93,7 +93,7 @@ while running:
         switch_timer = pygame.time.get_ticks()
 
     # Allow switching direction after 2 seconds
-    if not allowed_to_switch and pygame.time.get_ticks() - switch_timer >= 2000:
+    if not allowed_to_switch and pygame.time.get_ticks() - switch_timer >= 1000:
         allowed_to_switch = True
 
     # Randomly change direction with x% probability if allowed to switch
