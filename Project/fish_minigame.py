@@ -39,8 +39,8 @@ pygame.display.set_caption("Mini Game")
 clock = pygame.time.Clock()
 
 # Player bar initial position
-player_x = (WINDOW_WIDTH - PLAYER_BAR_WIDTH) // 2
-player_y = (WINDOW_HEIGHT - PLAYER_BAR_HEIGHT) // 2
+player_x = (WINDOW_WIDTH - PLAYER_BAR_WIDTH) // 2 + 20
+player_y = (WINDOW_HEIGHT - PLAYER_BAR_HEIGHT) // 2 + 20
 
 # Point initial position and direction
 point_y = random.randint(POINT_RADIUS, WINDOW_HEIGHT - POINT_RADIUS)
@@ -67,7 +67,7 @@ while running:
         player_y += PLAYER_SPEED
 
     # Draw big bar
-    big_bar_x = (WINDOW_WIDTH - BIG_BAR_WIDTH) // 2
+    big_bar_x = (WINDOW_WIDTH - BIG_BAR_WIDTH) // 2 + 20
     pygame.draw.rect(screen, COLOR_WATER, (big_bar_x, 0, BIG_BAR_WIDTH, BIG_BAR_HEIGHT))
 
     # Draw player bar
@@ -98,7 +98,17 @@ while running:
     if on_point_time >= POINT_TIME:
         score += 1
         on_point_time = 0
-        print(f"Score: {score}")  
+         
+    # Draw score
+    font = pygame.font.SysFont(None, 24)
+    img = font.render(f'Score: {score}', True, GREY)
+    screen.blit(img, (20, 20))
+
+    # Draw on_point_time
+    font = pygame.font.SysFont(None, 24)
+    img = font.render(f'Time: {on_point_time:.2f}', True, GREY)
+    screen.blit(img, (20, 40))
+
 
     pygame.display.flip()
     clock.tick(FPS)
