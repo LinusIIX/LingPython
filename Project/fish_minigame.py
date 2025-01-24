@@ -16,9 +16,9 @@ PLAYER_BAR_WIDTH = 20
 PLAYER_BAR_HEIGHT = 80
 POINT_RADIUS = 10
 
-PLAYER_SPEED = 4                    # Speed of the player bar movement per frame
+PLAYER_SPEED = 3                   # Speed of the player bar movement per frame
 POINT_TIME = 2.5                    # Seconds needed to score a point
-POINT_SPEED = 3.5                   # Speed of the point movement per frame
+POINT_SPEED = 2.3                   # Speed of the point movement per frame
 
 # Colors
 WHITE = (255, 255, 255)
@@ -98,7 +98,7 @@ while running:
 
     # Randomly change direction with x% probability if allowed to switch
     if allowed_to_switch:
-        if random.random() < 0.02:
+        if random.random() < 0.015:
             point_direction *= -1
             
 
