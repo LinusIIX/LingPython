@@ -18,7 +18,8 @@ the gameData is of the following layout :
 With this all games can be integrated better and make the game easier to play.
 In short when testing your game put it into the games folder in the GameEngineInterface project and execute the root main.py file (details below).
 
-- (!) IMPORTANT as we had some complications we use the terminal to send/receive the data this means an identifier was used to get the data so don't use `<<` and `>>` in print statements as we use them.
+- ⚠️ IMPORTANT as we had some complications we use the terminal to send/receive the data this means an identifier was used to get the data so don't use `<<` and `>>` in print statements as we use them.
+- ⚠️ IMPORTANT we have a assets module at level of your game, so no folder in your project should be ❌ `myGame/assets` ❌
 
 ## Example in python
 
@@ -41,7 +42,7 @@ if doneGame:
 
 ```
 
-If you have questions you can reach us through me, via e-mail `luca.pomm@uni-konstanz.de` or discord `@dezl`
+If you have questions you can reach us through me, via e-mail `luca.pomm@uni-konstanz.de` or discord `@dezl` 🚀
 
 Thanks for collaborating :]
 
