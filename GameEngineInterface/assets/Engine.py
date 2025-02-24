@@ -5,6 +5,7 @@ import json
 import subprocess
 import shutil
 import os
+import sys
 
 class Engine:
     def __init__(self):
@@ -42,7 +43,7 @@ class Engine:
                     localAssetFolder = os.path.join(curGameFolder, "assets")
                     shutil.copytree(assetsFolder, localAssetFolder, dirs_exist_ok=True)
                     process = subprocess.Popen(
-                        ['python3', node.modulePath],
+                        [sys.executable, node.modulePath],
                         stdin=subprocess.PIPE,
                         stdout=subprocess.PIPE,
                         stderr=subprocess.PIPE,
@@ -54,7 +55,10 @@ class Engine:
                         shutil.rmtree(localAssetFolder)
                     lastSIdx = stdout.rfind("<<") + 2
                     lastEIdx = stdout.rfind(">>")
-                    node.moduleData = json.loads(stdout[lastSIdx:lastEIdx])
+                    if (min(lastSIdx, lastEIdx) >= 0):
+                        node.moduleData = json.loads(stdout[lastSIdx:lastEIdx])
+                    else:
+                        print("/(!)\\ game data not send, (or project crash)")
 
 
     def check_collision(self, node1, node2):
