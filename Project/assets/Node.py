@@ -6,7 +6,7 @@ class Node:
         self.handlesEvents = handlesEvents
     
     def process(self, dp):
-        print("add function")
+        print("add function to ", self)
     
     def on_event(self, e, engine):
         pass

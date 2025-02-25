@@ -1,43 +1,9 @@
-from assets import Engine, Node, GameDataLink
+from assets import Engine, Node, GameDataLink, globals
+from assets.Player import Player  # Corrected import
 import pygame
 import os
 from pygame.locals import *
 
-
-class Player(Node):
-
-    def __init__(self, handlesEvents):
-        super().__init__(handlesEvents)
-        self.position = (30.0, 30.0)
-        self.moveInput = [False, False, False, False]
-        self.SPEED = 0.5
-        self.sprite = pygame.image.load(os.path.join(BASE_DIR, "assets", "Frog_pure.png"))
-        self.sprite_rect = self.sprite.get_rect()
-        print(self.sprite.get_rect())
-    
-    def process(self, dp):
-        hori = self.moveInput[2] - self.moveInput[0]
-        vert = self.moveInput[3] - self.moveInput[1]
-        self.position = (self.position[0] + vert * self.SPEED, self.position[1] + hori * self.SPEED)
-        pygame.draw.rect(dp, (50, 50, 200), (self.position[0], self.position[1], self.rect_size[0], self.rect_size[1]))
-        dp.blit(self.sprite, (self.position[0] - self.sprite_rect.centery, self.position[1] - self.sprite_rect.centerx))
-
-    def on_event(self, e, engine):
-        if e.type == pygame.KEYDOWN:
-            i = 0
-            for key in [pygame.K_w, pygame.K_a, pygame.K_s, pygame.K_d]:
-                if e.key == key:
-                    self.moveInput[i] = True
-                i += 1
-        if e.type == pygame.KEYUP:
-            i = 0
-            for key in [pygame.K_w, pygame.K_a, pygame.K_s, pygame.K_d]:
-                if e.key == key:
-                    self.moveInput[i] = False
-                i += 1
-            if e.key == pygame.K_e:
-                engine.interact(self)
-        
 
 class EventStone(Node):
     def __init__(self, module, position = (300.0, 300.0)):
@@ -59,9 +25,9 @@ class EventStone(Node):
         pygame.draw.rect(dp, (50, 50, 50), (self.position[0], self.position[1], self.rect_size[0], self.rect_size[1]))
         dp.blit(self.displayName, self.nameRect)
 
-BASE_DIR = os.path.dirname(__file__)
 engine = Engine()
 player = Player(handlesEvents=True)
+player.rect_size = (globals.game_size*player.sprite_rect.width,globals.game_size*player.sprite_rect.height)
 print(player.rect_size)
 i = 100
 for gameEntry in Engine.get_main_files("games"):
