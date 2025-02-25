@@ -20,7 +20,7 @@ class AnimatedSprite(pygame.sprite.Sprite):
         now = pygame.time.get_ticks()
         if now - self.last_update > self.frame_rate:
             self.last_update = now
-            self.index = animation[0] + ((self.index + 1) % (animation[1] - animation[0]))  # Loop animation
+            self.index = animation[0] + ((self.index + 1) % 4)  # Loop                  animation here lookie
             self.image = self.images[self.index]  # Update current frame
     def reset(self):
         self.index = 0
