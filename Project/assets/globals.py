@@ -1,2 +1,2 @@
 
-game_size = 6
+game_size = 2

@@ -27,7 +27,7 @@ class EventStone(Node):
 
 engine = Engine()
 player = Player(handlesEvents=True)
-player.rect_size = (globals.game_size*player.sprite_rect.width,globals.game_size*player.sprite_rect.height)
+#player.rect_size = (globals.game_size*player.sprite_rect.width,globals.game_size*player.sprite_rect.height)
 print(player.rect_size)
 i = 100
 for gameEntry in Engine.get_main_files("games"):
