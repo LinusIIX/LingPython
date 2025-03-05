@@ -29,7 +29,7 @@ root = Node(handlesEvents=False, nodeRefs={}, callProcess=False)
 player = Player(handlesEvents=True, nodeRefs={
     "root" : root
 })
-player.rect_size = (globals.game_size*player.sprite_rect.width,globals.game_size*player.sprite_rect.height)
+player.rect_size = (player.sprite_rect.width,player.sprite_rect.height)
 print(player.rect_size)
 i = 100
 for gameEntry in Engine.get_main_files("games"):

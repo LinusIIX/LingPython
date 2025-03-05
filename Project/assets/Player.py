@@ -48,10 +48,8 @@ class Player(Node):
         frames = load_sprite_sheet(sprite_sheet, 16, 16, 16)  #16px16p sprites, 16-frame animation
         self.sprite = AnimatedSprite(frames, 100, 100)
         self.sprite.animation_region = {"down":[0,3],"up":[4,7],"right":[8,11],"left":[12,15]}
-        self.offsetPos = (400-32, 400-32)
-        #self.sprite = pygame.image.load(os.path.join(BASE_DIR, "Frog_pure.png"))
+        self.offsetPos = (400 -48, 400 -48) # Ist center - (0.5 * sprite_size * game_size)
         self.sprite_rect = self.sprite.image.get_rect()
-        #self.sprite.image = pygame.transform.scale(self.sprite, (globals.game_size * self.sprite_rect.width, globals.game_size * self.sprite_rect.height))
         #print(self.sprite.get_rect())
 
     def process(self, dp):
@@ -70,8 +68,8 @@ class Player(Node):
             self.sprite.update(self.sprite.animation_region["right"])
         else:
             self.sprite.reset()
-
-        dp.blit(self.sprite.image, (self.offsetPos[0] - self.sprite_rect.centerx, self.offsetPos[1] - self.sprite_rect.centery))
+        dp.blit(self.sprite.image, (self.offsetPos[0], self.offsetPos[1]))
+        #dp.blit(self.sprite.image, (self.offsetPos[0] - self.sprite_rect.centerx, self.offsetPos[1] - self.sprite_rect.centery))
 
     def on_event(self, e, engine):
         if e.type == pygame.KEYDOWN:
