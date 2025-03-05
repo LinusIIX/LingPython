@@ -45,7 +45,7 @@ class Player(Node):
         self.moveInput = [False, False, False, False]
         self.SPEED = 1.5
         sprite_sheet = pygame.image.load(os.path.join(BASE_DIR, "animated_devil.png"))
-        frames = load_sprite_sheet(sprite_sheet, 16, 16, 16)  # Example 4-frame animation
+        frames = load_sprite_sheet(sprite_sheet, 16, 16, 16)  #16px16p sprites, 16-frame animation
         self.sprite = AnimatedSprite(frames, 100, 100)
         self.sprite.animation_region = {"down":[0,3],"up":[4,7],"right":[8,11],"left":[12,15]}
         self.offsetPos = (400-32, 400-32)
@@ -60,10 +60,14 @@ class Player(Node):
         self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
         #print((self.position[0] + vert * self.SPEED, self.position[1] + hori * self.SPEED))
         self.nodeRefs["root"].setPos(self.playPos[0] + vert, self.playPos[1] + hori)
-
-        if (hori != 0 or vert != 0):
+        if (hori > 0):
+            self.sprite.update(self.sprite.animation_region["up"])
+        elif(hori < 0):
+            self.sprite.update(self.sprite.animation_region["down"])
+        elif(vert > 0):
+            self.sprite.update(self.sprite.animation_region["left"])
+        elif(vert < 0):
             self.sprite.update(self.sprite.animation_region["right"])
-            print(self.sprite.animation_region["right"][0])
         else:
             self.sprite.reset()
 
