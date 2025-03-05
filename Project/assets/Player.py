@@ -37,32 +37,37 @@ def load_sprite_sheet(sheet, frame_width, frame_height, num_frames):
 
 
 class Player(Node):
-    def __init__(self, handlesEvents):
-        super().__init__(handlesEvents)
+    def __init__(self, handlesEvents, nodeRefs):
+        super().__init__(handlesEvents, nodeRefs)
         BASE_DIR = os.path.dirname(__file__)
-        self.position = (30.0, 30.0)
+        self.position = (0, 0)
+        self.playPos = (0, 0)
         self.moveInput = [False, False, False, False]
-        self.SPEED = 0.5
+        self.SPEED = 1.5
         sprite_sheet = pygame.image.load(os.path.join(BASE_DIR, "animated_devil.png"))
         frames = load_sprite_sheet(sprite_sheet, 16, 16, 16)  # Example 4-frame animation
         self.sprite = AnimatedSprite(frames, 100, 100)
         self.sprite.animation_region = {"down":[0,3],"up":[4,7],"right":[8,11],"left":[12,15]}
+        self.offsetPos = (400-32, 400-32)
         #self.sprite = pygame.image.load(os.path.join(BASE_DIR, "Frog_pure.png"))
         self.sprite_rect = self.sprite.image.get_rect()
         #self.sprite.image = pygame.transform.scale(self.sprite, (globals.game_size * self.sprite_rect.width, globals.game_size * self.sprite_rect.height))
         #print(self.sprite.get_rect())
 
     def process(self, dp):
-        hori = self.moveInput[2] - self.moveInput[0]
-        vert = self.moveInput[3] - self.moveInput[1]
-        self.position = (self.position[0] + vert * self.SPEED, self.position[1] + hori * self.SPEED)
+        hori = self.moveInput[0] - self.moveInput[2]
+        vert = self.moveInput[1] - self.moveInput[3]
+        self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
+        #print((self.position[0] + vert * self.SPEED, self.position[1] + hori * self.SPEED))
+        self.nodeRefs["root"].setPos(self.playPos[0] + vert, self.playPos[1] + hori)
+
         if (hori != 0 or vert != 0):
             self.sprite.update(self.sprite.animation_region["right"])
             print(self.sprite.animation_region["right"][0])
         else:
             self.sprite.reset()
 
-        dp.blit(self.sprite.image, (self.position[0] - self.sprite_rect.centerx, self.position[1] - self.sprite_rect.centery))
+        dp.blit(self.sprite.image, (self.offsetPos[0] - self.sprite_rect.centerx, self.offsetPos[1] - self.sprite_rect.centery))
 
     def on_event(self, e, engine):
         if e.type == pygame.KEYDOWN:
