@@ -1,6 +1,6 @@
 import pygame
 import os
-from assets import Node, globals  # Ensure this import is correct
+from assets import Node, globals, Engine  # Ensure this import is correct
 
 
 class AnimatedSprite(pygame.sprite.Sprite):
@@ -57,6 +57,16 @@ class Player(Node):
         vert = self.moveInput[1] - self.moveInput[3]
         self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
         #print((self.position[0] + vert * self.SPEED, self.position[1] + hori * self.SPEED))
+        temp_node = Node(callProcess=False)
+        temp_node.position = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
+        temp_node.rect_size = self.rect_size
+        walkable = True
+        for collider in (self.nodeRefs["bg"].children):
+            print(collider.getX,collider.getY)
+            if self.check_collision(collider, self, vert * self.SPEED , hori * self.SPEED):
+                walkable = False
+        if(walkable):
+            self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
         self.nodeRefs["root"].setPos(self.playPos[0] + vert, self.playPos[1] + hori)
         if (hori > 0):
             self.sprite.update(self.sprite.animation_region["up"])
@@ -86,3 +96,14 @@ class Player(Node):
                 i += 1
             if e.key == pygame.K_e:
                 engine.interact(self)
+
+    def check_collision(self, node1, node2,x1, y1):
+        """Checks if two nodes overlap based on position and rect_size."""
+        #x1, y1 = node1.getX(), node1.getY()
+        w1, h1 = node1.rect_size
+
+        x2, y2 = node2.getX(), node2.getY()
+        w2, h2 = node2.rect_size
+
+        return (x1 < x2 + w2 and x1 + w1 > x2 and
+                y1 < y2 + h2 and y1 + h1 > y2)

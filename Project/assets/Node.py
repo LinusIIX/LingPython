@@ -23,9 +23,14 @@ class Node:
     
     def setPos(self, x, y):
         self.position = (x, y)
+        self.update_offset()
+
+    def update_offset(self):
         for node in self.children:
             node.offsetPos = (self.getX(), self.getY())
-    
+            node.update_offset()
+
+
     def getX(self):
         return self.position[0] + self.offsetPos[0]
     

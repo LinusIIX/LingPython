@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so
@@ -172,6 +173,3 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-Project/assets/__pycache__/globals.cpython-313.pyc
-Project/assets/__pycache__/Node.cpython-313.pyc
-Project/assets/__pycache__/Player.cpython-313.pyc
