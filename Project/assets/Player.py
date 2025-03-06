@@ -55,19 +55,22 @@ class Player(Node):
     def process(self, dp):
         hori = self.moveInput[0] - self.moveInput[2]
         vert = self.moveInput[1] - self.moveInput[3]
-        self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
+        #self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
         #print((self.position[0] + vert * self.SPEED, self.position[1] + hori * self.SPEED))
         temp_node = Node(callProcess=False)
         temp_node.position = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
         temp_node.rect_size = self.rect_size
         walkable = True
+        print(self.position)
         for collider in (self.nodeRefs["bg"].children):
-            print(collider.getX,collider.getY)
-            if self.check_collision(collider, self, vert * self.SPEED , hori * self.SPEED):
+            #print(collider.position)
+            pygame.draw.rect(dp, "blue", ((collider.getX(), collider.getY()), collider.rect_size), 15)
+            pygame.draw.rect(dp, "green", ((collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED), collider.rect_size), 15)
+            if self.check_collision(collider, self,collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED):
                 walkable = False
         if(walkable):
             self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
-        self.nodeRefs["root"].setPos(self.playPos[0] + vert, self.playPos[1] + hori)
+        self.nodeRefs["root"].setPos(self.playPos[0], self.playPos[1])
         if (hori > 0):
             self.sprite.update(self.sprite.animation_region["up"])
         elif(hori < 0):
