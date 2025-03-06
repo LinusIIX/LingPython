@@ -44,7 +44,7 @@ class Player(Node):
         self.playPos = (0, 0)
         self.moveInput = [False, False, False, False]
         self.SPEED = 1.5
-        sprite_sheet = pygame.image.load(os.path.join(BASE_DIR, "animated_devil.png"))
+        sprite_sheet = pygame.image.load(os.path.join(BASE_DIR, "ling_girl.png"))
         frames = load_sprite_sheet(sprite_sheet, 16, 16, 16)  #16px16p sprites, 16-frame animation
         self.sprite = AnimatedSprite(frames, 100, 100)
         self.sprite.animation_region = {"down":[0,3],"up":[4,7],"right":[8,11],"left":[12,15]}
