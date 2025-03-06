@@ -37,8 +37,38 @@ class Engine:
                 nodeStack = node.children + nodeStack #Add children after their parent node
             pygame.display.flip()
 
-    #def run_game(self, module):
-    #    module.main({})
+    def run_game(self, module):
+        module.main({})
+
+
+    def run_pygame(self, node):
+        mainFolder = os.getcwd()
+        assetsFolder = os.path.join(mainFolder, "assets")
+        curGameFolder = os.path.split(node.modulePath)[0]
+        localAssetFolder = os.path.join(curGameFolder, "assets")
+        shutil.copytree(assetsFolder, localAssetFolder, dirs_exist_ok=True)
+        os.chdir(curGameFolder)
+        process = subprocess.Popen(
+            [sys.executable, "main.py"],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True  # Ensures input/output are handled as text (not bytes)
+        )
+        stdout, stderr = process.communicate(input=json.dumps(node.moduleData))
+        os.chdir(mainFolder)
+        if globals.debug:
+            print(stdout, stderr)
+        #Does not work on windows TODO no need as still works
+        #if os.path.exists(localAssetFolder):
+        #    shutil.rmtree(localAssetFolder)
+        lastSIdx = stdout.rfind("<<") + 2
+        lastEIdx = stdout.rfind(">>")
+        if (min(lastSIdx, lastEIdx) >= 0):
+            node.moduleData = json.loads(stdout[lastSIdx:lastEIdx])
+        else:
+            print("/(!)\\ game data not send, (or project crash)")
+
 
     def interact(self, caller):
         nodeStack = self.nodes.copy()
@@ -46,32 +76,12 @@ class Engine:
             node = nodeStack.pop(0)
             if node != caller:
                 if self.check_collision(node, caller):
-                    print(node.moduleName, ":", node.modulePath)
-                    assetsFolder = os.path.join(os.getcwd(), "assets")
-                    curGameFolder = os.path.split(node.modulePath)[0]
-                    localAssetFolder = os.path.join(curGameFolder, "assets")
-                    shutil.copytree(assetsFolder, localAssetFolder, dirs_exist_ok=True)
-                    #print("::::", curGameFolder)
-                    os.chdir(curGameFolder)
-                    #print(curGameFolder, ":::", "main.py")
-                    process = subprocess.Popen(
-                        [sys.executable, "main.py"],
-                        stdin=subprocess.PIPE,
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.PIPE,
-                        text=True  # Ensures input/output are handled as text (not bytes)
-                    )
-                    stdout, stderr = process.communicate(input=json.dumps(node.moduleData))
-                    print(stdout, stderr)
-                    #Does not work on windows TODO for version 3
-                    #if os.path.exists(localAssetFolder):
-                    #    shutil.rmtree(localAssetFolder)
-                    lastSIdx = stdout.rfind("<<") + 2
-                    lastEIdx = stdout.rfind(">>")
-                    if (min(lastSIdx, lastEIdx) >= 0):
-                        node.moduleData = json.loads(stdout[lastSIdx:lastEIdx])
-                    else:
-                        print("/(!)\\ game data not send, (or project crash)")
+                    if globals.debug:
+                        print(node.moduleName, ":", node.modulePath)
+                        if node.consoleRun == True:
+                            print("Do console")
+                        else:
+                            self.run_pygame(node)
             nodeStack = node.children + nodeStack #Add children after their parent node
 
 
@@ -94,6 +104,13 @@ class Engine:
             if 'main.py' in files:  # Check if 'main.py' exists in the current folder
                 main_files.append({
                     "moduleFolderName" : os.path.basename(root),
-                    "modulePath" : os.path.join(root, 'main.py')
+                    "modulePath" : os.path.join(root, 'main.py'),
+                    "consoleRun" : False
+                })
+            if 'main_console.py' in files:
+                main_files.append({
+                    "moduleFolderName" : os.path.basename(root),
+                    "modulePath" : os.path.join(root, 'main.py'),
+                    "consoleRun" : True
                 })
         return main_files
