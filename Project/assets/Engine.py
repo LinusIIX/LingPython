@@ -1,12 +1,13 @@
 import pygame
 from pygame.locals import *
-import threading
 import json
 import subprocess
 import shutil
 import os
 import sys
+import multiprocessing
 from assets import Node, globals
+
 
 class Engine:
     def __init__(self):
@@ -19,29 +20,39 @@ class Engine:
         self.nodes.append(node)
 
     def run(self):
-        while self.running:
-            self.dp.fill((255, 255, 255))
-            for e in pygame.event.get():
-                if e.type == pygame.QUIT:
-                    self.running = False
-                for node in self.nodes:
-                    if node.handlesEvents:
-                        node.on_event(e, self)
-            nodeStack = self.nodes.copy()
-            while len(nodeStack) > 0:
-                node = nodeStack.pop(0)
-                if globals.debug: #debug
-                    pygame.draw.rect(self.dp, (200, 10, 10), ((node.getX(), node.getY()), node.rect_size), 15)
-                if node.callProcess:
-                    node.process(self.dp)
-                nodeStack = node.children + nodeStack #Add children after their parent node
-            pygame.display.flip()
+        try:
+            while self.running:
+                self.dp.fill((255, 255, 255))
+                for e in pygame.event.get():
+                    if e.type == pygame.QUIT:
+                        self.running = False
+                    for node in self.nodes:
+                        if node.handlesEvents:
+                            node.on_event(e, self)
+                nodeStack = self.nodes.copy()
+                while len(nodeStack) > 0:
+                    node = nodeStack.pop(0)
+                    if globals.debug: #debug
+                        pygame.draw.rect(self.dp, (200, 10, 10), ((node.getX(), node.getY()), node.rect_size), 15)
+                    if node.callProcess:
+                        node.process(self.dp)
+                    nodeStack = node.children + nodeStack #Add children after their parent node
+                pygame.display.flip()
+        except KeyboardInterrupt:
+            print("  goodbye  ")
+            exit()
+    
+    def run_console(self, node):
+        global_vars = {}
+        print("||| Running game in console | exit with Ctrl C |||")
+        try:
+            exec(open(node.modulePath).read(), global_vars)
+        except KeyboardInterrupt:
+            print("\n\nexiting console game")
 
-    def run_game(self, module):
-        module.main({})
 
 
-    def run_pygame(self, node):
+    def run_game(self, node):
         mainFolder = os.getcwd()
         assetsFolder = os.path.join(mainFolder, "assets")
         curGameFolder = os.path.split(node.modulePath)[0]
@@ -55,6 +66,7 @@ class Engine:
             stderr=subprocess.PIPE,
             text=True  # Ensures input/output are handled as text (not bytes)
         )
+
         stdout, stderr = process.communicate(input=json.dumps(node.moduleData))
         os.chdir(mainFolder)
         if globals.debug:
@@ -75,20 +87,24 @@ class Engine:
         while len(nodeStack) > 0:
             node = nodeStack.pop(0)
             if node != caller:
-                if self.check_collision(node, caller):
+                if self.check_collision(node.getPos(), node.rect_size, caller):
                     if globals.debug:
                         print(node.moduleName, ":", node.modulePath)
-                        if node.consoleRun == True:
-                            print("Do console")
-                        else:
-                            self.run_pygame(node)
+                    if node.consoleRun == True:
+                        self.run_console(node)
+                        #self.codeProcess = multiprocessing.Process(target=self.run_console, args=(node, ))
+                        #self.codeProcess.start()
+                        #self.codeProcess.join()
+                    else:
+                        self.run_game(node)
             nodeStack = node.children + nodeStack #Add children after their parent node
 
 
-    def check_collision(self, node1, node2):
+    @staticmethod
+    def check_collision(pos, rect_size, node2):
         """Checks if two nodes overlap based on position and rect_size."""
-        x1, y1 = node1.getX(), node1.getY()
-        w1, h1 = node1.rect_size
+        x1, y1 = pos
+        w1, h1 = rect_size
 
         x2, y2 = node2.getX(), node2.getY()
         w2, h2 = node2.rect_size
@@ -110,7 +126,7 @@ class Engine:
             if 'main_console.py' in files:
                 main_files.append({
                     "moduleFolderName" : os.path.basename(root),
-                    "modulePath" : os.path.join(root, 'main.py'),
+                    "modulePath" : os.path.join(root, 'main_console.py'),
                     "consoleRun" : True
                 })
         return main_files

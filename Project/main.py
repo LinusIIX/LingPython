@@ -11,6 +11,7 @@ class EventStone(Node):
         self.position = position
         self.rect_size = (32, 32)
         self.moduleName = module["moduleFolderName"]
+        self.consoleRun = module["consoleRun"]
         self.modulePath = module["modulePath"]
         self.moduleData = GameDataLink.init_data()
 
@@ -59,7 +60,8 @@ class BackGround(Node):
                     obstacle.rect_size = (16*globals.game_size,16*globals.game_size)
                     self.add_node(obstacle)
                 value = self.obstacle_map[i][j]
-                print(f"Row {i}, Col {j}: {value}")
+                if globals.debug:
+                    print(f"Row {i}, Col {j}: {value}")
 
     
     def process(self, dp):

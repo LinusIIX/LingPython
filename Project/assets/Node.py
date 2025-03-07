@@ -27,9 +27,11 @@ class Node:
 
     def update_offset(self):
         for node in self.children:
-            node.offsetPos = (self.getX(), self.getY())
+            node.offsetPos = self.getPos()
             node.update_offset()
 
+    def getPos(self):
+        return (self.getX(), self.getY())
 
     def getX(self):
         return self.position[0] + self.offsetPos[0]

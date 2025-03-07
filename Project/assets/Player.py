@@ -43,34 +43,28 @@ class Player(Node):
         self.position = (0, 0)
         self.playPos = (0, 0)
         self.moveInput = [False, False, False, False]
-        self.SPEED = 1.5
+        self.SPEED = 2.5
         sprite_sheet = pygame.image.load(os.path.join(BASE_DIR, "ling_girl.png"))
         frames = load_sprite_sheet(sprite_sheet, 16, 16, 16)  #16px16p sprites, 16-frame animation
         self.sprite = AnimatedSprite(frames, 100, 100)
         self.sprite.animation_region = {"down":[0,3],"up":[4,7],"right":[8,11],"left":[12,15]}
         self.offsetPos = (400 -48, 400 -48) # Ist center - (0.5 * sprite_size * game_size)
         self.sprite_rect = self.sprite.image.get_rect()
-        #print(self.sprite.get_rect())
 
     def process(self, dp):
         hori = self.moveInput[0] - self.moveInput[2]
         vert = self.moveInput[1] - self.moveInput[3]
-        #self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
-        #print((self.position[0] + vert * self.SPEED, self.position[1] + hori * self.SPEED))
-        temp_node = Node(callProcess=False)
-        temp_node.position = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
-        temp_node.rect_size = self.rect_size
         walkable = True
-        print(self.position)
         for collider in (self.nodeRefs["bg"].children):
-            #print(collider.position)
-            pygame.draw.rect(dp, "blue", ((collider.getX(), collider.getY()), collider.rect_size), 15)
-            pygame.draw.rect(dp, "green", ((collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED), collider.rect_size), 15)
-            if self.check_collision(collider, self,collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED):
+            if globals.debug:
+                pygame.draw.rect(dp, "blue", ((collider.getX(), collider.getY()), collider.rect_size), 15)
+                pygame.draw.rect(dp, "green", ((collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED), collider.rect_size), 15)
+            if Engine.check_collision((collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED), collider.rect_size, self):
                 walkable = False
         if(walkable):
             self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)
-        self.nodeRefs["root"].setPos(self.playPos[0], self.playPos[1])
+            self.nodeRefs["root"].setPos(self.playPos[0], self.playPos[1])
+
         if (hori > 0):
             self.sprite.update(self.sprite.animation_region["up"])
         elif(hori < 0):
@@ -82,7 +76,6 @@ class Player(Node):
         else:
             self.sprite.reset()
         dp.blit(self.sprite.image, (self.offsetPos[0], self.offsetPos[1]))
-        #dp.blit(self.sprite.image, (self.offsetPos[0] - self.sprite_rect.centerx, self.offsetPos[1] - self.sprite_rect.centery))
 
     def on_event(self, e, engine):
         if e.type == pygame.KEYDOWN:
@@ -99,14 +92,3 @@ class Player(Node):
                 i += 1
             if e.key == pygame.K_e:
                 engine.interact(self)
-
-    def check_collision(self, node1, node2,x1, y1):
-        """Checks if two nodes overlap based on position and rect_size."""
-        #x1, y1 = node1.getX(), node1.getY()
-        w1, h1 = node1.rect_size
-
-        x2, y2 = node2.getX(), node2.getY()
-        w2, h2 = node2.rect_size
-
-        return (x1 < x2 + w2 and x1 + w1 > x2 and
-                y1 < y2 + h2 and y1 + h1 > y2)

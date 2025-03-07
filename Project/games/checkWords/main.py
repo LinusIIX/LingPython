@@ -18,6 +18,7 @@ while True:
       exit()
     if e.type == pygame.KEYUP:
       if e.unicode == word[0]:
+        print(e.unicode)
         word = word[1:]
         if len(word) == 0:
           gameData["earnedPoints"] += 1
