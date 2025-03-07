@@ -5,7 +5,7 @@ engine = Engine()
 root = Node(handlesEvents=False, nodeRefs={}, callProcess=False)
 engine.add_node(root)
 
-backGround = BackGround() #position ist startposition
+backGround = BackGround((650, 600)) #position ist startposition
 root.add_node(backGround)
 
 i = 100
