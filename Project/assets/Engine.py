@@ -10,11 +10,11 @@ from assets import Node, globals
 
 
 class Engine:
-    def __init__(self):
+    def __init__(self, width=800, height=800):
         self.nodes = []
         self.running = True
         pygame.init()
-        self.dp = pygame.display.set_mode((800, 800), pygame.HWSURFACE | pygame.DOUBLEBUF)
+        self.dp = pygame.display.set_mode((width, height), pygame.HWSURFACE | pygame.DOUBLEBUF)
     
     def add_node(self, node):
         self.nodes.append(node)
@@ -98,6 +98,17 @@ class Engine:
                     else:
                         self.run_game(node)
             nodeStack = node.children + nodeStack #Add children after their parent node
+
+
+    @staticmethod
+    def load_sprite_sheet(sheet, frame_width, frame_height, num_frames):
+        frames = []
+        for i in range(num_frames):
+            frame = sheet.subsurface(pygame.Rect(i * frame_width, 0, frame_width, frame_height))
+            frame_rect = frame.get_rect()
+            frame = pygame.transform.scale(frame, (globals.game_size * frame_rect.width, globals.game_size * frame_rect.height))
+            frames.append(frame)
+        return frames
 
 
     @staticmethod
