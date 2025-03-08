@@ -11,6 +11,7 @@ class Player(Node):
         self.playPos = (0, 0)
         self.moveInput = [False, False, False, False]
         self.SPEED = 2.5
+        self.holding = "nothing"
         sprite_sheet = pygame.image.load(os.path.join(BASE_DIR, "assets", "ling_girl.png"))
         frames = Engine.load_sprite_sheet(sprite_sheet, 16, 16, 16)  #16px16p sprites, 16-frame animation
         self.sprite = AnimatedSprite.AnimatedSprite(frames, 100, 100) ##Anim import for pygame extended class wired
@@ -26,7 +27,7 @@ class Player(Node):
             if globals.debug:
                 pygame.draw.rect(dp, "blue", ((collider.getX(), collider.getY()), collider.rect_size), 15)
                 pygame.draw.rect(dp, "green", ((collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED), collider.rect_size), 15)
-            if Engine.check_collision((collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED), collider.rect_size, self):
+            if Engine.check_collision((collider.getX() + vert * self.SPEED ,collider.getY() + hori * self.SPEED), collider.rect_size, self) and (not collider.interactable):
                 walkable = False
         if(walkable):
             self.playPos = (self.playPos[0] + vert * self.SPEED, self.playPos[1] + hori * self.SPEED)

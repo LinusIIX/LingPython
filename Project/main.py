@@ -7,7 +7,6 @@ engine.add_node(root)
 
 backGround = BackGround((650, 600)) #position ist startposition
 root.add_node(backGround)
-
 i = 100
 eventStoneDescriptions = ["hello", "wow sagsfdajgkk k sdg sfkgksfd kgsfdk gpos kdg", "cool"]
 eventStoneContainer = Node(handlesEvents=False, nodeRefs={}, callProcess=False)
@@ -22,6 +21,9 @@ player = Player(handlesEvents=True, nodeRefs={
     "root" : root,
     "bg"   : backGround
 })
+backGround.nodeRefs = {
+    "player" : player
+}
 player.rect_size = (player.sprite_rect.width,player.sprite_rect.height)
 engine.add_node(player)
 

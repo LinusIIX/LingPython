@@ -34,6 +34,9 @@ class Engine:
                     node = nodeStack.pop(0)
                     if globals.debug: #debug
                         pygame.draw.rect(self.dp, (200, 10, 10), ((node.getX(), node.getY()), node.rect_size), 15)
+                        if node.interactable:
+                            pass
+                            #print(node.getPos())
                     if node.callProcess:
                         node.process(self.dp)
                     nodeStack = node.children + nodeStack #Add children after their parent node
@@ -89,14 +92,19 @@ class Engine:
             if node != caller:
                 if self.check_collision(node.getPos(), node.rect_size, caller):
                     if globals.debug:
-                        print(node.moduleName, ":", node.modulePath)
-                    if node.consoleRun == True:
-                        self.run_console(node)
-                        #self.codeProcess = multiprocessing.Process(target=self.run_console, args=(node, ))
-                        #self.codeProcess.start()
-                        #self.codeProcess.join()
-                    else:
-                        self.run_game(node)
+                        #print(node.moduleName, ":", node.modulePath)
+                        pass
+                    if node.interactable:
+                        print("interact")
+                        node.interact(caller)
+                    if node.runnable:
+                        if node.consoleRun == True:
+                            self.run_console(node)
+                            #self.codeProcess = multiprocessing.Process(target=self.run_console, args=(node, ))
+                            #self.codeProcess.start()
+                            #self.codeProcess.join()
+                        else:
+                            self.run_game(node)
             nodeStack = node.children + nodeStack #Add children after their parent node
 
 

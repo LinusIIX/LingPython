@@ -6,8 +6,10 @@ class Node:
         self.rect_size = (0, 0)
         self.handlesEvents = handlesEvents
         self.callProcess = callProcess
+        self.runnable = False
         self.children = []
         self.nodeRefs = nodeRefs
+        self.interactable = False
     
     def process(self, dp):
         print("add function to ", self)

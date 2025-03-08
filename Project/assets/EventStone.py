@@ -9,11 +9,12 @@ class EventStone(Node):
         self.consoleRun = module["consoleRun"]
         self.modulePath = module["modulePath"]
         self.moduleData = GameDataLink.init_data()
+        self.runnable = True
         self.description = description
         self.position = position
 
         sprite_sheet = pygame.image.load(os.path.join(os.getcwd(), "assets", "event_stone.png"))
-        frames = Engine.load_sprite_sheet(sprite_sheet, 16, 16, 2)  #16px16p sprites, 16-frame animation
+        frames = Engine.load_sprite_sheet(sprite_sheet, 16, 16, 2)  #16px16p sprites, 2-frame animation
         self.sprite = AnimatedSprite.AnimatedSprite(frames, 100, 100, frame_rate=500) ##Anim import for pygame extended class wired
         self.sprite.animation_region = {"base":[0,1]}
         self.sprite_rect = self.sprite.image.get_rect()
