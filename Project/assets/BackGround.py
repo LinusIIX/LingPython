@@ -50,16 +50,36 @@ class BackGround(Node):
         self.add_node(interactable_container)
 
         altar_1 = Interactable(description="altar_1", nodeRefs=self.nodeRefs, pickup=False)
-        altar_1.position = ( -self.rect.top + (self.rect.width/17) * 5,-self.rect.left + (self.rect.height/12) * 3)
+        altar_1.position = ( -self.rect.top + (self.rect.width/17) * 3.3,-self.rect.left + (self.rect.height/12) * 2.2)
         altar_1.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
         self.add_node(altar_1)
         print(altar_1.position)
 
         altar_2 = Interactable(description = "altar_2", nodeRefs=self.nodeRefs, pickup=False)
-        frog = Interactable(description = "frog", nodeRefs=self.nodeRefs, pickup=True)
+        altar_2.position = ( -self.rect.top + (self.rect.width/17) * 6.9,-self.rect.left + (self.rect.height/12) * 2.2)
+        altar_2.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
+        self.add_node(altar_2)
+
+        frog = Interactable(description = "frog", nodeRefs=self.nodeRefs, pickup=True,requires="net")
+
+        frog.position = ( -self.rect.top + (self.rect.width/17) * 8,-self.rect.left + (self.rect.height/12) * 8)
+        frog.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 2.5)
+        self.add_node(frog)
+
         fish = Interactable(description = "fish", nodeRefs=self.nodeRefs, pickup=True)
+        fish.position = ( -self.rect.top + (self.rect.width/17) * 12,-self.rect.left + (self.rect.height/12) * 4.2)
+        fish.rect_size = ((self.rect.width/17) * 3,(self.rect.width/17) * 1.5)
+        self.add_node(fish)
+
         net = Interactable(description = "net", nodeRefs=self.nodeRefs, pickup=True)
-        fireplace = Interactable(description = "fireplace", nodeRefs=self.nodeRefs, pickup=True)
+        net.position = ( -self.rect.top + (self.rect.width/17) * 2,-self.rect.left + (self.rect.height/12) * 9.5)
+        net.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
+        self.add_node(net)
+
+        fireplace = Interactable(description = "fireplace", nodeRefs=self.nodeRefs, pickup=False)
+        fireplace.position = ( -self.rect.top + (self.rect.width/17) * 3.3,-self.rect.left + (self.rect.height/12) * 5.7)
+        fireplace.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
+        self.add_node(fireplace)
         #interactable_container.add_node(altar_1)
         #interactable_container.add_node(altar_2)
         #interactable_container.add_node(frog)

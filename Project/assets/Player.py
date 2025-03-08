@@ -20,6 +20,9 @@ class Player(Node):
         self.sprite_rect = self.sprite.image.get_rect()
 
     def process(self, dp):
+        if globals.debug:
+            pass
+            #print(self.holding)
         hori = self.moveInput[0] - self.moveInput[2]
         vert = self.moveInput[1] - self.moveInput[3]
         walkable = True
