@@ -17,6 +17,7 @@ class BackGround(Node):
         self.sprite = pygame.transform.scale(self.sprite, (globals.game_size * self.sprite_size.width, globals.game_size * self.sprite_size.height))
         self.rect = self.sprite.get_rect()
         self.rect = self.rect.move((self.rect.height)/2,(self.rect.width)/2) #Nicht anfassen, funktioniert ((dimension of image)/2)
+        self.tileWidth = (self.rect.width/17)
 
         self.obstacle_map = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
@@ -37,8 +38,8 @@ class BackGround(Node):
                 if self.obstacle_map[i][j] == 1:
                     obstacle = Node(callProcess=False)
                     obstacle.offsetPos = (0,0)
-                    obstacle.position = ( -self.rect.top + (self.rect.width/17) * j,-self.rect.left + (self.rect.height/12) * i)
-                    obstacle.rect_size = (self.rect.width/17,self.rect.height/12)
+                    obstacle.position = ( -self.rect.top + self.tileWidth * j,-self.rect.left + self.tileWidth * i)
+                    obstacle.rect_size = (self.tileWidth,self.tileWidth)
                     print(obstacle.rect_size)
                     self.add_node(obstacle)
                 value = self.obstacle_map[i][j]
@@ -50,35 +51,35 @@ class BackGround(Node):
         self.add_node(interactable_container)
 
         altar_1 = Interactable(description="altar_1", nodeRefs=self.nodeRefs, pickup=False)
-        altar_1.position = ( -self.rect.top + (self.rect.width/17) * 3.3,-self.rect.left + (self.rect.height/12) * 2.2)
-        altar_1.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
+        altar_1.position = ( -self.rect.top + self.tileWidth * 3.3,-self.rect.left + self.tileWidth * 2.2)
+        altar_1.rect_size = (self.tileWidth * 1.5,self.tileWidth * 1.5)
         self.add_node(altar_1)
         print(altar_1.position)
 
         altar_2 = Interactable(description = "altar_2", nodeRefs=self.nodeRefs, pickup=False)
-        altar_2.position = ( -self.rect.top + (self.rect.width/17) * 6.9,-self.rect.left + (self.rect.height/12) * 2.2)
-        altar_2.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
+        altar_2.position = ( -self.rect.top + self.tileWidth * 6.9,-self.rect.left + self.tileWidth * 2.2)
+        altar_2.rect_size = (self.tileWidth * 1.5,self.tileWidth * 1.5)
         self.add_node(altar_2)
 
         frog = Interactable(description = "frog", nodeRefs=self.nodeRefs, pickup=True,requires="net")
 
-        frog.position = ( -self.rect.top + (self.rect.width/17) * 8,-self.rect.left + (self.rect.height/12) * 8)
-        frog.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 2.5)
+        frog.position = ( -self.rect.top + self.tileWidth * 8,-self.rect.left + self.tileWidth * 8)
+        frog.rect_size = (self.tileWidth * 1.5,self.tileWidth * 2.5)
         self.add_node(frog)
 
         fish = Interactable(description = "fish", nodeRefs=self.nodeRefs, pickup=True)
-        fish.position = ( -self.rect.top + (self.rect.width/17) * 12,-self.rect.left + (self.rect.height/12) * 4.2)
-        fish.rect_size = ((self.rect.width/17) * 3,(self.rect.width/17) * 1.5)
+        fish.position = ( -self.rect.top + self.tileWidth * 12,-self.rect.left + self.tileWidth * 4.2)
+        fish.rect_size = (self.tileWidth * 3,self.tileWidth * 1.5)
         self.add_node(fish)
 
         net = Interactable(description = "net", nodeRefs=self.nodeRefs, pickup=True)
-        net.position = ( -self.rect.top + (self.rect.width/17) * 2,-self.rect.left + (self.rect.height/12) * 9.5)
-        net.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
+        net.position = ( -self.rect.top + self.tileWidth * 2,-self.rect.left + self.tileWidth * 9.5)
+        net.rect_size = (self.tileWidth * 1.5,self.tileWidth * 1.5)
         self.add_node(net)
 
         fireplace = Interactable(description = "fireplace", nodeRefs=self.nodeRefs, pickup=False)
-        fireplace.position = ( -self.rect.top + (self.rect.width/17) * 3.3,-self.rect.left + (self.rect.height/12) * 5.7)
-        fireplace.rect_size = ((self.rect.width/17) * 1.5,(self.rect.width/17) * 1.5)
+        fireplace.position = ( -self.rect.top + self.tileWidth * 3.3,-self.rect.left + self.tileWidth * 5.7)
+        fireplace.rect_size = (self.tileWidth * 1.5,self.tileWidth * 1.5)
         self.add_node(fireplace)
         #interactable_container.add_node(altar_1)
         #interactable_container.add_node(altar_2)

@@ -46,6 +46,9 @@ class Player(Node):
             self.sprite.update(self.sprite.animation_region["right"])
         else:
             self.sprite.reset()
+        texty =(pygame.font.Font('freesansbold.ttf', 32)).render(("holding: " + self.holding).upper(), True, (240, 240, 255), (50, 50, 0))
+        textRect = pygame.Rect(400 - len(("holding: " + self.holding).upper()) * globals.game_size * 1.45, 50, 800, len(("holding: " + self.holding).upper()) * globals.game_size * 1.45)
+        dp.blit(texty, textRect)
         dp.blit(self.sprite.image, (self.offsetPos[0], self.offsetPos[1]))
 
     def on_event(self, e, engine):
