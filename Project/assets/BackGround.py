@@ -4,7 +4,8 @@ from assets import Node, globals, EventStone
 from assets.interactable import Interactable
 
 
-
+#Holds the Backgroundstuff/ all the objects placed in the world
+#Writen by Linus
 class BackGround(Node):
     def __init__(self, position = (0.0, 0.0),nodeRefs = {}):
         super().__init__()
@@ -17,8 +18,9 @@ class BackGround(Node):
         self.sprite = pygame.transform.scale(self.sprite, (globals.game_size * self.sprite_size.width, globals.game_size * self.sprite_size.height))
         self.rect = self.sprite.get_rect()
         self.rect = self.rect.move((self.rect.height)/2,(self.rect.width)/2) #Nicht anfassen, funktioniert ((dimension of image)/2)
-        self.tileWidth = (self.rect.width/30)
+        self.tileWidth = (self.rect.width/30) #Only to more easily place objects
 
+        #To automaticly place invisible "obstacles" that you're not supposed to walk on
         self.obstacle_map = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -42,6 +44,8 @@ class BackGround(Node):
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             ]
+        
+        #Instantiante "obstacles" on right position
         for i in range(len(self.obstacle_map)):  # Loop through rows
             for j in range(len(self.obstacle_map[i])):  # Loop through columns
                 if self.obstacle_map[i][j] == 1:
@@ -56,8 +60,10 @@ class BackGround(Node):
                     print(f"Row {i}, Col {j}: {value}")
         #place interactables in extra node so that they dont get checked with player collision (alternative, another variable in node)
         interactable_container = Node(callProcess=False)
-        interactable_container.position = (1000,1000)
+        interactable_container.position = (1000,1000) #So its not in the way
         self.add_node(interactable_container)
+
+        #Adding of all the interactable things in the right position
 
         altar_1 = Interactable(description="altar_1", nodeRefs=self.nodeRefs, pickup=False)
         altar_1.position = ( -self.rect.top + self.tileWidth * 13.3,-self.rect.left + self.tileWidth * 5.2)
