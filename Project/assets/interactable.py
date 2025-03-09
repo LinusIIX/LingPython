@@ -26,8 +26,9 @@ class Interactable(Node):
                 player.holding = "nothing"
                 print(('cooked frog' in self.contains))
                 print(('cooked fish' in self.contains))
-                if ('cooked frog' in self.contains) and ( 'cooked fish' in self.contains):
+                if ('cooked frog' in self.contains) and ( 'cooked fish' in self.contains) and (self.description == "altar_2"):
                     print("you win!")
+                    exit()
             elif self.description.startswith("fire"):
                 if player.holding == "fish":
                     player.holding = "cooked fish"
