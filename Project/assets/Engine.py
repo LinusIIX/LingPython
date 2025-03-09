@@ -60,7 +60,8 @@ class Engine:
         assetsFolder = os.path.join(mainFolder, "assets")
         curGameFolder = os.path.split(node.modulePath)[0]
         localAssetFolder = os.path.join(curGameFolder, "assets")
-        shutil.copytree(assetsFolder, localAssetFolder, dirs_exist_ok=True)
+        if node.hasInterface:
+            shutil.copytree(assetsFolder, localAssetFolder, dirs_exist_ok=True)
         os.chdir(curGameFolder)
         process = subprocess.Popen(
             [sys.executable, "main.py"],

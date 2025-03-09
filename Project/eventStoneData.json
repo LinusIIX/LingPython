@@ -1,0 +1,274 @@
+[
+    {
+        "module": {},
+        "description": "Team 1",
+        "position": [
+            840,
+            -550
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 2",
+        "position": [
+            560,
+            -490
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 3",
+        "position": [
+            400,
+            -400
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 4",
+        "position": [
+            -880,
+            20
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 5",
+        "position": [
+            -880,
+            320
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {
+            "modulePath": "games/team6/main.py",
+            "consoleRun": false,
+            "hasInterface" : false,
+            "displayStone": true
+        },
+        "description": "Team 6",
+        "position": [
+            -680,
+            360
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 7",
+        "position": [
+            -690,
+            200
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 8",
+        "position": [
+            -900,
+            190
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 9",
+        "position": [
+            -500,
+            390
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 10",
+        "position": [
+            -550,
+            240
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 11",
+        "position": [
+            -520,
+            110
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 12",
+        "position": [
+            -70,
+            395
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {
+            "modulePath": "games/team13_0/froggame/main.py",
+            "hasInterface" : true,
+            "consoleRun": false,
+            "displayStone": false
+        },
+        "description": "catch frog with net",
+        "position": [
+            288,
+            48
+        ],
+        "rect_size": [
+            144,
+            240
+        ]
+    },
+    {
+        "module": {
+            "modulePath": "games/team13_1/main.py",
+            "hasInterface" : true,
+            "consoleRun": false,
+            "displayStone": false
+        },
+        "description": "catch a fish",
+        "position": [
+            672,
+            -316
+        ],
+        "rect_size": [
+            288,
+            144
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 14",
+        "position": [
+            -630,
+            -460
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 15",
+        "position": [
+            -600,
+            -310
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 16",
+        "position": [
+            -710,
+            -210
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 17",
+        "position": [
+            -870,
+            -180
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {
+            "modulePath": "games/team18/rebelobaixinho_game/main_console.py",
+            "hasInterface" : false,
+            "consoleRun": true,
+            "displayStone": true
+        },
+        "description": "learn 20 verbs",
+        "position": [
+            -1000,
+            -300
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 19",
+        "position": [
+            -950,
+            -440
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {},
+        "description": "Team 20",
+        "position": [
+            -800,
+            -500
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    }
+]
