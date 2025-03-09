@@ -107,11 +107,8 @@ class Engine:
                     if node.runnable:
                         if node.consoleRun == True:
                             self.run_console(node)
-                            #self.codeProcess = multiprocessing.Process(target=self.run_console, args=(node, ))
-                            #self.codeProcess.start()
-                            #self.codeProcess.join()
                         else:
-                            if node.description.find("frog") != -1 and caller.holding == "nothing":
+                            if node.description.find("frog") != -1 and caller.holding == "nothing":#so that the frog game can only be played with net
                                 pass
                             else:
                                 if node.modulePath != "":
@@ -122,6 +119,7 @@ class Engine:
     @staticmethod
     def load_sprite_sheet(sheet, frame_width, frame_height, num_frames, size=globals.game_size):
         frames = []
+        #Cuts up the Spritesheet up and adds it to frames
         for i in range(num_frames):
             frame = sheet.subsurface(pygame.Rect(i * frame_width, 0, frame_width, frame_height))
             frame_rect = frame.get_rect()
@@ -129,7 +127,7 @@ class Engine:
             frames.append(frame)
         return frames
 
-
+    #checks collision
     @staticmethod
     def check_collision(pos, rect_size, node2):
         """Checks if two nodes overlap based on position and rect_size."""
