@@ -4,6 +4,7 @@ import os
 
 from assets import GameDataLink
 
+#Written by Daniel
 gameData = GameDataLink.get_data()
 gameData["neededPoints"] = 1
 

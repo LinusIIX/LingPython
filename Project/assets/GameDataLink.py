@@ -1,6 +1,6 @@
 import json
 
-#Writen by Luca
+#Written by Luca
 class GameDataLink:
     @staticmethod
     def init_data():

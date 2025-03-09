@@ -2,7 +2,7 @@ import pygame
 import os
 from assets import Node, Engine, AnimatedSprite, globals  # Ensure this import is correct
 #Class that does everything with Player
-#Writen in equal parts by Linus and Luca
+#Written in equal parts by Linus and Luca
 class Player(Node):
     def __init__(self, handlesEvents, nodeRefs={}):
         super().__init__(handlesEvents, nodeRefs)

@@ -3,7 +3,7 @@ import os
 from assets import Node
 
 #Base thing for Interactables excluding Eventstones
-#Writen by Linus
+#Written by Linus
 class Interactable(Node):
     def __init__(self, description="add text", position=(300.0, 300.0), pickup=True,nodeRefs = {},requires = "nothing",callProcess=False,handlesEvents=True):
         super().__init__()  
