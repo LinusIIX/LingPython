@@ -5,11 +5,17 @@ engine = Engine()
 root = Node(handlesEvents=False, nodeRefs={}, callProcess=False)
 engine.add_node(root)
 
-backGround = BackGround((650, 600)) #position ist startposition
+eventStoneContainer = Node(handlesEvents=False, nodeRefs={}, callProcess=False)
+player = Player(handlesEvents=True)
+backGround = BackGround((650, 600), nodeRefs= {
+    "player" : player,
+    "eventStoneContainer" : eventStoneContainer
+})
+eventStoneContainer.position = backGround.position
 root.add_node(backGround)
 i = 100
 eventStoneDescriptions = ["hello", "wow sagsfdajgkk k sdg sfkgksfd kgsfdk gpos kdg", "cool"]
-eventStoneContainer = Node(handlesEvents=False, nodeRefs={}, callProcess=False)
+#eventStoneContainer.re
 root.add_node(eventStoneContainer)
 for gameEntry, gameDescriptions in zip(Engine.get_main_files("games"), eventStoneDescriptions):
     if globals.debug:
@@ -17,12 +23,10 @@ for gameEntry, gameDescriptions in zip(Engine.get_main_files("games"), eventSton
     eventStoneContainer.add_node(EventStone(gameEntry, gameDescriptions, (0, i)))
     i += 100
 
-player = Player(handlesEvents=True, nodeRefs={
+player.nodeRefs = {
     "root" : root,
-    "bg"   : backGround
-})
-backGround.nodeRefs = {
-    "player" : player
+    "bg"   : backGround,
+    "eventStoneContainer" : eventStoneContainer
 }
 player.rect_size = (player.sprite_rect.width,player.sprite_rect.height)
 engine.add_node(player)

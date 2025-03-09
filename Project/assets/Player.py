@@ -4,7 +4,7 @@ from assets import Node, Engine, AnimatedSprite, globals  # Ensure this import i
 
 
 class Player(Node):
-    def __init__(self, handlesEvents, nodeRefs):
+    def __init__(self, handlesEvents, nodeRefs={}):
         super().__init__(handlesEvents, nodeRefs)
         BASE_DIR = os.getcwd()
         self.position = (0, 0)

@@ -1,6 +1,6 @@
 import pygame
 import os
-from assets import Node, globals
+from assets import Node, globals, EventStone
 from assets.interactable import Interactable
 
 
@@ -62,9 +62,12 @@ class BackGround(Node):
         self.add_node(altar_2)
 
         frog = Interactable(description = "frog", nodeRefs=self.nodeRefs, pickup=True,requires="net")
-
+        frogES = EventStone.EventStone({"moduleFolderName" : "froggame", "consoleRun" : False, "modulePath" : "games/froggame/main.py"}, description="get a net to catch the frog")
+        self.nodeRefs["eventStoneContainer"].add_node(frogES)
         frog.position = ( -self.rect.top + self.tileWidth * 8,-self.rect.left + self.tileWidth * 8)
+        frogES.position = ( -self.rect.top + self.tileWidth * 8,-self.rect.left + self.tileWidth * 8)
         frog.rect_size = (self.tileWidth * 1.5,self.tileWidth * 2.5)
+        frogES.rect_size = (self.tileWidth * 1.5,self.tileWidth * 2.5)
         self.add_node(frog)
 
         fish = Interactable(description = "fish", nodeRefs=self.nodeRefs, pickup=True)
