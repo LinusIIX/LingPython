@@ -96,7 +96,6 @@ class Engine:
                         #print(node.moduleName, ":", node.modulePath)
                         pass
                     if node.interactable:
-                        print("interact")
                         node.interact(caller)
                     if node.runnable:
                         if node.consoleRun == True:
@@ -110,12 +109,12 @@ class Engine:
 
 
     @staticmethod
-    def load_sprite_sheet(sheet, frame_width, frame_height, num_frames):
+    def load_sprite_sheet(sheet, frame_width, frame_height, num_frames, size=globals.game_size):
         frames = []
         for i in range(num_frames):
             frame = sheet.subsurface(pygame.Rect(i * frame_width, 0, frame_width, frame_height))
             frame_rect = frame.get_rect()
-            frame = pygame.transform.scale(frame, (globals.game_size * frame_rect.width, globals.game_size * frame_rect.height))
+            frame = pygame.transform.scale(frame, (size * frame_rect.width, size * frame_rect.height))
             frames.append(frame)
         return frames
 

@@ -12,9 +12,9 @@ class EventStone(Node):
         self.position = position
 
         sprite_sheet = pygame.image.load(os.path.join(os.getcwd(), "assets", "event_stone.png"))
-        frames = Engine.load_sprite_sheet(sprite_sheet, 16, 16, 2)  #16px16p sprites, 2-frame animation
+        frames = Engine.load_sprite_sheet(sprite_sheet, 16, 16, 3)  #16px16p sprites, 2-frame animation
         self.sprite = AnimatedSprite.AnimatedSprite(frames, 100, 100, frame_rate=500) ##Anim import for pygame extended class wired
-        self.sprite.animation_region = {"base":[0,1]}
+        self.sprite.animation_region = {"base":[0,1], "noGame" : [2, 2]}
         self.sprite_rect = self.sprite.image.get_rect()
         self.rect_size = rect_size
 
@@ -32,6 +32,8 @@ class EventStone(Node):
     def process(self, dp):
         if self.runnable:
             self.sprite.update(self.sprite.animation_region["base"])
+        else:
+            self.sprite.update(self.sprite.animation_region["noGame"])
         dp.blit(self.sprite.image, self.getPos())
         #pygame.draw.rect(dp, (50, 50, 50), (self.getX(), self.getY(), self.rect_size[0], self.rect_size[1]))
         #self.nameRect.center = (self.getX() + self.rect_size[0] * 0.5, self.getY() + self.rect_size[1] * 0.5)

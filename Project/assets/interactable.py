@@ -5,6 +5,7 @@ from assets import Node
 class Interactable(Node):
     def __init__(self, description="add text", position=(300.0, 300.0), pickup=True,nodeRefs = {},requires = "nothing",callProcess=False,handlesEvents=True):
         super().__init__()  
+        self.nodeRefs 
         self.description = description
         self.position = position
         self.pickup = pickup  
@@ -27,8 +28,7 @@ class Interactable(Node):
                 print(('cooked frog' in self.contains))
                 print(('cooked fish' in self.contains))
                 if ('cooked frog' in self.contains) and ( 'cooked fish' in self.contains) and (self.description == "altar_2"):
-                    print("you win!")
-                    exit()
+                    self.nodeRefs["endScreen"].callProcess = True
             elif self.description.startswith("fire"):
                 if player.holding == "fish":
                     player.holding = "cooked fish"
