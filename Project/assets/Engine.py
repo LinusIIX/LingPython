@@ -82,6 +82,8 @@ class Engine:
         lastEIdx = stdout.rfind(">>")
         if (min(lastSIdx, lastEIdx) >= 0):
             node.moduleData = json.loads(stdout[lastSIdx:lastEIdx])
+            newPointsInfo = "| " + str( node.moduleData["earnedPoints"]) + "/" + str(node.moduleData["neededPoints"])
+            node.description = node.description.replace(node.pointsInfo, newPointsInfo)
         else:
             print("/(!)\\ game data not send, (or project crash)")
 
@@ -104,7 +106,11 @@ class Engine:
                             #self.codeProcess.start()
                             #self.codeProcess.join()
                         else:
-                            self.run_game(node)
+                            if node.description.find("frog") and caller.holding == "nothing":
+                                pass
+                            else:
+                                if node.modulePath != "":
+                                    self.run_game(node)
             nodeStack = node.children + nodeStack #Add children after their parent node
 
 

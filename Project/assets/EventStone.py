@@ -7,8 +7,11 @@ class EventStone(Node):
         super().__init__()
         if module != {}:
             self.runnable = True
-        
-        self.description = description
+            self.pointsInfo = "| not played"
+        else:
+            self.pointsInfo = "| not playable"
+        self.description = description + self.pointsInfo
+
         self.position = position
 
         sprite_sheet = pygame.image.load(os.path.join(os.getcwd(), "assets", "event_stone.png"))
@@ -26,6 +29,8 @@ class EventStone(Node):
             self.callProcess = module["displayStone"]
             if module["displayStone"]:
                 self.rect_size = self.sprite.image.get_rect().size
+            else:
+                self.description = description
                 
         
 

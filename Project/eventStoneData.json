@@ -60,13 +60,8 @@
         ]
     },
     {
-        "module": {
-            "modulePath": "games/team6/main.py",
-            "consoleRun": false,
-            "hasInterface" : false,
-            "displayStone": true
-        },
-        "description": "learn in and word order of adpositions",
+        "module": {},
+        "description": "Team 6",
         "position": [
             -680,
             360
@@ -237,7 +232,7 @@
             "consoleRun": true,
             "displayStone": true
         },
-        "description": "learn 20 verbs",
+        "description": "Team 18",
         "position": [
             -1000,
             -300
@@ -269,6 +264,48 @@
         "rect_size": [
             96,
             96
+        ]
+    },
+    {
+        "module" : {
+            "modulePath" : "",
+            "hasInterface" : false,
+            "consoleRun": false,
+            "displayStone": false
+        },
+        "description" : "The way is shut.\nezatas ma eshin ma yette she eyelki chosh\njolinatas jin ahhaz azhatas zhavvorsaan hoshor",
+        "position" : [-20, -500],
+        "rect_size": [
+            196,
+            96
+        ]
+    },
+    {
+        "module" : {
+            "modulePath" : "",
+            "hasInterface" : false,
+            "consoleRun": false,
+            "displayStone": false
+        },
+        "description" : "Blue dog altar",
+        "position" : [-150, -500],
+        "rect_size": [
+            120,
+            120
+        ]
+    },
+    {
+        "module" : {
+            "modulePath" : "",
+            "hasInterface" : false,
+            "consoleRun": false,
+            "displayStone": false
+        },
+        "description" : "Gold dragon altar",
+        "position" : [180, -500],
+        "rect_size": [
+            120,
+            120
         ]
     }
 ]

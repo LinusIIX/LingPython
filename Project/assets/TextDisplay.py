@@ -20,9 +20,11 @@ class TextDisplay(Node):
                 if Engine.check_collision(collider.getPos(), collider.rect_size, self.nodeRefs["player"]):
                     self.curNode = collider
         else:
-            self.description = self.font.render(self.curNode.description, True, (240, 240, 255), (50, 50, 0))
-            textRect = pygame.Rect(400 - len(self.curNode.description) * globals.game_size * 1.45, 750, 800, len(self.curNode.description) * globals.game_size * 1.45)
-            #pygame.draw.rect(dp, (50, 50, 50), textRect)
-            dp.blit(self.description, textRect)
-            if not Engine.check_collision(self.curNode.getPos(), self.curNode.rect_size, self.nodeRefs["player"]):
-                self.curNode = None
+            texts = self.curNode.description.split("\n")
+            for idx, text in enumerate(texts):
+                self.description = self.font.render(text, True, (240, 240, 255), (50, 50, 0))
+                textRect = pygame.Rect(400 - len(text) * globals.game_size * 1.4, 750 - len(texts) * 50 + idx * 50, 800, len(text) * globals.game_size * 1.4)
+                dp.blit(self.description, textRect)
+                if not Engine.check_collision(self.curNode.getPos(), self.curNode.rect_size, self.nodeRefs["player"]):
+                    self.curNode = None
+                    break
