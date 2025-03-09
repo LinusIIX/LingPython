@@ -2,6 +2,8 @@ import pygame
 import os
 from assets import Node
 
+#Base thing for Interactables excluding Eventstones
+#Writen by Linus
 class Interactable(Node):
     def __init__(self, description="add text", position=(300.0, 300.0), pickup=True,nodeRefs = {},requires = "nothing",callProcess=False,handlesEvents=True):
         super().__init__()  
@@ -28,7 +30,7 @@ class Interactable(Node):
                 print(('cooked fish' in self.contains))
                 if ('cooked frog' in self.contains) and ( 'cooked fish' in self.contains) and (self.description == "altar_2"):
                     print("you win!")
-                    exit()
+                    #initilize ending
             elif self.description.startswith("fire"):
                 if player.holding == "fish":
                     player.holding = "cooked fish"
