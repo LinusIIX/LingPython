@@ -13,6 +13,7 @@ backGround = BackGround((650, 600), nodeRefs= {
 })
 eventStoneContainer.position = backGround.position
 root.add_node(backGround)
+root.setPos(player.position[0],player.position[1])
 i = 100
 eventStoneDescriptions = ["hello", "wow sagsfdajgkk k sdg sfkgksfd kgsfdk gpos kdg", "cool"]
 #eventStoneContainer.re

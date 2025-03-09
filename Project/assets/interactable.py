@@ -24,6 +24,10 @@ class Interactable(Node):
             if self.description.startswith("altar") and (player.holding != "nothing"):
                 self.contains.append(player.holding)
                 player.holding = "nothing"
+                print(('cooked frog' in self.contains))
+                print(('cooked fish' in self.contains))
+                if ('cooked frog' in self.contains) and ( 'cooked fish' in self.contains):
+                    print("you win!")
             elif self.description.startswith("fire"):
                 if player.holding == "fish":
                     player.holding = "cooked fish"
