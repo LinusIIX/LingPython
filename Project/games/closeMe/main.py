@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from assets import GameDataLink
 
+#Example for use of GameDataLink from Luca
 gameData = GameDataLink.get_data()
 gameData["neededPoints"] = 7
 gameData["text"] = "in this game you have to close the window 7 times"

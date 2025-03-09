@@ -1,7 +1,9 @@
 import json
 
 #Writen by Luca
+#Used for the display of game progress when setup
 class GameDataLink:
+    
     @staticmethod
     def init_data():
         return  {

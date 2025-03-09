@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from assets import GameDataLink
 
+#Example for use of GameDataLink from Luca
 gameData = GameDataLink.get_data()
 gameData["neededPoints"] = 5
 gameData["text"] = "type in all 5 words 'hello from my word checker'"

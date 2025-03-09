@@ -29,7 +29,8 @@ class Node:
         self.children.remove(node)
     
     #helper functions to work with offset:
-
+    #setPos calls all child nodes to set new offset
+    #getter functions used to get position relative to offset
     def setPos(self, x, y):
         self.position = (x, y)
         self.update_offset()

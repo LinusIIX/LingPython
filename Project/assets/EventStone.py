@@ -2,8 +2,10 @@ import pygame
 import os
 from assets import Node, Engine, GameDataLink, AnimatedSprite
 
+#Written by Luca
 class EventStone(Node):
     def __init__(self, module, description = "add text", position = (300.0, 300.0), rect_size = (16, 16)):
+        #Check if module data is empty if so not playable else can be run change description accordingly 
         super().__init__()
         if module != {}:
             self.runnable = True
@@ -14,6 +16,7 @@ class EventStone(Node):
 
         self.position = position
 
+        #The EventStone should have on display an animated picture defined here
         sprite_sheet = pygame.image.load(os.path.join(os.getcwd(), "assets", "event_stone.png"))
         frames = Engine.load_sprite_sheet(sprite_sheet, 16, 16, 3)  #16px16p sprites, 2-frame animation
         self.sprite = AnimatedSprite.AnimatedSprite(frames, 100, 100, frame_rate=500) ##Anim import for pygame extended class wired
@@ -21,6 +24,7 @@ class EventStone(Node):
         self.sprite_rect = self.sprite.image.get_rect()
         self.rect_size = rect_size
 
+        #If ES. is running module data is set run in console?, has interface?, display the picture etc.
         if self.runnable:
             self.consoleRun = module["consoleRun"]
             self.modulePath = module["modulePath"]
@@ -33,13 +37,10 @@ class EventStone(Node):
                 self.description = description
                 
         
-
+    #when runnable add animated sprite part else show grayed out stone
     def process(self, dp):
         if self.runnable:
             self.sprite.update(self.sprite.animation_region["base"])
         else:
             self.sprite.update(self.sprite.animation_region["noGame"])
         dp.blit(self.sprite.image, self.getPos())
-        #pygame.draw.rect(dp, (50, 50, 50), (self.getX(), self.getY(), self.rect_size[0], self.rect_size[1]))
-        #self.nameRect.center = (self.getX() + self.rect_size[0] * 0.5, self.getY() + self.rect_size[1] * 0.5)
-        #dp.blit(self.displayName, self.nameRect)
