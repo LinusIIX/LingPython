@@ -7,8 +7,8 @@ import os
 import sys
 import multiprocessing
 from assets import Node, globals
-
-
+#The Underlying Engine that goes trough all the
+#Writen by mostly Luca and a bit Linus
 class Engine:
     def __init__(self, width=800, height=800):
         self.nodes = []
@@ -16,12 +16,13 @@ class Engine:
         pygame.init()
         self.dp = pygame.display.set_mode((width, height), pygame.HWSURFACE | pygame.DOUBLEBUF)
     
+    #Same as in "node" to allow a Tree structure and to give itself the elements to run trough
     def add_node(self, node):
         self.nodes.append(node)
-
+    #The function to start the gameloop
     def run(self):
         try:
-            while self.running:
+            while self.running: #The main gameloop
                 self.dp.fill((255, 255, 255))
                 for e in pygame.event.get():
                     if e.type == pygame.QUIT:
@@ -29,7 +30,7 @@ class Engine:
                     for node in self.nodes:
                         if node.handlesEvents:
                             node.on_event(e, self)
-                nodeStack = self.nodes.copy()
+                nodeStack = self.nodes.copy() #goes trough every node attached to itself
                 while len(nodeStack) > 0:
                     node = nodeStack.pop(0)
                     if globals.debug: #debug
@@ -38,13 +39,14 @@ class Engine:
                             pass
                             #print(node.getPos())
                     if node.callProcess:
-                        node.process(self.dp)
+                        node.process(self.dp) #Calls the process function in all nodes that use it
                     nodeStack = node.children + nodeStack #Add children after their parent node
                 pygame.display.flip()
         except KeyboardInterrupt:
             print("  goodbye  ")
             exit()
     
+    #To start console games
     def run_console(self, node):
         global_vars = {}
         print("||| Running game in console | exit with Ctrl C |||")
@@ -54,15 +56,17 @@ class Engine:
             print("\n\nexiting console game")
 
 
-
+    #To start pygame games
     def run_game(self, node):
+        #Get all the folders and access them
         mainFolder = os.getcwd()
         assetsFolder = os.path.join(mainFolder, "assets")
         curGameFolder = os.path.split(node.modulePath)[0]
         localAssetFolder = os.path.join(curGameFolder, "assets")
         if node.hasInterface:
-            shutil.copytree(assetsFolder, localAssetFolder, dirs_exist_ok=True)
+            shutil.copytree(assetsFolder, localAssetFolder, dirs_exist_ok=True) #gets the interface
         os.chdir(curGameFolder)
+        #Start the game
         process = subprocess.Popen(
             [sys.executable, "main.py"],
             stdin=subprocess.PIPE,
@@ -80,6 +84,7 @@ class Engine:
         #    shutil.rmtree(localAssetFolder)
         lastSIdx = stdout.rfind("<<") + 2
         lastEIdx = stdout.rfind(">>")
+        #To display ingame(in ours)
         if (min(lastSIdx, lastEIdx) >= 0):
             node.moduleData = json.loads(stdout[lastSIdx:lastEIdx])
             newPointsInfo = "| " + str( node.moduleData["earnedPoints"]) + "/" + str(node.moduleData["neededPoints"])
@@ -87,18 +92,18 @@ class Engine:
         else:
             print("/(!)\\ game data not send, (or project crash)")
 
-
+    #gets called if the player presses interact key
     def interact(self, caller):
-        nodeStack = self.nodes.copy()
+        nodeStack = self.nodes.copy()#checks every node if it can be interacted with
         while len(nodeStack) > 0:
             node = nodeStack.pop(0)
             if node != caller:
-                if self.check_collision(node.getPos(), node.rect_size, caller):
+                if self.check_collision(node.getPos(), node.rect_size, caller):#something can be interacted with if it collides with the player
                     if globals.debug:
                         #print(node.moduleName, ":", node.modulePath)
                         pass
                     if node.interactable:
-                        node.interact(caller)
+                        node.interact(caller)#if it is something interactable that isn't a minigame call 
                     if node.runnable:
                         if node.consoleRun == True:
                             self.run_console(node)
@@ -106,7 +111,7 @@ class Engine:
                             #self.codeProcess.start()
                             #self.codeProcess.join()
                         else:
-                            if node.description.find("frog") and caller.holding == "nothing":
+                            if node.description.find("frog") != -1 and caller.holding == "nothing":
                                 pass
                             else:
                                 if node.modulePath != "":
@@ -136,22 +141,3 @@ class Engine:
 
         return (x1 < x2 + w2 and x1 + w1 > x2 and
                 y1 < y2 + h2 and y1 + h1 > y2)
-
-
-    @staticmethod
-    def get_main_files(base_path):
-        main_files = []
-        for root, dirs, files in os.walk(base_path):  # Walk through all folders
-            if 'main.py' in files:  # Check if 'main.py' exists in the current folder
-                main_files.append({
-                    "moduleFolderName" : os.path.basename(root),
-                    "modulePath" : os.path.join(root, 'main.py'),
-                    "consoleRun" : False
-                })
-            if 'main_console.py' in files:
-                main_files.append({
-                    "moduleFolderName" : os.path.basename(root),
-                    "modulePath" : os.path.join(root, 'main_console.py'),
-                    "consoleRun" : True
-                })
-        return main_files

@@ -58,10 +58,6 @@ class BackGround(Node):
                 value = self.obstacle_map[i][j]
                 if globals.debug:
                     print(f"Row {i}, Col {j}: {value}")
-        #place interactables in extra node so that they dont get checked with player collision (alternative, another variable in node)
-        interactable_container = Node(callProcess=False)
-        interactable_container.position = (1000,1000) #So its not in the way
-        self.add_node(interactable_container)
 
         #Adding of all the interactable things in the right position
 
@@ -97,12 +93,6 @@ class BackGround(Node):
         fireplace.position = ( -self.rect.top + self.tileWidth * 13.3,-self.rect.left + self.tileWidth * 8.7)
         fireplace.rect_size = (self.tileWidth * 1.5,self.tileWidth * 1.5)
         self.add_node(fireplace)
-        #interactable_container.add_node(altar_1)
-        #interactable_container.add_node(altar_2)
-        #interactable_container.add_node(frog)
-        #interactable_container.add_node(fish)
-        #interactable_container.add_node(net)
-        #interactable_container.add_node(fireplace)
         
 
 
