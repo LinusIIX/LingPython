@@ -4,7 +4,7 @@ from assets import Node, Engine, globals
 
 
 #Textdisplay so that text for the stones gets displayed
-#Writen by Luca
+#Written by Luca
 class TextDisplay(Node):
     def __init__(self, handlesEvents=False, nodeRefs=..., callProcess=True):
         super().__init__(handlesEvents, nodeRefs, callProcess)

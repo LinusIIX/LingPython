@@ -1,6 +1,6 @@
 import json
 
-#Writen by Luca
+#Written by Luca
 #Used for the display of game progress when setup
 class GameDataLink:
     

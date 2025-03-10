@@ -1,6 +1,6 @@
 
 #Underlying base structure
-#Writen by Luca
+#Written by Luca
 class Node:
     def __init__(self, handlesEvents=False, nodeRefs = {}, callProcess=True):
         self.position = (0, 0)

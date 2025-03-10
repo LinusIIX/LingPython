@@ -2,6 +2,7 @@ import pygame
 import random
 
 pygame.init()
+#Written by Nils
 
 # font
 font = pygame.font.SysFont(None, 24)
