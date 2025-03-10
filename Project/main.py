@@ -25,7 +25,7 @@ class EndScreen(Node):
         if self.sprite.index == 13 and self.components == []:
             for idx, text in enumerate(self.credits):
                 textSurface = self.font.render(text, True, (255, 255, 255), (0, 0, 0))
-                textRect = pygame.Rect(400 - len(text) * globals.game_size * 1.45, -2840 + idx * 50, 800, len(text) * globals.game_size * 1.45)
+                textRect = pygame.Rect(400 - len(text) * globals.game_size * 1.45, 650 + idx * 50, 800, len(text) * globals.game_size * 1.45)
                 self.components.append({
                     "display" : textSurface,
                     "rect" : textRect

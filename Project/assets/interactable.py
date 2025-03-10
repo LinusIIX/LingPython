@@ -27,8 +27,6 @@ class Interactable(Node):
             if self.description.startswith("altar") and (player.holding != "nothing"):
                 self.contains.append(player.holding)
                 player.holding = "nothing"
-                print(('cooked frog' in self.contains))
-                print(('cooked fish' in self.contains))
                 if ('cooked frog' in self.contains) and ( 'cooked fish' in self.contains) and (self.description == "altar_2"):
                     #initilize ending
                     self.nodeRefs["endScreen"].callProcess = True

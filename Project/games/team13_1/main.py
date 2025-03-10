@@ -18,7 +18,7 @@ PLAYER_BAR_HEIGHT = 80
 POINT_RADIUS = 10
 
 PLAYER_SPEED = 3                   # Speed of the player bar movement per frame
-POINT_TIME = 2.5                    # Seconds needed to score a point
+POINT_TIME = 1.5                    # Seconds needed to score a point
 POINT_SPEED = 2.3                   # Speed of the point movement per frame
 
 # Colors

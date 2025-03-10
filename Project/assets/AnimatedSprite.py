@@ -1,7 +1,7 @@
 import pygame
 
 #Helper class to animate
-#Writen by Linus
+#Written by Linus
 class AnimatedSprite(pygame.sprite.Sprite):
     def __init__(self, images, x, y, frame_rate=100):
         super().__init__()

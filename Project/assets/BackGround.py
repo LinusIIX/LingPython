@@ -5,7 +5,7 @@ from assets.interactable import Interactable
 
 
 #Holds the Backgroundstuff/ all the objects placed in the world
-#Writen by Linus
+#Written by Linus
 class BackGround(Node):
     def __init__(self, position = (0.0, 0.0),nodeRefs = {}):
         super().__init__()
@@ -53,7 +53,6 @@ class BackGround(Node):
                     obstacle.offsetPos = (0,0)
                     obstacle.position = ( -self.rect.top + self.tileWidth * j,-self.rect.left + self.tileWidth * i)
                     obstacle.rect_size = (self.tileWidth,self.tileWidth)
-                    print(obstacle.rect_size)
                     self.add_node(obstacle)
                 value = self.obstacle_map[i][j]
                 if globals.debug:
@@ -65,7 +64,6 @@ class BackGround(Node):
         altar_1.position = ( -self.rect.top + self.tileWidth * 13.3,-self.rect.left + self.tileWidth * 5.2)
         altar_1.rect_size = (self.tileWidth * 1.5,self.tileWidth * 1.5)
         self.add_node(altar_1)
-        print(altar_1.position)
 
         altar_2 = Interactable(description = "altar_2", nodeRefs=self.nodeRefs, pickup=False)
         altar_2.position = ( -self.rect.top + self.tileWidth * 16.9,-self.rect.left + self.tileWidth * 5.2)
@@ -80,8 +78,6 @@ class BackGround(Node):
         fish = Interactable(description = "fish", nodeRefs=self.nodeRefs, pickup=True)
         fish.position = ( -self.rect.top + self.tileWidth * 22,-self.rect.left + self.tileWidth * 7.2)
         fish.rect_size = (self.tileWidth * 3,self.tileWidth * 1.5)
-        print(":::", fish.position)
-        print(":::", fish.rect_size)
         self.add_node(fish)
 
         net = Interactable(description = "net", nodeRefs=self.nodeRefs, pickup=True)

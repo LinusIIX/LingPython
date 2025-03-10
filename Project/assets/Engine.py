@@ -8,7 +8,7 @@ import sys
 import multiprocessing
 from assets import Node, globals
 #The Underlying Engine that goes trough all the
-#Writen by mostly Luca and a bit Linus
+#Written by mostly Luca and a bit Linus
 class Engine:
     def __init__(self, width=800, height=800):
         self.nodes = []
