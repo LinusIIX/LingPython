@@ -5,13 +5,13 @@ TEAM 1: Max Morscher,
 Nikolas Heise, Eilo de Vito
 Allative and accusative
 
-TEAM 2: Adrian Sopio, Odin Weber
+(TEAM 2): Adrian Sopio, Odin Weber
 Conjunction (and) and word order
 
 TEAM 3: Celil Durna, Dafina Kastrati
 noun(s) in the first line
 
-TEAM 4: Francesca Hoffmeier,
+(TEAM 4): Francesca Hoffmeier,
 Kaewsai Snidvongs, Natalia Villanueva
 verb(s) in the first line
 
@@ -19,7 +19,7 @@ TEAM 5 :Anna-Lena Gensle,
 Selin Kumbasar, Berrak Dağlıoğlu
 then
 
-TEAM 6: Anqi Yuan, Shunyu Xu,
+(TEAM 6): Anqi Yuan, Shunyu Xu,
 Sahar Shahjalaledin, Sahel Kheireh
 in and word order of adpositions
 
@@ -30,7 +30,7 @@ TEAM 8: Fabian Döller, Fabian Lama,
 Friedrich Vock
 verb(s) in the second line
 
-TEAM 9: Jiamei Chen,
+(TEAM 9): Jiamei Chen,
 Yeganeh Mohammad Salehi,
 JM. BM. Gomes da Motta
 NP word order
@@ -41,7 +41,8 @@ this/these
 TEAM 11: Lettie Topping, Lorenzo Severini
 Clause Word Order
 
-TEAM 12: Alban Izairi, David Durasin
+TEAM 12: Alban Izairi, David Durasinrequests
+numpy
 imperative
 
 TEAM 13: Philipp Gelfuss,
@@ -60,18 +61,18 @@ all the information together
 TEAM 15: Xiaoxuan Zhang, Sharif Wurz
 Dothraki numbers from 0 to 19. 
 
-TEAM 16: Teresa Madeline, Paula Rios Gomez
+(TEAM 16): Teresa Madeline, Paula Rios Gomez
 Dothraki 100s and 1000s
 
 TEAM 17:  Mark Clue
-20 Dothraki nouns. 
+20 Dothraki nouns.
 
-TEAM 18:  Filipe Rebelo Baixinho
+(TEAM 18):  Filipe Rebelo Baixinho
 20 Dothraki verbs.
 
-TEAM 19:  Antonia Schökle
+(TEAM 19):  Antonia Schökle
 20 Dothraki adjectives.
 
-TEAM 20: Patrick Störk,
+(TEAM 20): Patrick Störk,
 Mika Di Prima, Annalena Gerweck
 pronoun system of Dothraki.
