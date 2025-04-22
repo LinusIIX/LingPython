@@ -1,0 +1,37 @@
+Dothraki Numbers Learning Game Description:
+This is a fun and interactive game designed to help players learn the Dothraki numbers from 0 to 19. The game presents the player with a number in either Dothraki or English, and the player has to correctly identify the translation.
+
+Key Features:
+Game Mechanics:
+The game generates random questions, asking either "What is [number] in Dothraki?" or "What is [Dothraki number] in English?".
+The user must select the correct translation from four possible answers.
+The number options presented are randomized, ensuring variety in each game session.
+The game dynamically adjusts the number of English and Dothraki options based on the player's score.
+The game removes the number from the list when the player answers correctly on the first try.
+When the player answers a number incorrectly, the number appears later again.
+
+Scoring System:
+The game keeps track of the player's score, with a correct answer granting a point.
+The game shows a popup message after each answer indicating whether the player was correct or incorrect, this popup closes automatically after a moment.
+The score is updated in real-time and is displayed on the window.
+The score is increased when the correct answer is chosen on first try.
+No deduction or restriction on scoring for previously incorrect attempts, on later tries.
+Players can keep trying without being penalized.
+
+Difficulty Adjustment:
+At higher scores, the game uses more difficult combinations of numbers and words.
+As the player proceeds, the game increases in difficulty by increasing the number of words shown, instead of numbers.
+Easy mode: There are 3 digits and 1 Dothraki word if the digit is shown, or only digits, if the Dothraki word is shown.
+Over time the amount of digits decrease and the amount of Dothraki words increase, making the game periodically harder.
+This means that as the player performs better, they are given fewer English number options, forcing them to recall more Dothraki words.
+
+Game Flow:
+Start Screen: When the game starts, the player is presented with the title "Learn Dothraki Numbers" and a question.
+Answer Selection: The player selects one of the four presented answers.
+Feedback: A popup message indicates if the answer was correct or incorrect.
+Next Question: Once the answer is processed, a new question is generated, and the process repeats.
+End of Game: The game continues until the player decides to close the window or the player answers all questions correctly.
+
+Testing:
+The program ran on the Windows 11 "Home" 64-bit operating system with the 3.12.7 64-bit Python compiler, and the program requires to install the "tkinter" library which can be done via "pip install tk".
+The hardware is a Honor Magicbook 15 laptop with a 11th Gen Intel(R) Core(TM) i5-1135G7 with 2.40GHz, clockable to 2.42 GHz (x64-based processor).

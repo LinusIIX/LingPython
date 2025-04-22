@@ -1,6 +1,11 @@
 [
     {
-        "module": {},
+        "module": {
+            "modulePath" : "games/team1/main.py",
+            "hasInterface" : true,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
         "description": "Team 1",
         "position": [
             840,
@@ -24,7 +29,12 @@
         ]
     },
     {
-        "module": {},
+        "module": {
+            "modulePath" : "games/team3/main.py",
+            "hasInterface" : true,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
         "description": "Team 3",
         "position": [
             400,
@@ -48,7 +58,12 @@
         ]
     },
     {
-        "module": {},
+        "module": {
+            "modulePath" : "games/team5/main.py",
+            "hasInterface" : true,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
         "description": "Team 5",
         "position": [
             -880,
@@ -72,11 +87,16 @@
         ]
     },
     {
-        "module": {},
+        "module": {
+            "modulePath" : "games/team7/games/asteroids/main.py",
+            "hasInterface" : true,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
         "description": "Team 7",
         "position": [
-            -690,
-            200
+            -880,
+            20
         ],
         "rect_size": [
             96,
@@ -120,7 +140,12 @@
         ]
     },
     {
-        "module": {},
+        "module": {
+            "modulePath" : "games/team11/lettie_lorenzo/main.py",
+            "hasInterface" : true,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
         "description": "Team 11",
         "position": [
             -520,
@@ -132,7 +157,12 @@
         ]
     },
     {
-        "module": {},
+        "module": {
+            "modulePath" : "games/team12/main.py",
+            "hasInterface" : true,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
         "description": "Team 12",
         "position": [
             -70,
@@ -145,7 +175,24 @@
     },
     {
         "module": {
-            "modulePath": "games/team13_0/froggame/main.py",
+            "modulePath" : "games/team13/project/LingoGuess/src/main.py",
+            "hasInterface" : false,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
+        "description": "Team 13",
+        "position": [
+            -630,
+            -460
+        ],
+        "rect_size": [
+            96,
+            96
+        ]
+    },
+    {
+        "module": {
+            "modulePath": "games/team14_0/froggame/main.py",
             "hasInterface" : true,
             "consoleRun": false,
             "displayStone": false
@@ -162,7 +209,7 @@
     },
     {
         "module": {
-            "modulePath": "games/team13_1/main.py",
+            "modulePath": "games/team14_1/main.py",
             "hasInterface" : true,
             "consoleRun": false,
             "displayStone": false
@@ -178,19 +225,12 @@
         ]
     },
     {
-        "module": {},
-        "description": "Team 14",
-        "position": [
-            -630,
-            -460
-        ],
-        "rect_size": [
-            96,
-            96
-        ]
-    },
-    {
-        "module": {},
+        "module": {
+            "modulePath" : "games/team15/main.py",
+            "hasInterface" : true,
+            "consoleRun" : false,
+            "displayStone" : true
+        },
         "description": "Team 15",
         "position": [
             -600,

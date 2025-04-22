@@ -1,0 +1,8 @@
+{
+    "endless": {
+        "Max": 86
+    },
+    "roguelike": {
+        "Max": 270
+    }
+}

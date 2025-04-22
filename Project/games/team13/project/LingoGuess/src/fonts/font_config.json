@@ -1,0 +1,101 @@
+{
+    "fonts": {
+        "main_font": {
+            "name": "Fondamento-Regular.ttf",
+            "description": "Main game font - Fondamento",
+            "sizes": {
+                "button": {
+                    "value": 26,
+                    "description": "Divided by HEIGHT for menu buttons"
+                },
+                "game_button": {
+                    "value": 28,
+                    "description": "Divided by HEIGHT for in-game buttons"
+                },
+                "text": {
+                    "value": 20,
+                    "description": "Divided by HEIGHT for normal text"
+                },
+                "about": {
+                    "value": 25,
+                    "description": "Divided by HEIGHT for about text"
+                },
+                "loading": {
+                    "value": 12,
+                    "description": "Divided by HEIGHT for loading screen"
+                },
+                "stats_header": {
+                    "value": 15,
+                    "description": "Divided by HEIGHT for stats page header"
+                }
+            }
+        },
+        "submenu_font": {
+            "name": "Fondamento-Regular.ttf",
+            "description": "Submenu titles font - Fondamento",
+            "sizes": {
+                "title": {
+                    "value": 4,
+                    "description": "Divided by HEIGHT for submenu titles"
+                }
+            }
+        },
+        "title_font": {
+            "name": "BLKCHCRY.ttf",
+            "description": "Title font - Anirb",
+            "sizes": {
+                "title": {
+                    "value": 6,
+                    "description": "Divided by HEIGHT for main title"
+                }
+            }
+        },
+        "loading_font": {
+            "name": "anirb___.ttf",
+            "description": "Loading screen font - Anirb",
+            "sizes": {
+                "title": {
+                    "value": 12,
+                    "description": "Divided by HEIGHT for loading screen"
+                }
+            }
+        },
+        "fallback_font": {
+            "name": "sans_serif",
+            "description": "Fallback system font",
+            "sizes": {
+                "title": {
+                    "value": 8,
+                    "description": "Divided by HEIGHT for title size"
+                },
+                "button": {
+                    "value": 24,
+                    "description": "Divided by HEIGHT for menu buttons"
+                },
+                "game_button": {
+                    "value": 28,
+                    "description": "Divided by HEIGHT for in-game buttons"
+                },
+                "text": {
+                    "value": 20,
+                    "description": "Divided by HEIGHT for normal text"
+                },
+                "about": {
+                    "value": 25,
+                    "description": "Divided by HEIGHT for about text"
+                }
+            }
+        }
+    },
+    "game_word": {
+        "font_name": "anirb___.ttf",
+        "size_factor": 15,
+        "has_outline": true,
+        "outline_color": [0, 0, 0],
+        "outline_width": 3,
+        "has_shadow": true,
+        "shadow_color": [30, 30, 30],
+        "shadow_offset": [2, 2],
+        "color": [255, 215, 0]
+    }
+} 

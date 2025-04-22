@@ -1,0 +1,3 @@
+"""
+LingoGuess game package
+""" 

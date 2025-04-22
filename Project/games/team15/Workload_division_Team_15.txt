@@ -1,0 +1,10 @@
+Workload division:
+First, we planned together what type of game we should do, and how it should look like. We received our inspiration from Duolingo, and as we liked the design and logic of the game very much, and the ease in which one can learn languages on the app, we thought about making something of a similar design, as it is an simple and effective design for learning.
+
+And as I (Sharif) am a computer science student, I then started with the basis of the code, but later on then we worked together, and debugged together, as some issues occurred in the run, but in the end we managed to fix every bug and the program worked fluently and without any bugs.
+
+Xuan then created a game description, where she explained in much detail, how the game works and described it in an understandable way, and later on the OS information and hardware of the testing machine where also added.
+
+Later on Xuan made the video, where she presented the game in detail, and explained its logic, made a small gameplay of it, so the viewer could see it in action.
+
+All in all the effort was spread quite fairly between the two of us, and no one felt overly loaded with workload.

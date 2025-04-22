@@ -1,0 +1,7 @@
+Execution Environment
+
+Operating System:
+- Windows 11 Pro (Version 24H2)
+
+Python Version:
+- Python 3.13.1
